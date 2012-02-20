@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>installatio</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Unix)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGED" CONTENT="20100606;17570200">
+	<META NAME="Info 1" CONTENT="">
+	<META NAME="Info 2" CONTENT="">
+	<META NAME="Info 3" CONTENT="">
+	<META NAME="Info 4" CONTENT="">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<P><BR>&nbsp;<FONT COLOR="#3333ff">&nbsp;</FONT><FONT COLOR="#3333ff"><B>Info
+zur QtLog Installation unter
+Linux&nbsp;</B></FONT><BR>&nbsp;&nbsp;-------------------------------------------------------------------------------------</P>
+<P><B>QtLog </B>verwendet für die Datenbasis die MySQL <B>Datenbank.
+</B>Das Programm benötigt daher als Arbeitsumgebung einen
+betriebsbereiten MySQL Server der im Netzwerk oder als 'localhost'
+auf einem PC eingerichtet ist. Ist der Server im Netzwerk angesiedelt
+erfolgt die Einrichtung der Logbook Datenbank gemeinsam mit dem MySql
+Administrator.</P>
+<P>Ist MySql auf einem PC, so ist der PC-Inhaber auch der
+Datenbankadministrator der die Verantwortung für einen
+arbeitsfähigen MySql 'localhost' Server hat. Ist dieser noch nicht
+vorhanden, muss er als erstes einen arbeitsfähigen Server zur
+Verfügung stellen.&nbsp;<BR>Benötigt wird ein <B>MySQL Server ab
+Version 5.0.45.x</B></P>
+<P>Jetzt prüfen ob für den 'Client' also das QtLog-Programm die
+erforderliche Arbeitsumgebung vorhanden ist. <B><BR>Benötigt wird
+Qt4 ab Version 4.3.x und libqt4-sql-mysql</B> ( Qt4 MySQL support ).</P>
+<P><B>Sind diese Voraussetzungen </B><U><B>geschaffen</B></U> <B>kann
+QtLog installiert werden.</B><BR><B><BR>&nbsp; &nbsp;</B> &nbsp;Das
+Tararchiv nach (HOME) kopieren und auspacken mit:<BR>&nbsp; &nbsp;&nbsp;
+&nbsp;- qunzip qtlog1.5_xx.tar.gz<BR>&nbsp; &nbsp; &nbsp; - tar -xf
+qtlog1.5_xx.tar<BR>&nbsp;&nbsp;&nbsp;&nbsp;Tar legt das Verzeichnis
+<B>'log'</B> an und kopiert alle Dateien nach log.<BR><BR>&nbsp;&nbsp;&nbsp;
+- <B>gehe in den log Ordner.</B><BR>&nbsp;&nbsp;&nbsp; hole
+Supper_user_Rechte mit:<BR>&nbsp;&nbsp;&nbsp; <B>su -m</B> <BR>&nbsp;&nbsp;&nbsp;
+Passwort xxxxx<BR>&nbsp;&nbsp;&nbsp; <FONT COLOR="#000000">Programm
+</FONT><FONT COLOR="#0000ff"><B>./install_bin</B></FONT><FONT COLOR="#0000ff">
+</FONT><FONT COLOR="#000000">aufrufen.</FONT><BR>&nbsp;&nbsp;&nbsp;
+Hiermit werden alle QtLog-Programme nach /usr/local/bin/ &nbsp;
+kopiert.<BR>&nbsp; &nbsp; <FONT COLOR="#000000"><B>su</B></FONT><FONT COLOR="#ff0000">
+&nbsp;</FONT><FONT COLOR="#ff0000"><B>mit exit</B></FONT><FONT COLOR="#000000">&nbsp;</FONT><FONT COLOR="#000000"><B>zurück
+geben !</B></FONT></P>
+<P>Jetzt starte './<B>setupqtlog</B>'.&nbsp; - <B>NICHT mit
+Supper_user_Rechten</B>, das führt immer zu Problemen !!</P>
+<P>Der QtLog user mit seinem Passwort wird angelegt. Hierfür wird
+das mysql_root_Passwort benötigt.<BR>Die Initialisierungstabellen
+werden in die Datenbank kopiert.</P>
+<P>Hiermit ist die Installation und Einrichtung der log_Datenbank
+beendet.</P>
+<P>QtLog aufrufen. Als erstes die persönlichen Daten Call, Name
+usw.. anlegen. Mit dem vorhandenen Test_logbook <B>fun</B> - das
+Programm kennen lernen und testen.</P>
+<P>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+-----------------------------------------</P>
+<P><B>Info: </B>Beim Aufruf von <FONT COLOR="#000099"><B>./setupqtlog</B></FONT>
+wird geprüft ob eine Neuinstallation oder ein Upgrade der Datenbank
+vorliegt.<BR>Ist kein betriebsbereites qtlog vorhanden, wird nach
+Rückfrage die Installation vorgeschlagen..</P>
+<P>Ist qtlog betriebsbereit - meldet sich der <B>Setup-Dialog</B>.<BR>Hier
+können alle&nbsp; Datenbank-Umgebungsparameter verändert
+werden,<BR>Will man dieses tun, wird das Passwort verlangt.</P>
+<P><B>Vorsicht.</B> Jede Änderung der Datenbank Login-Parameter kann
+zu einem Problem führen und der Server verweigert den Dienst.</P>
+<P>Viel Spaß<BR>DL1HBD<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+----------------------------------------</P>
+<P>&nbsp;&nbsp;</P>
+<P><FONT COLOR="#3333ff"><U>&nbsp; <B>Upgrade QtLog</B></U></FONT></P>
+<P>Ist ein laufendes QtLog vorhanden, und es soll eine neue
+erweiterte Version installiert werden, ist zu beachten. 
+</P>
+<P>Ein QtLog-Upgrade baut immer auf die Vorgänger Version auf. Es
+muss daher, ausgehend von der vorhanden Version, für alle folge
+Versionen ein Upgrade durchgeführt werden<BR>Zum Schutz der
+Log-Daten und eventuelle wieder Herstellung des laufenden Systems wie
+folgt vorgehen.<BR><B><BR>Vorbereitung:</B><BR>- Vorsorglich wird ein
+Datenbank-DUMP in ein entferntes Verzeichnis durchgeführt <BR>&nbsp;
+Zusätzlich für alle Fälle auch ein DUMP der <B>Logtabellen.</B><BR>&nbsp;
+( geht etwas schief kann die alte Version wieder hergestellt werden
+)<BR>- Den <B>log </B>Ordner in log_old_Versions_Nr ändern. 
+</P>
+<P>- Das neue Tararchiv auspacken mit:<BR>&nbsp; &nbsp;gunzip&nbsp;
+qtlog1.5_xx.tar.gz<BR>&nbsp; &nbsp;tar -xf &nbsp;qtlog1.5_xx.tar 
+</P>
+<P>&nbsp; Im <U><B>neuen</B></U> log Ordner supper_user_Rechte holen
+und die Programmdateien&nbsp;mit<BR>- <B>./install_bin</B> nach
+/usr/local/bin kopieren. Supper_user_Rechte wieder zurück geben.<BR>-
+Im neuen log Ordner <B>./setupqtlog</B> aufrufen.</P>
+<P><B>Setupqtlog&nbsp;</B> kopiert falls erforderlich eine neue
+qtlog.ini Datei, öffnet die Datenbank und prüft die
+Datenbankstruktur. Ist ein Datenbank-Upgrade&nbsp;erforderlich wird
+dieses nach Rückfrage durchgeführt. Es wird eine Info
+ausgegeben.<BR>Danach kann QtLog mit&nbsp;neuer, erweiterter
+Funktionalität wie üblich gestartet werden. Eine Datensicherung ist
+zu empfehlen.</P>
+<P><B>Wieder Herstellung des bisherigen QtLog-Systems.</B><BR>Ist
+beim Upgrade etwas schief gelaufen. Kann die alte Programm Version
+wieder hergestellt werden.<BR>Den neuen Ordner log auf log_fault
+setzen oder löschen. Den Ordner log_old auf log.<BR>In das log
+Verzeichnis gehen mit su -m root_Rechte holen und ./install_bin
+durchführen.<BR>Jetzt ein <B>RESTORE</B> der Datenbank durchgeführt.
+Danach steht das Programm in der alten Version wieder zur
+Verfügung.<BR><BR>Es kann passieren das die Qtlog.ini Datei
+angepasst werden muss. Qtlog.ini steht
+unter:<BR><B>.config/QtLog/qtlog.ini</B>. Mit einem Editor können
+einzelne Variable angepasst werden.</P>
+<P>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;-----------------------------------------</P>
+<P><U>&nbsp; &nbsp;<B>Hinweise und Unterstützung zur Installation
+und Einrichtung ' MySQL localhost '.</B></U></P>
+<P>Einrichten der MySQL Datenbank unter openSUSE 11 oder 11.1</P>
+<P>1. Lade die Pakete <B>mysql</B> Multiuser, Multithreaded SQL
+Database Version ab 5.0.45.x<BR>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp;<B>mysql-client</B> Version ab 5.0.45.x<BR>&nbsp; &nbsp;
+Von der DVD oder aus dem Netz.<BR><BR>2. Hole <B>supper_user_Rechte</B>
+in einem xTerminal. 
+</P>
+<P>3.&nbsp;Den mysql_Server installieren mit:<BR>&nbsp;&nbsp;&nbsp;
+<B>/usr/bin/mysql_install_db</B> &nbsp;( die Arbeitsumgebung für den
+Server einrichten )<BR>&nbsp;&nbsp;&nbsp; <BR>&nbsp;&nbsp;&nbsp;&nbsp;Erfahrungsgemäß
+gibt es an dieser Stelle seit langem ein Problem.<BR>&nbsp;&nbsp;&nbsp;
+Der Arbeitsbereich des Servers wird nicht richtig gesetzt und es
+muss<BR>&nbsp; &nbsp; daher nach gebessert werden.<BR><BR>&nbsp;&nbsp;&nbsp;
+Mit <B>cd /var/lib/mysql</B> in den Arbeitsbereich des Servers gehen
+und die&nbsp;<BR>&nbsp;&nbsp;&nbsp; File-Struktur&nbsp;anschauen.
+&nbsp;<BR>&nbsp;&nbsp;&nbsp; Alle Ordner müssen den Eigentümer
+'<B>mysql mysql</B>' haben.<BR>&nbsp;&nbsp;&nbsp; Ist das nicht der
+Fall muss korrigiert werden mit:&nbsp;<B>chown -R mysql.mysql *</B><BR>&nbsp;&nbsp;&nbsp;
+<BR>&nbsp;&nbsp;&nbsp; Jetzt kann der Server mit folgendem 'Kommando
+gestartet werden.<BR>&nbsp;&nbsp;&nbsp; <B>/etc/rc.d/mysql start</B><BR><BR>&nbsp;&nbsp;&nbsp;
+Die Antwort vom Server ist je nach Version unterschiedlich. In jedem
+Fall<BR>&nbsp;&nbsp;&nbsp; muss am Textende das Wort <FONT COLOR="#ff0000"><B>'done</B></FONT>'
+stehen. Nur dann läuft der Server.<BR><BR>&nbsp;&nbsp;&nbsp; Für
+den 'MySql_root_user' ein Passwort vergeben.<BR>&nbsp;&nbsp;&nbsp;
+Das erfolgt mit dem Kommando :&nbsp;<BR>&nbsp; &nbsp;
+<B>/usr/bin/mysqladmin -u root password xxxxx</B> &nbsp; (&nbsp;xxxx
+ist das Passwort. )<BR><BR>&nbsp;&nbsp;&nbsp; Wurde das Passwort
+akzeptiert - erfolgt keine Meldung.<BR>&nbsp;&nbsp;&nbsp; Wird das
+Passwort abgelehnt, läuft der Server nicht oder es gibt ein anderes
+Problem.<BR>&nbsp; &nbsp; Zum Beispiel einen Tippfehler in der
+Kommandozeile.</P>
+<P>&nbsp; &nbsp; Wichtig ist auf die Antwort des Servers zu achten
+und diese richtig zu behandeln.<BR>&nbsp;&nbsp;&nbsp; Es wird immer
+notwendig sein alle Schritte sorgfältig zu überprüft.<BR><BR>Läuft
+der Server, ist die Vorbereitung zur Inbetriebnahme von QtLog
+beendet.<BR>Mit <B>exit</B> werden die 'Supper_user Rechte'
+zurückgegeben, das xTerminal wenn nötig schliessen.</P>
+<P>Zusätzlich kann getestet &nbsp;werden ob der Server wirklich
+läuft&nbsp;und sich auch öffnen lässt.<BR>In einem User_xTerminal
+( <B>ohne</B> supper_user_Rechte ) eingeben: <B>mysq -uroot -pxxxxx</B>
+( xxxxx = passwd )</P>
+<P><B>Die Antwort vom Server:</B><BR>Welcome to the MySQL monitor.&nbsp;
+Commands end with ; or \g.</P>
+<P>Your MySQL connection id is 1<BR>Server version: 5.0.51a SUSE
+MySQL RPM<BR>Type 'help;' or '\h' for help. Type '\c' to clear the
+buffer.<BR>mysql&gt;<BR>mysql&gt; <B>\q </B>&nbsp;( hiermit wird der
+Server wieder geschlossen )</P>
+<P>Soll der&nbsp; mysql_server bei jedem Linux-Start gestartet
+werden, wird dieses mit Yast eingerichtet.<BR><B>Yast -&gt; System -&gt;
+Runlevel-Editor</B><BR>Die Funktion&nbsp; &quot;Start the MySQL
+database server&quot; auf '<B>Aktive</B>' stellen.</P>
+<P>Jetzt starte '<B>setupqtlog</B>'. - <B>NICHT als root_user</B> !!!
+und initialisiere das Programm.</P>
+<P>Viel Erfolg<BR><BR>&nbsp; &nbsp; 
+</P>
+</BODY>
+</HTML>

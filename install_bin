@@ -1,0 +1,73 @@
+#!/bin/bash
+export INSTALLDIR=/usr/local
+export LOGDIR=$HOME/log
+
+echo "Installing qtlogDiag in $INSTALLDIR/bin"
+cp bin/qtlog $INSTALLDIR/bin
+
+echo "Installing addQso in $INSTALLDIR/bin"
+cp bin/addqsodb $INSTALLDIR/bin
+
+echo "Installing addClog in $INSTALLDIR/bin"
+cp bin/addClogdb $INSTALLDIR/bin
+
+echo "Installing DxSpot in $INSTALLDIR/bin"
+cp bin/dxspotdb $INSTALLDIR/bin
+
+echo "Installing cwkeyerDiag in $INSTALLDIR/bin"
+cp bin/keyerdb $INSTALLDIR/bin
+
+echo "Installing qslDiag in $INSTALLDIR/bin"
+cp bin/qsldb $INSTALLDIR/bin
+
+echo "Installing adminDiag in $INSTALLDIR/bin"
+cp bin/admindb $INSTALLDIR/bin
+
+echo "Installing laDiag in $INSTALLDIR/bin"
+cp bin/ladb $INSTALLDIR/bin
+
+echo "Installing laPref in $INSTALLDIR/bin"
+cp bin/prefdb $INSTALLDIR/bin
+
+echo "Installing qslDruck in $INSTALLDIR/bin"
+cp bin/qslprintdb $INSTALLDIR/bin
+
+echo "Installing RuAwd in $INSTALLDIR/bin"
+cp bin/ruawddb $INSTALLDIR/bin
+
+echo "Installing qrzDb in $INSTALLDIR/bin"
+cp bin/qrzdb $INSTALLDIR/bin
+
+echo "Installing awdStatus in $INSTALLDIR/bin"
+cp bin/awdstdb $INSTALLDIR/bin
+
+echo "Installing hilfe in $INSTALLDIR/bin"
+cp bin/hilfedb $INSTALLDIR/bin
+
+echo "Installing dokDiag in $INSTALLDIR/bin"
+cp bin/dokdb $INSTALLDIR/bin
+
+echo "Installing iotaDiag in $INSTALLDIR/bin"
+cp bin/iotadb $INSTALLDIR/bin
+
+echo "Installing startHelp in $INSTALLDIR/bin"
+cp bin/startoptdb $INSTALLDIR/bin
+
+echo "Installing uploadMgrEqsl in $INSTALLDIR/bin"
+cp bin/uploadEqsldb $INSTALLDIR/bin
+
+echo "Installing downloadMgr in $INSTALLDIR/bin"
+cp bin/downloadmgrdb $INSTALLDIR/bin
+
+echo "Installing qslCardDiag in $INSTALLDIR/bin"
+cp bin/qslcarddb $INSTALLDIR/bin
+
+echo "Installing getitMgr in $INSTALLDIR/bin"
+cp bin/getmgrdb $INSTALLDIR/bin
+
+echo "Installing addDqso in $INSTALLDIR/bin"
+cp bin/addDqsodb $INSTALLDIR/bin
+
+echo "Installing done"
+echo ""
+

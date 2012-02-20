@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\qslPr.o
+./debug\qslPrCb.o
+./debug\medium.o
+./debug\postFile.o
+./debug\mediumText.o
+./debug\mediumTextCb.o
+./debug\dirmngr.o
+./debug\translate.o
+./debug\moc_qslPr.o
+./debug\moc_medium.o
+./debug\moc_mediumText.o
+./debug\qrc_qtlogRessourcen.o
+);

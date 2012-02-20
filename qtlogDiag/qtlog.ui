@@ -1,0 +1,1733 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Dieter dl1hbd</author>
+ <class>QtLog</class>
+ <widget class="QMainWindow" name="QtLog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1269</width>
+    <height>730</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>QtLog       Log-Verwaltung </string>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>true</bool>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowNestedDocks|QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QLabel" name="Bildlabel">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>9</y>
+          <width>600</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="pixmap">
+         <pixmap/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>15</x>
+          <y>-132</y>
+          <width>1277</width>
+          <height>1024</height>
+         </rect>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="../qtlogRessourcen.qrc">:/new/prefix1/icon/Won-Ton-Soup-3.jpg</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="logbooklabel">
+          <property name="font">
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>    Logbook :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="LogbookName">
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>77</red>
+                <green>79</green>
+                <blue>245</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>77</red>
+                <green>79</green>
+                <blue>245</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>119</red>
+                <green>119</green>
+                <blue>119</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>403</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="5">
+         <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Datenbestand: </string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6">
+         <widget class="QLabel" name="labelQsoBestand">
+          <property name="text">
+           <string>   Datensaetze</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="7">
+         <widget class="QLabel" name="labelOperator">
+          <property name="text">
+           <string>  Operator</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="8">
+         <widget class="QTableWidget" name="reportTable">
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>253</red>
+                <green>255</green>
+                <blue>237</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>253</red>
+                <green>255</green>
+                <blue>237</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>244</red>
+                <green>244</green>
+                <blue>244</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOn</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="8">
+         <widget class="QDockWidget" name="dock">
+          <property name="windowIcon">
+           <iconset>
+            <normaloff/>
+           </iconset>
+          </property>
+          <property name="floating">
+           <bool>false</bool>
+          </property>
+          <property name="features">
+           <set>QDockWidget::AllDockWidgetFeatures</set>
+          </property>
+          <property name="allowedAreas">
+           <set>Qt::NoDockWidgetArea</set>
+          </property>
+          <property name="windowTitle">
+           <string>Award Tabelle</string>
+          </property>
+          <widget class="QWidget" name="dockWidgetContents">
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="0" column="0">
+             <widget class="QTableWidget" name="awdTable">
+              <property name="editTriggers">
+               <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SingleSelection</enum>
+              </property>
+              <column>
+               <property name="text">
+                <string>Type</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Kenner</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_10">
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>154</red>
+                <green>137</green>
+                <blue>51</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>154</red>
+                <green>137</green>
+                <blue>51</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>146</red>
+                <green>145</green>
+                <blue>144</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>          [ Database</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="labelDatabase">
+          <property name="palette">
+           <palette>
+            <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>154</red>
+                <green>137</green>
+                <blue>51</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>154</red>
+                <green>137</green>
+                <blue>51</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>146</red>
+                <green>145</green>
+                <blue>144</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>logdb</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="9">
+         <widget class="QFrame" name="frame">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0" colspan="2">
+            <widget class="QLabel" name="label_6">
+             <property name="palette">
+              <palette>
+               <active>
+                <colorrole role="WindowText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>96</red>
+                   <green>98</green>
+                   <blue>171</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </active>
+               <inactive>
+                <colorrole role="WindowText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>96</red>
+                   <green>98</green>
+                   <blue>171</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </inactive>
+               <disabled>
+                <colorrole role="WindowText">
+                 <brush brushstyle="SolidPattern">
+                  <color alpha="255">
+                   <red>119</red>
+                   <green>119</green>
+                   <blue>119</blue>
+                  </color>
+                 </brush>
+                </colorrole>
+               </disabled>
+              </palette>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string> Datenbankfilter</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QCheckBox" name="checkBoxDateEpoch">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="text">
+              <string>Ohne Kalender</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string> Zeige </string>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <layout class="QGridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="font">
+                 <font>
+                  <pointsize>8</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Monate</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QComboBox" name="BoxLimit">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>    3  </string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>    6  </string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>   12  </string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>   24  </string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>   36  </string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>    0  </string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCheckBox" name="checkBoxSort">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>8</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Abw.Sort</string>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QGroupBox" name="groupBox_6">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>  Suche</string>
+             </property>
+             <layout class="QGridLayout">
+              <item row="0" column="0">
+               <widget class="QComboBox" name="BoxGroup">
+                <property name="font">
+                 <font>
+                  <pointsize>9</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Call</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Band</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Mode</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Dxcc</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>WAE</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Wpx</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Locator</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>ContId</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>QslMgr</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Rig</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Qth</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLineEdit" name="groupEditLine">
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>231</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>231</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>255</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QGroupBox" name="groupBox_5">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>  Zeige AwdTypen</string>
+             </property>
+             <layout class="QGridLayout">
+              <item row="0" column="0">
+               <widget class="QComboBox" name="BoxAwd">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLineEdit" name="awdEditLine">
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>231</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>231</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>255</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QGroupBox" name="groupBox_8">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Lösche</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Select QSO Zeile</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="ButtonRemoveQso">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Remove QSO</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="4">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>106</width>
+               <height>45</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="5">
+            <widget class="QGroupBox" name="groupBox_3">
+             <property name="title">
+              <string>.</string>
+             </property>
+             <layout class="QGridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_3">
+                <property name="text">
+                 <string>Vom</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QDateEdit" name="dateEditBis">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>238</red>
+                      <green>238</green>
+                      <blue>238</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>238</red>
+                      <green>238</green>
+                      <blue>238</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>255</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="displayFormat">
+                 <string>yyyy.MM.dd</string>
+                </property>
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+                <property name="date">
+                 <date>
+                  <year>2000</year>
+                  <month>1</month>
+                  <day>1</day>
+                 </date>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Bis</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QDateEdit" name="dateEditVon">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>228</red>
+                      <green>255</green>
+                      <blue>207</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>228</red>
+                      <green>255</green>
+                      <blue>207</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="Base">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>255</red>
+                      <green>255</green>
+                      <blue>255</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="displayFormat">
+                 <string>yyyy.MM.dd</string>
+                </property>
+                <property name="calendarPopup">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="6">
+            <widget class="QGroupBox" name="groupBox_7">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="title">
+              <string>Sortierung</string>
+             </property>
+             <layout class="QGridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>   Nach</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QComboBox" name="BoxSort">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Datum</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Band</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Call</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Dxcc</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="7">
+            <widget class="QGroupBox" name="groupBox_4">
+             <property name="title">
+              <string>Report </string>
+             </property>
+             <layout class="QGridLayout">
+              <item row="1" column="0">
+               <widget class="QComboBox" name="BoxLayout">
+                <property name="font">
+                 <font>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                 </font>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>EU</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>DX</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>QSL</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Contest</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Var</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string> Layout</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="8">
+            <widget class="QGroupBox" name="groupBox_2">
+             <property name="title">
+              <string/>
+             </property>
+             <layout class="QGridLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label">
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>159</red>
+                      <green>143</green>
+                      <blue>53</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>159</red>
+                      <green>143</green>
+                      <blue>53</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>119</red>
+                      <green>119</green>
+                      <blue>119</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>18</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>QtLog</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="labelVersion">
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>154</red>
+                      <green>137</green>
+                      <blue>51</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>154</red>
+                      <green>137</green>
+                      <blue>51</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>119</red>
+                      <green>119</green>
+                      <blue>119</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>8</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>versiom</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="labelRelease">
+                <property name="palette">
+                 <palette>
+                  <active>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>154</red>
+                      <green>137</green>
+                      <blue>50</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </active>
+                  <inactive>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>154</red>
+                      <green>137</green>
+                      <blue>50</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </inactive>
+                  <disabled>
+                   <colorrole role="WindowText">
+                    <brush brushstyle="SolidPattern">
+                     <color alpha="255">
+                      <red>146</red>
+                      <green>145</green>
+                      <blue>144</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                  </disabled>
+                 </palette>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>7</pointsize>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Rel</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Seite"/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1269</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File                 </string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionENDE"/>
+   </widget>
+   <widget class="QMenu" name="menuQrgNotiz">
+    <property name="title">
+     <string>Notizen        </string>
+    </property>
+    <addaction name="actionNotiz"/>
+   </widget>
+   <widget class="QMenu" name="menuInfo">
+    <property name="title">
+     <string>Hilfe        </string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionQtLogInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionRigCtlHamlib"/>
+    <addaction name="actionQtlogVersion"/>
+   </widget>
+   <widget class="QMenu" name="menuConfig">
+    <property name="title">
+     <string>Configuriere      </string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionLogconf"/>
+    <addaction name="actionStandort"/>
+    <addaction name="actionClub"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionInternet_ON"/>
+    <addaction name="separator"/>
+    <addaction name="actionRigCtl"/>
+   </widget>
+   <widget class="QMenu" name="menuQso_Verwaltung">
+    <property name="title">
+     <string>LogbookVerwaltung    </string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionQslEingang"/>
+    <addaction name="actionQslDruck"/>
+    <addaction name="separator"/>
+    <addaction name="actionReportLayout"/>
+    <addaction name="separator"/>
+    <addaction name="actionQueryTextOut"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionADIFimport"/>
+    <addaction name="actionADIFexport"/>
+    <addaction name="separator"/>
+    <addaction name="actionDataSave"/>
+   </widget>
+   <widget class="QMenu" name="menuTabellen">
+    <property name="title">
+     <string>Tabellen         </string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionDxccTable"/>
+    <addaction name="actionPrefTable"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionDokVerwaltung"/>
+    <addaction name="actionIotaVerwaltung"/>
+    <addaction name="separator"/>
+    <addaction name="actionQrzCallbook"/>
+    <addaction name="separator"/>
+    <addaction name="actionRuDistrictAwdList"/>
+    <addaction name="separator"/>
+    <addaction name="actionDBadmin"/>
+   </widget>
+   <widget class="QMenu" name="menuBetriebsarten">
+    <property name="title">
+     <string>Betriebsarten</string>
+    </property>
+    <addaction name="actionMode"/>
+    <addaction name="actionVerbindungen"/>
+    <addaction name="actionRig"/>
+   </widget>
+   <widget class="QMenu" name="menuAward_Info">
+    <property name="title">
+     <string>Award Status      </string>
+    </property>
+    <addaction name="actionDxStatusSSB"/>
+    <addaction name="actionDxStatusCW"/>
+    <addaction name="separator"/>
+    <addaction name="actionDLDstatus"/>
+    <addaction name="actionIOTAstatus"/>
+    <addaction name="separator"/>
+    <addaction name="actionJahresMODE"/>
+    <addaction name="actionJahresBAND"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuLogbook">
+    <property name="title">
+     <string>Logging                </string>
+    </property>
+    <addaction name="actionAddQso"/>
+    <addaction name="separator"/>
+    <addaction name="actionAddClog"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogChange"/>
+    <addaction name="separator"/>
+    <addaction name="actionFldigi_logging"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuAward_Info"/>
+   <addaction name="menuLogbook"/>
+   <addaction name="menuQso_Verwaltung"/>
+   <addaction name="menuConfig"/>
+   <addaction name="menuBetriebsarten"/>
+   <addaction name="menuTabellen"/>
+   <addaction name="menuQrgNotiz"/>
+   <addaction name="menuInfo"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAddQso">
+   <property name="icon">
+    <iconset>
+     <normaloff>../icon/add.png</normaloff>
+     <selectedon>:/new/prefix1/icon/add.png</selectedon>../icon/add.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;QSO Logging</string>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="actionLogChange">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/umbrello_diagram_component.png</normaloff>:/new/prefix1/icon/umbrello_diagram_component.png</iconset>
+   </property>
+   <property name="text">
+    <string>Logbook &amp;tauschen</string>
+   </property>
+  </action>
+  <action name="actionDataSave">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/vcs_update.png</normaloff>:/new/prefix1/icon/vcs_update.png</iconset>
+   </property>
+   <property name="text">
+    <string>Datensicherung</string>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+  </action>
+  <action name="actionReportLayout">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/filter.png</normaloff>:/new/prefix1/icon/filter.png</iconset>
+   </property>
+   <property name="text">
+    <string>ReportLayout</string>
+   </property>
+  </action>
+  <action name="actionDBadmin">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/package_utilities.png</normaloff>:/new/prefix1/icon/package_utilities.png</iconset>
+   </property>
+   <property name="text">
+    <string>DB- Administration</string>
+   </property>
+  </action>
+  <action name="actionDxccTable">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/www.png</normaloff>:/new/prefix1/icon/www.png</iconset>
+   </property>
+   <property name="text">
+    <string>Dxcc - Laender</string>
+   </property>
+  </action>
+  <action name="actionStandort">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/folder_home.png</normaloff>:/new/prefix1/icon/folder_home.png</iconset>
+   </property>
+   <property name="text">
+    <string>Standort</string>
+   </property>
+  </action>
+  <action name="actionClub">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/presence_online.png</normaloff>:/new/prefix1/icon/presence_online.png</iconset>
+   </property>
+   <property name="text">
+    <string>Club</string>
+   </property>
+  </action>
+  <action name="actionDb">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/vcs_add.png</normaloff>:/new/prefix1/icon/vcs_add.png</iconset>
+   </property>
+   <property name="text">
+    <string>Datenbank</string>
+   </property>
+  </action>
+  <action name="actionPrefTable">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/wp.png</normaloff>:/new/prefix1/icon/wp.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sub-Prefixliste</string>
+   </property>
+  </action>
+  <action name="actionMode">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/configure_shortcuts.png</normaloff>:/new/prefix1/icon/configure_shortcuts.png</iconset>
+   </property>
+   <property name="text">
+    <string>Band | Mod | Pwr</string>
+   </property>
+  </action>
+  <action name="actionVerbindungen">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/connect_creating.png</normaloff>:/new/prefix1/icon/connect_creating.png</iconset>
+   </property>
+   <property name="text">
+    <string>Verbindungen | AWD</string>
+   </property>
+  </action>
+  <action name="actionRig">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/irkick.png</normaloff>:/new/prefix1/icon/irkick.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rig</string>
+   </property>
+  </action>
+  <action name="actionADIFimport">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/fileimport.png</normaloff>:/new/prefix1/icon/fileimport.png</iconset>
+   </property>
+   <property name="text">
+    <string>ADIF Import</string>
+   </property>
+  </action>
+  <action name="actionLogconf">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/kontact_todo.png</normaloff>:/new/prefix1/icon/kontact_todo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Logbook</string>
+   </property>
+  </action>
+  <action name="actionQslEingang">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/view_text.png</normaloff>:/new/prefix1/icon/view_text.png</iconset>
+   </property>
+   <property name="text">
+    <string>QSL Bearbeitung</string>
+   </property>
+  </action>
+  <action name="actionQslDruck">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/fileprint.png</normaloff>:/new/prefix1/icon/fileprint.png</iconset>
+   </property>
+   <property name="text">
+    <string>QSL Drucken</string>
+   </property>
+  </action>
+  <action name="actionQtlogVersion">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/kontact_todo.png</normaloff>:/new/prefix1/icon/kontact_todo.png</iconset>
+   </property>
+   <property name="text">
+    <string>QtLog Version</string>
+   </property>
+  </action>
+  <action name="actionQtLogInfo">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/contexthelp.png</normaloff>:/new/prefix1/icon/contexthelp.png</iconset>
+   </property>
+   <property name="text">
+    <string>Qso Verwaltung</string>
+   </property>
+  </action>
+  <action name="actionADIFexport">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/back.png</normaloff>:/new/prefix1/icon/back.png</iconset>
+   </property>
+   <property name="text">
+    <string>ADIF Export</string>
+   </property>
+  </action>
+  <action name="actionNotiz">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/color_line.png</normaloff>:/new/prefix1/icon/color_line.png</iconset>
+   </property>
+   <property name="text">
+    <string>Notizblatt</string>
+   </property>
+  </action>
+  <action name="actionRuDistrictAwdList">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/view_text.png</normaloff>:/new/prefix1/icon/view_text.png</iconset>
+   </property>
+   <property name="text">
+    <string>RU-DistrictAwdList</string>
+   </property>
+  </action>
+  <action name="actionQrzCallbook">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/view_text.png</normaloff>:/new/prefix1/icon/view_text.png</iconset>
+   </property>
+   <property name="text">
+    <string>QRZ - callbook</string>
+   </property>
+  </action>
+  <action name="actionJahresMODE">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/view_sidetree.png</normaloff>:/new/prefix1/icon/view_sidetree.png</iconset>
+   </property>
+   <property name="text">
+    <string>Mode   - Aktivität</string>
+   </property>
+  </action>
+  <action name="actionDxStatusCW">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/viewmag+.png</normaloff>:/new/prefix1/icon/viewmag+.png</iconset>
+   </property>
+   <property name="text">
+    <string>DX-Status  -CW</string>
+   </property>
+  </action>
+  <action name="actionDxStatusSSB">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/viewmag+.png</normaloff>:/new/prefix1/icon/viewmag+.png</iconset>
+   </property>
+   <property name="text">
+    <string>DX-Status  -SSB</string>
+   </property>
+  </action>
+  <action name="actionJahresBAND">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/today.png</normaloff>:/new/prefix1/icon/today.png</iconset>
+   </property>
+   <property name="text">
+    <string>Band   - Aktivität</string>
+   </property>
+  </action>
+  <action name="actionDLDstatus">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/presence_online.png</normaloff>:/new/prefix1/icon/presence_online.png</iconset>
+   </property>
+   <property name="text">
+    <string>DLD   -Status</string>
+   </property>
+  </action>
+  <action name="actionIOTAstatus">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/wp.png</normaloff>:/new/prefix1/icon/wp.png</iconset>
+   </property>
+   <property name="text">
+    <string>IOTA   -Status</string>
+   </property>
+  </action>
+  <action name="actionDokVerwaltung">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/view_text.png</normaloff>:/new/prefix1/icon/view_text.png</iconset>
+   </property>
+   <property name="text">
+    <string>DOK  Verwaltung</string>
+   </property>
+  </action>
+  <action name="actionIotaVerwaltung">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/view_text.png</normaloff>:/new/prefix1/icon/view_text.png</iconset>
+   </property>
+   <property name="text">
+    <string>IOTA Verwaltung</string>
+   </property>
+  </action>
+  <action name="actionENDE">
+   <property name="text">
+    <string>ENDE</string>
+   </property>
+  </action>
+  <action name="actionQueryTextOut">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/umbrello_diagram_component.png</normaloff>:/new/prefix1/icon/umbrello_diagram_component.png</iconset>
+   </property>
+   <property name="text">
+    <string>LogDaten Export</string>
+   </property>
+  </action>
+  <action name="actionAddClog">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/fifteenpieces.png</normaloff>:/new/prefix1/icon/fifteenpieces.png</iconset>
+   </property>
+   <property name="text">
+    <string>Contest Logging</string>
+   </property>
+  </action>
+  <action name="actionInternet_ON">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/www.png</normaloff>:/new/prefix1/icon/www.png</iconset>
+   </property>
+   <property name="text">
+    <string>Internet freigeben</string>
+   </property>
+  </action>
+  <action name="actionRigCtl">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/presence_online.png</normaloff>:/new/prefix1/icon/presence_online.png</iconset>
+   </property>
+   <property name="text">
+    <string>Rig Control/Hamlib</string>
+   </property>
+  </action>
+  <action name="actionRigCtlHamlib">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/artscontrol.png</normaloff>:/new/prefix1/icon/artscontrol.png</iconset>
+   </property>
+   <property name="text">
+    <string>RigControl-Hamlib</string>
+   </property>
+  </action>
+  <action name="actionFldigi_logging">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/today.png</normaloff>:/new/prefix1/icon/today.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fldigi Logging</string>
+   </property>
+   <property name="font">
+    <font/>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>groupEditLine</tabstop>
+  <tabstop>awdEditLine</tabstop>
+  <tabstop>reportTable</tabstop>
+  <tabstop>awdTable</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../qtlogRessourcen.qrc"/>
+ </resources>
+ <connections/>
+</ui>

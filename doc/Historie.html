@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+
+
+	<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8"><title>Historie</title>
+	
+	<meta name="GENERATOR" content="OpenOffice.org 3.2  (Unix)">
+	<meta name="CREATED" content="20050428;19040200">
+	<meta name="CHANGED" content="20100619;11450400"></head><body dir="ltr" lang="de-DE">
+<p>&nbsp; &nbsp;<b>QtLog V 1.5&nbsp; für Linux&nbsp; - DL1HBD</b><br>&nbsp;&nbsp;
+&nbsp;www.myCall.de <br>&nbsp;&nbsp;&nbsp; Mail: diek@myCall.de<br>&nbsp;&nbsp;&nbsp;
+Copying: &nbsp; GPL 
+</p>
+<hr size="2">
+<p>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#3333ff">
+</font><font color="#3333ff"><b>QtLog</b></font> ist ein Logbook und
+Informationssystem für Funkamateure. 
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+QtLog wird mit der Qtlibrary [ C++ GUI toolkit ] &nbsp; <b>Version
+Qt4.3.x </b>und höher entwickelt.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datenbasis
+ist die&nbsp; 'MySQL' &nbsp;Datenbank <b>Version 5.0.45</b> und
+höher.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Dieses ist eine moderne und schnelle relationale Datenbank.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Für die tägliche Logarbeit muss man kein SQL-Profi
+sein.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Alle Datenfelder können dynamisch in beliebiger Reihenfolge,
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Menge und Ordnung abgefragt und dargestellt werden. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Die Datenfelder sind alle editierbar. 
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Das Programm hat kein kommerzielles Anforderungsprofil.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Es wächst durch Anregung und Unterstützung aller Funkamateure.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+GPL-Copying ist zu beachten. <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+____________________________________________________________</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp;<b>Letzte Änderung 19.06.2010</b></p>
+<br>
+
+<p><b>Neu in Version 1.5._10.2 beta</b></p>
+
+
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Im Dialog Config-&gt;Hamlib wurde die timeout Zeit für den Start <b>rigctld</b> vergrößert.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Die zu kurze timeout Zeit führte zu Problemen
+bei der seriellen Schnittstelle mit niedriger Baudrate.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Im DxSpots Dialog den Button_F2 aktiviert.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Das Programm Contestlogging kann jetzt auch mit 'qtlog -c' gestartet
+werden.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp; Qsologging wird wie bisher mit 'qtlog -q'
+gestartet.</p>
+
+
+<p><b>Neu in Version 1.5_10.1 beta</b></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+&nbsp; Die Methode LOAD_FILE in der bisherigen Form, wird vom MySQL
+Server Version 5.1_4<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp; nicht mehr akzeptiert. Query geändert und
+an mysql V 5.1_4 angepasst.</p>
+<p><b>Neu in Version 1.5_10 beta</b></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+<font size="3"><span style="font-weight: normal;">Support für Contest
+Logging eingebaut. z.Z stehen nur 10 Contest Modelle zu
+Verfügung&nbsp;<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp; Die Conteste sind für DX auf der Kurzwelle
+ausgelegt (die Version ist im Alpha Status ).</span></font></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+<font size="3"><span style="font-weight: normal;">Hamlib für
+Rig-Control eingebunden. Die </span></font><font size="3"><i><span style="font-weight: normal;">Hamlib</span></i></font>
+<font size="3"><span style="font-weight: normal;">unterstützt viele
+Transceiver und die<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Entwickler sind bemüht auch neue Geräte schnell
+einzubinden.</span></font></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+<font size="3"><span style="font-weight: normal;">Support für DX Spots.
+Hierfür wird <a href="http://www.dxsummit.fi/">www.dxsummit.fi</a>
+bei OH8X verwendet.<br>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp; Die Transceiver Steuerung ist möglich<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; Alle Daten von
+QRZ.com werden/können ins Log übernommen werden.</span></font></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+<font size="3"><span style="font-weight: normal;">Rufzeichenabfrage bei
+QRZ.COM. Vom Logging aus, kann das Rufzeichen bei QRZ.com&nbsp;<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; während des QSOs
+abgefragt und das Ergebnis ins Log übernommen werden.</span></font></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
+<font size="3"><span style="font-weight: normal;">Es wurden viele kleine
+Änderungen bzw. Korrekturen durchgeführt.</span></font></p>
+<p><b>Neu in Version 1.5_09 beta</b></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+eQSL Support eingebaut. Upload/Download über Browser oder
+Realtime.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Datenbank zur Aufnahme der eQSL Karten erweitert.
+Der QSLkartenbestand wird mit den <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; bestätigten QSOs ab geglichen.
+Fehlende Karten werden vom Server runter geladen.<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Die
+Qslbearbeitung bietet jetzt die Methoden Büro, eQSL und Lotw
+Bestandspflege.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Im Module QSO-Erfassung, wird bei einer Korrektur
+des QSOs, die default Band- und Mode-<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Einstellung zwischengespeichert
+und nach dem Update wieder zurück gestellt.</p>
+<p><b>Neu in Version 1.5_08 beta </b><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+In der QSL-Bearbeitung Fehler behoben. Es werden jetzt wie erwartet,
+QSL-Eingänge<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+über Büro oder/und LotW im QslRvia richtig
+dargestellt.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;Im Module QSO-Eingabe wird jetzt bei der nachträglichen
+QSO-Eingabe das QSOdatum und nicht <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;das aktuelle Tagesdatum eingetragen.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Das Module
+Contest-Logging ist in der Entwicklung, Es ist ein einfacher Dialog
+der die<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+Eingabe SRX und STX ermöglicht und ist z.Z speziell für den WAG
+Contest vorgesehen.</p>
+<p><b>Neu in Version 1.5_07 beta</b></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Logbook Datensatz wurde erweitert. Es werden jetzt fast alle ADIF V2&nbsp;
+Datenfelder&nbsp;unterstützt<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; und ARRL LoTW Support
+eingebunden.<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;Zwei Customfelder eingeführt. Die Feldnamen werden vom
+Anwender vergeben.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Alle
+Datensatzfelder sind im Reportlayout darstellbar.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Aufgrund
+des erweiterten Datensatzes wurden alle Module überarbeitet.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<b>QSL-Verwaltung:</b> Hat jetzt 3 Arbeitsbereiche.&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Büro&nbsp; :&nbsp; Papier QSL Eingang / Ausgang<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;PrintFlag zum ansteuern
+verschiedener Ziele.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; LotW : &nbsp;QSO upload&nbsp; / QSL download.<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Upload z.Z noch über
+Browser.&nbsp;<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;Der Download ist mit 7 Abfragemodellen eingebunden.<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; eQSL :
+&nbsp;vorbereitet.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<b>Druckmodul Lineprinter :</b><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Wurde modifiziert und
+angepasst. Vorhandene Fehler behoben.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Leider ist die korrekte Funktion des Druckmoduls noch stark vom
+verwendeten Drucker abhängig<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; und es kann gelegentlich zu
+Druckproblemen kommen.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Drucker mit PostScript Unterstützung bereiten
+seltener Probleme.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<b>Daten Export :</b><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Import / Export auf ADIF V2 erweitert.&nbsp;AWD-Kenner
+werden mit den Feldnamen<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; APP_QTLOG_kenner_namen eingebunden.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Logdaten
+Export im CSV Format. Alle Felder können exportiert werden. Die
+Sortierung ist<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; wählbar. Feldtrenner sind: Komma, Semikolon,
+Doppelpunkt oder Plus Zeichen.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Die creierten&nbsp;
+Exportqueries können gespeichert werden</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+<b>Qtlog Installation :</b><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Die Programminstallation wurde
+komplett aus dem Logprogramm entfernt.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Diese erfolgt jetzt vom Module
+<b>setupqtlog</b>.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Setupqtlog ist zuständig für die Neuinstallation und wird auch für
+anstehende<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Datenbank upgrade benötigt.&nbsp;<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Außerdem
+werden die Zugangsparameter und Pfade zum MySql Server verwaltet.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Bein Aufruf von qtlog wird jetzt immer geprüft, ob die Datenbank
+Releaseausgabe mit der&nbsp;<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Programmversion übereinstimmt.
+Ist das nicht der Fall kann QtLog nicht gestartet werden.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Für diesen Fall ist setupqtlog zuständig und schlägt einen
+Datenbankupgrade vor.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Im allgemeinen ist das erforderliche Upgrade im
+neuen Tararchiv enthalten.</p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+Alle übrigen Module wurden überarbeitet und am neuen Datensatz
+angepasst,<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; bekannte Fehler&nbsp; behoben.</p>
+<p><b>Neu in Version 1.5.06 beta<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</b>Aufgrund einer Version
+Inkompatibilität wurden QSL-Druckanforderungen&nbsp;<br>&nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; vom Drucker nicht
+akzeptiert.<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Modul überarbeitet.<b><br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</b>Die
+QtLog-Installation wurde vom eigentlichen Programm getrennt.<b><br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b>Diese
+wird nun von 'setupqtlog' durchgeführt. Das schafft mehr
+Flexibilität für Erweiterungen.</p>
+<p><b>Neu in Version 1.5.05 beta<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</b>&nbsp;Rufzeichen mit
+ungültigem Prefix werden jetzt ohne Abbruch akzeptiert.<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Die
+Variablenfelder Landesprefix bleiben dann leer. Der DXCC-Status wird
+nicht fortgeschrieben. <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; Gelöschte oder neue Prefixse müssen über die
+qtlog_arrl_dxcc.dat Liste entsprechend korrigiert <br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; bzw.
+gepflegt&nbsp;werden.<br><b><br>Neu in Version 1.5.04 beta</b><br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Button zum
+anlegen neuer Textkonserven aktiviert. Hilfe, Qsltext erweitert.<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;Modul
+Textkonserven überarbeitet. 
+</p>
+<p><b>Neu in Version 1.5.03 beta<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; </b>Fehler in der Installation
+behoben. Durch einen Tippfehler kam es zu einem Problem&nbsp;<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; mit dem
+mysql_server.&nbsp;</p>
+<p><b>Neu in Version 1.5.02 beta</b><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Die Qso Eingabe kann jetzt
+direkt aufgerufen werden. qtlog -q&nbsp;<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Von der Qso-Eingabe kann bei
+Bedarf&nbsp; über das Headermenü die Log-Verwaltung<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; gestartet
+werden.</p>
+<p><b>Neu in Version 1.5.01 beta</b><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; QtLog Version 1.5&nbsp;
+freigegeben. Der Entwicklungsstand ist aus reiched um mit dem<br>&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;Programm
+sinnvoll zu arbeiten.</p>
+<p><b>Changed in Version 1.4 beta</b></p>
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+V 1.4 wird nicht mehr unterstützt. &nbsp; 31.12.2007</p>
+<p>&nbsp;</p>
+<p><br><br>
+</p>
+</body></html>

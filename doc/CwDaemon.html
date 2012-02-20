@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.2  (Unix)">
+	<META NAME="CREATED" CONTENT="20100510;9325300">
+	<META NAME="CHANGED" CONTENT="20100607;8253400">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<P><FONT COLOR="#0000ff"><B>CW – Daemon</B></FONT></P>
+<P>----------------</P>
+<P>Der <I>cwdaemon</I> wird für alle Distributionen angeboten.
+Sollte er nicht auf der vorhanden DVD sein kann der Daemon im
+allgemeinen von der Webseite des Distributors als <B>rpm </B>Datei
+runter geladen werden.</P>
+<P>Je nach Distribution gibt es hierfür unterschiedliche Methoden.
+Hier ein Beispiel für <U>openSUSE 11.2:</U><BR>Bei der openSUSE
+Distribution ist der <I>daemon </I>leider nicht auf der DVD. Die rpm
+Datei steht bei openSUSE Download für jeden Computer Type und
+Distribution Version zur Verfügung. 
+</P>
+<P>Nach dem download und Installation mit <B>rpm</B> lässt sich der
+daemon nicht mit YAST im System einbinden, das muss leider händig
+erfolgen.</P>
+<P><B>Wichtig !</B> Vorher alle Literatur und speziell '<B>man
+cwdaemon</B> ' zu lesen !!<BR>Es werden 2 Dateien benötigt die im
+Ordner /log/initTable stehen.</P>
+<P><U>Datei </U><U><B>cwdaemon:</B></U><BR>Mit einem Editor öffnen.
+Es werden 2 Zeile angepasst.<BR>1.Zeile: <B>CWDAEMON_OPT=&quot; -p
+6789 -d ttyUSB0 -xb&quot;</B></P>
+<P STYLE="font-weight: normal">Bei meinem System ist der
+CW-Ausgabeport ttyUSB0. Der default_port ist der parport0, es geht
+aber auch mit einem seriellen Port, das muss jeder ermitteln. Die
+Option -xb leitet den CW-Ton auf die Lautsprecher um und wird später
+entfernt.</P>
+<P><SPAN STYLE="font-weight: normal">2.Zeile:
+</SPAN><B>CWDAEMON_BIN=/usr/local/sbin/cwdaemon</B><SPAN STYLE="font-weight: normal"><BR>Default
+mäßig wird der cwdamon nach /user/local/sbin kopiert, prüfen und
+gegebenenfalls korrigieren.</SPAN></P>
+<P><U><SPAN STYLE="font-weight: normal">Date </SPAN></U><U><B>cwda</B></U><U><SPAN STYLE="font-weight: normal">:</SPAN></U><BR><SPAN STYLE="font-weight: normal">1.Zeile:
+</SPAN><B>CWDA_PORT=&quot;/dev/ttyUSB0 - </B><SPAN STYLE="font-weight: normal">Muss
+der gleiche Port wie im cwdaemon<BR>2.Zeile: </SPAN><B>CWDA_OPTIONS=&quot;
+-p 6789 -d ttyUSB0 -xb</B><SPAN STYLE="font-weight: normal">&quot;. -
+Auch hier Übereinstimmung mit cwdaemon.<BR>Weitere
+Änderungen/Verbesserungen sollten nur bei guter Sachkenntnis
+erfolgen und bitte eine Info an mich, danke.</SPAN></P>
+<P><SPAN STYLE="font-weight: normal">Mit root_Rechten wird die Datei
+</SPAN><B>cwda</B> <SPAN STYLE="font-weight: normal">nach
+/etc/sysconfig/ kopiert und </SPAN><B>cwdaemon</B> <SPAN STYLE="font-weight: normal">nach
+/etc/init.d/. Im Ordner i</SPAN><B>nit.d</B> <SPAN STYLE="font-weight: normal">wird
+das Kommando </SPAN><B>insserv cwdaemon</B> <SPAN STYLE="font-weight: normal">durchgeführt.
+Damit ist die Einbindung in openSUSE beendet. Nach einem Reboot steht
+der cwdaemon zur Verfügung.</SPAN></P>
+<P><B>Info für Kubuntu</B><BR>Den CwDaeamon wie üblich
+installieren<BR>Im Ordner /usr/share/cwdaemon die Datei README lesen
+und &nbsp;in /etc/default die Datei cwdaemon anpassen<BR>Mit
+/etc/init.d/cwdaemon restart, wird der Deamon gestartet.</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

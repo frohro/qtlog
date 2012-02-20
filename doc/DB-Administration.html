@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>DB-Administration</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.0  (Unix)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGED" CONTENT="20090714;9153400">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<P><FONT COLOR="#3366ff"><FONT SIZE=3 STYLE="font-size: 13pt"><B>DB –
+Administration</B></FONT><BR><BR><FONT COLOR="#000000">In diesem
+Dialog werden Methoden verwaltet die direkt mit der Datenbank
+zusammen arbeiten.</FONT><BR><FONT COLOR="#000000">Datensicherung,
+ADIF-Import -Export, Verwaltung der Tabellen-Layoutnamen.</FONT> </FONT>
+</P>
+<P><FONT COLOR="#3366ff"><B>Datensicherung:</B></FONT><FONT COLOR="#000000"><B><BR>----------------------<BR>Auswahlhaken
+</B></FONT><FONT COLOR="#000000">: </FONT><FONT COLOR="#000000"><U>&quot;Datenbank
+komplett sichern</U></FONT><FONT COLOR="#000000">“.<BR>DUMP
+schreibt alle Log- und System Tabellen in eine Datei.<BR>Hierfür
+muss ein Pfad für einen Ordner der die Sicherungsdatei aufnehmen
+soll angegeben werden.</FONT></P>
+<P><FONT COLOR="#000000"><B>RESTORE</B></FONT><FONT COLOR="#000000">
+stellt die mit DUMP exportierten Tabellen wieder in die Datenbank
+zurück und überschreibt hierbei die Tabellen in der Datenbank.</FONT></P>
+<P><B>Auswahl : Logtabelle</B><BR>DUMP schreibt nur die im Logbook
+Ordner markierte Logtabelle in eine Textdatei. Der Pfad für diesen
+Ordner der die Sicherungsdatei aufnehmen soll muss angegeben sein.</P>
+<P>RESTORE schreibt die LOG-Daten wieder zurück. Der Name der
+Logtabelle die überschrieben werden soll muss im Logordner <B>vorhanden
+</B>und <B>markiert</B> sein. 
+</P>
+<P><FONT COLOR="#3366ff"><B>ADIF -Import /
+-Export</B></FONT><BR>---------------------------------<BR><FONT COLOR="#000000">I</FONT><FONT COLOR="#000000"><B>MPORT
+</B></FONT><FONT COLOR="#000000">: Die Logbook-Tabelle die den Import
+aufnehmen soll im Logbook-Ordner markieren. RIG-Auswahl&nbsp;und den
+Portabel Standort einstellen. IMPORT durchführen.</FONT></P>
+<P><B>EXPORT </B>: Die Logbook-Tabelle die exportiert werden soll
+markieren. Landespräfix als ADIF-Nr. exportieren vorgeben. EXPORT
+durchführen.</P>
+<P><FONT COLOR="#3366ff"><B>Layout-Namen</B></FONT><BR><FONT COLOR="#3366ff">--------------------</FONT><BR>Mit
+dieser Tabelle werden die Spaltennamen für diverse Datentabellen
+verwaltet. Ebenso die ADIF-Namen die zur Übersetzung&nbsp; der
+Datenfelder beim Export/Import benötigt werden. Die Namen lassen
+sich alle verändern, aber <B>VORSICHT</B> hier kann viel kaputt
+gehen.</P>
+</BODY>
+</HTML>

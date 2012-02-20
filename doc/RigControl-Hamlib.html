@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+
+	
+  
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+
+
+	
+	
+  
+  
+  <title></title>
+  <meta name="GENERATOR" content="OpenOffice.org 3.1  (Unix)">
+
+
+	
+  
+  <meta name="AUTHOR" content="Dieter Kumpies">
+
+
+	
+  
+  <meta name="CREATED" content="20100425;8050300">
+
+
+	
+  
+  <meta name="CHANGED" content="20100510;12053000">
+
+
+	
+  
+  <style type="text/css">
+	<!--
+		@page { margin: 2cm }
+		P { margin-bottom: 0.21cm }
+	-->
+	</style>
+</head>
+
+
+<body dir="ltr" lang="de-DE">
+
+
+<p style="margin-bottom: 0cm;" align="left"><font color="#0000ff"><b>Rig
+Control / <i>Hamlib</i></b></font></p>
+
+
+<p style="margin-bottom: 0cm;">Zur Tx/Rx Steuerung werden die &bdquo;<b>Ham
+Radio Control Libraries</b> <i><b>Hamlib&ldquo; </b></i>eingesezt.</p>
+
+
+<p style="margin-bottom: 0cm;">Dieses Softwarepaket unterst&uuml;tzt die
+meisten HAM Radios und die Entwickler bem&uuml;hen sich neue Ger&auml;te
+stets m&ouml;glichst schnell einzubinden. Die Software enth&auml;lt einen
+daemon der &uuml;ber TCP-Sockets angesprochen wird, und in der Lage ist
+mehrere Clients zu bedienen. QtLog verwendet diesen daemon &ndash;
+<b>rigctld.</b></p>
+
+
+
+<p style="margin-bottom: 0cm;"><b>Voraussetzung</b><br>
+
+Die Hamlib ab
+Version 1.2.10 muss installiert und funktionsf&auml;hig sein.<br>
+
+Anschlie&szlig;end mit dem
+vorhandenen Transceiver wie folgt&nbsp;testen.&nbsp;<br>
+
+<u>Den Transceiver an
+einem COM- oder USB-Port anschlie&szlig;en.</u></p>
+
+
+<p style="margin-bottom: 0cm;"><span style="font-weight: normal;">In
+einem Terminal eingeben:</span><br>
+
+<a href="mailto:diek@linux">diek@linux-x8vo</a>:~/log&gt;
+rigctl -l<br>
+
+Es werden alle unterst&uuml;tzten Rigmodelle ausgegeben. Die
+Rig-Id-Nummer f&uuml;r den Transceiver ermitteln.</p>
+
+
+<p style="margin-bottom: 0cm;"><b>Beispiel:  Test Icom IC-7600 </b><font size="2"><span style="font-weight: normal;">(
+mit USB Schnittstelle und Funkamateur Interface ONE
+)</span></font><br>
+
+<a href="mailto:diek@linix">diek@linix-x8vo</a>:~/log&gt;
+rigctl -m 357 -r /dev/ttyUSB0 -s 19200 -p /dev/ttyUSB0<br>
+
+Rig
+command: <b>f </b>( f&uuml;r Frequenzausgabe )<br>
+
+Frequency: 3678000
+(Antwort vom Server in Herz )<br>
+
+Rig command: <b>q </b>( f&uuml;r Ende
+)<br>
+
+Wird die Frequenz richtig ausgegeben geht es weiter. Aber je
+nach vorhandenem Cat-Modem m&uuml;ssen eventuell noch Parameter
+eingebunden werden. Ging der Sender beim Test auf Sendung fehlen die
+Parameter f&uuml;r RTS oder DTR. Der Teststring sieht dann so aus: <b>rigctl
+-m 357 -r /dev/ttyUSB0 -s 19200 -p /dev/ttyUSB0 -C rts_state=OFF -C
+dts_state=OFF</b>. Jetzt sollte der Transceiver nicht mehr getastet
+werden.</p>
+
+
+
+<p style="margin-bottom: 0cm;">Es gibt zwei Methoden f&uuml;r den Einsatz
+der <i>Hamlib</i>.<br>
+
+&nbsp;1. Soll der Hamlib-Daemon <b>rigctld</b>
+	immer zur Verf&uuml;gung stehen, wird der Daemon im Bootprozess
+	eingebunden&nbsp;<br>
+
+&nbsp;2. Der Daemon wird vom Programm QtLog
+	gestartet.<br>
+
+<font color="#0000ff">Daemon </font><font color="#0000ff"><b>rigctld</b></font><font color="#0000ff">
+im Boot-Prozess</font> einbinden und immer automatisch starten.</p>
+
+
+
+<p style="margin-bottom: 0cm;">Hier ein Beispiel f&uuml;r openSUSE 11.2:<br>
+
+Im Ordner initTable sind die Dateien
+<b>hamlib</b> und <b>hamlb. </b><span style="font-weight: normal;">In
+beiden Dateien m&uuml;ssen die Devices mit einem Editor angepasst werden. </span>
+</p>
+
+
+
+
+
+
+
+
+
+<p style="margin-bottom: 0cm;"><u><span style="font-weight: normal;">Datei
+<span style="font-weight: bold;">hamlib</span></span></u><span style="font-weight: normal;">:</span><br>
+
+<b>HAMLIB_OPT</b><span style="font-weight: normal;">="
+-m 357 -r /dev/ttyUSB0 -s 19200 -p /dev/ttyUSB0 -C rts_state=OFF -C
+dtr_state=OFF"<br>
+
+-m
+xxx = Die  </span><i><span style="font-weight: normal;">HamLib</span></i><span style="font-weight: normal;">
+Transceiver_id<br>
+
+-r
+xxxx = Der Port RS232 Rx/Tx-Leitungen zum Abfragen des Transceivers<br>
+
+-s
+xxxx = Baud<br>
+
+-p
+xxxx = Der Port zur Steuerung RTS und DTR<br>
+
+-C
+xxx  = werden je nach Modem ben&ouml;tigt oder auch nicht.</span><br>
+
+<b>HAMLIB_BIN</b><span style="font-weight: normal;">=/usr/local/bin/rigctld
+( normalerweise ist das default )</span></p>
+
+
+
+
+
+
+
+
+<p style="margin-bottom: 0cm;"><u><span style="font-weight: normal;">Datei <span style="font-weight: bold;">hamlb</span>:</span></u><br>
+
+<b>HAMCT_PORT</b><span style="font-weight: normal;">="/dev/ttyUSB0</span><br>
+
+<b>HAMCT_OPTIONS</b><span style="font-weight: normal;">="
+-m 357 -r /dev/ttyUSB0 -p /dev/ttyUSB0 -s 19200 -C rts_state=OFF -C
+dtr_state=OFF"<br>
+
+Diese
+Angaben m&uuml;ssen mit den Angaben in der Datei 'hamlib' &uuml;bereinstimmen.</span></p>
+
+<p style="margin-bottom: 0cm;"><span style="font-weight: normal;">Je
+nach verwendetem Port /dev/ttyS0 .. /ttySn oder /dev/ttyUSB0 ..
+/ttyUSBn eintragen. Als root wird </span><b>hamlb</b> <span style="font-weight: normal;">nach
+/etc/sysconfig und </span><b>hamlib</b> <span style="font-weight: normal;">nach
+/etc/init.d kopiert. Im Ordner </span><b>/etc/init.d/</b> <span style="font-weight: normal;">wird
+das Kommando </span><b>insserv hamlib</b> <span style="font-weight: normal;">durchgef&uuml;hrt.
+Damit ist </span><i><span style="font-weight: normal;">Hamlib</span></i>
+<span style="font-weight: normal;">im </span><i><b>boot</b></i>
+<span style="font-weight: normal;">Prozess eingebunden. Nach einem
+Reboot steht der Daemon rigctld f&uuml;r Qtlog zur Verf&uuml;gung.</span></p>
+
+
+
+
+<p style="margin-bottom: 0cm;"><font color="#0000ff"><span style="font-weight: normal;">Daemon
+</span></font><font color="#0000ff"><b>rigctld</b></font><font color="#0000ff">
+</font><font color="#0000ff"><span style="font-weight: normal;">vom
+Qtlog Progamm starten</span></font><span style="font-weight: normal;">.<br>
+
+Wird
+ein USB&ndash;Port verwendet ist diese Methode etwas flexibler gegen&uuml;ber
+der festen Port Bindung beim Systemstart.</span></p>
+
+
+<p style="margin-bottom: 0cm;"><span style="font-weight: normal;">Im
+Dialog </span><b>Log Verwaltung</b> &rarr; <b>Configuriere</b><span style="font-weight: normal;">-&gt;Rig
+Control aufrufen.<br>
+
+Den
+	Button </span><b>W&auml;hle</b> <span style="font-weight: normal;">dr&uuml;cken.
+	</span>
+	</p>
+
+
+
+	- Das Rigmodell
+	f&uuml;r den vorhandenen Transceiver w&auml;hlen.<br>
+
+- Device und
+	Baud Button einstellen.<br>
+
+- Die &uuml;brigen
+	Parameter anpassen
+<br>
+
+- localhost und
+	port nicht &auml;ndern<br>
+
+- Den Button
+	Initialice dr&uuml;cken.
+<p style="margin-bottom: 0cm;"><span style="font-weight: normal;">Der
+</span><b>rigctld Server</b> <span style="font-weight: normal;">wird
+</span><b>einmal</b> <span style="font-weight: normal;">gestartet. </span>
+</p>
+
+
+
+<p style="margin-bottom: 0cm;">Stimmt die angezeigte Frequenz ist die
+Konfiguration beendet. Rigctld wird jetzt bei jedem Start der
+Programme <b>Logging </b>und/oder <b>Contestlogging</b> gestartet.
+Der Abfrage Zyklus des Transceivers ist auf 1000 mS gestellt, ist
+aber &auml;nderbar. F&uuml;r den Normalbetrieb sind 1000 mS ausreichen
+schnell. Wird die Pollzeit verkleinert, m&uuml;ssen die internen
+Laufzeiten z.B die serielle Schnittstelle oder andere Dienstleister (
+cwdaemon usw ) ber&uuml;cksichtigt werden.</p>
+
+
+<p style="margin-bottom: 0cm;"><b>Dialoge - </b><font color="#0000ff"><b>Qso
+Logging</b></font> und <font color="#0000ff"><b>Contest Logging</b></font><br>
+
+In
+diesen Dialogen k&ouml;nnen lediglich die Funktionen: <b>Start</b>, <b>Stopp</b>
+und <b>Poll-Zyklus</b> gesetzt werden. Korrekturen am hamlib-server
+werden nur im <i><b>Config Dialog-&gt;Rig Control</b></i>
+durchgef&uuml;hrt.</p>
+
+
+<p style="margin-bottom: 0cm;"><b>Weitere Informationen zur </b><i><b>Hamlib</b></i><b>:</b>
+man rigctl, man rigctld<br>
+
+<i>hamlib.org</i> - SourceForg.net: Find
+and Develop Source Software</p>
+
+
+<p style="margin-bottom: 0cm;"><br>
+
+
+</p>
+
+
+</body>
+</html>

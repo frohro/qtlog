@@ -1,0 +1,216 @@
+#!/bin/bash
+#compile-Script fuer QtLog
+# 16. August 2007
+# Dieter Kumpies, dl1hbd
+
+LOGDIR=$HOME/Projects/log
+echo ""
+echo "*** compile QtLog ***"
+cd $LOGDIR/qtlogDiag
+qmake -o Makefile qtlog.pro
+make clean
+make
+make clean
+echo "... qtlog compiled ................."
+echo ""
+# ---
+echo "*** compile addQso ***"
+cd $LOGDIR/addQso
+qmake -o Makefile addqso.pro
+make clean
+make
+make clean
+echo "... addqsodb compiled .............."
+echo ""
+# ---
+echo "*** compile addClog ***"
+cd $LOGDIR/addClog
+qmake -o Makefile contLog.pro
+make clean
+make
+make clean
+echo "... addCqsodb compiled .............."
+echo ""
+# ---
+echo "*** compile cwkeyerDiag ***"
+cd $LOGDIR/cwkeyerDiag
+qmake -o Makefile keyer.pro
+make clean
+make
+make clean
+echo "... cwkeyerDiag compiled .............."
+echo ""
+# ---
+echo "*** compile DxSpot ..................."
+cd $LOGDIR/dxSpot
+qmake -o Makefile dxspot.pro
+make clean
+make
+make clean
+echo "dxSpot compiled .................."
+echo ""
+# --
+echo "*** compile qslDiag ................."
+cd $LOGDIR/qslDiag
+qmake -o Makefile qsl.pro
+make clean
+make
+make clean
+echo "...qsldb compiled ................."
+echo ""
+# --
+echo "*** compile admin ***"
+cd $LOGDIR/adminDiag
+qmake -o Makefile admin.pro
+make clean
+make
+make clean
+echo "... admindb compiled ..............."
+echo ""
+# --
+echo "*** compile laDiag ***"
+cd $LOGDIR/laDiag
+qmake -o Makefile ladialog.pro
+make clean
+make 
+make clean
+echo "... ladb compiled ................"
+echo ""
+
+echo "*** compile laPref ***"
+cd $LOGDIR/laPref
+qmake -o Makefile prefix.pro
+make clean
+make
+make clean
+echo "... prefdb compiled ..............."
+echo ""
+
+echo "*** compile qslDruck ***"
+cd $LOGDIR/qslDruck
+qmake -o Makefile qslpr.pro
+make clean
+make
+make clean
+echo "... qslprintdb compiled ............."
+echo ""
+
+echo "*** compile RuAwd ***"
+cd $LOGDIR/ruAwd
+qmake -o Makefile rdawd.pro
+make clean
+make
+make clean
+echo "... uawdb compiled ........."
+echo ""
+
+echo "*** compile QRZcallbook ***"
+cd $LOGDIR/qrzDb
+qmake -o Makefile qrz.pro
+make clean
+make
+make clean
+echo "... qrzdb compiled ........."
+echo ""
+
+echo "*** compile AwdStatus ***"
+cd $LOGDIR/awdStatus
+qmake -o Makefile awdst.pro
+make clean
+make
+make clean
+echo "... awdstdb compiled ..........."
+echo ""
+
+echo "*** compile hilfe  ***"
+cd $LOGDIR/doc
+qmake -o Makefile hilfe.pro
+make clean
+make
+make clean
+echo "... hilfedb compiled ........"
+echo ""
+
+echo "*** compile dokDiag  ***"
+cd $LOGDIR/dokDiag
+qmake -o Makefile dok.pro
+make clean
+make
+make clean
+echo "... dokdb compiled ........"
+echo ""
+
+echo "*** compile iotaDiag  ***"
+cd $LOGDIR/iotaDiag
+qmake -o Makefile iota.pro
+make clean
+make
+make clean
+echo "... iotadb compiled ........"
+echo ""
+
+echo "*** compile startHelp  ***"
+cd $LOGDIR/startHelp
+qmake -o Makefile start.pro
+make clean
+make
+make clean
+echo "... startoptdb compiled ........"
+echo ""
+
+echo "*** compile setupqtlog  ***"
+cd $LOGDIR/setupDiag
+qmake -o Makefile setup.pro
+make clean
+make
+make clean
+echo "... setupqtlog compiled ........"
+echo ""
+
+echo " *** compile downLoadMgr ***"
+cd $LOGDIR/downLoadMgr
+qmake -o Makefile download.pro
+make clean
+make
+make clean
+echo ".... downLoadMgr compiled ........"
+echo "" 
+
+echo " *** compile upLoadMgrEqsl ***"
+cd $LOGDIR/uploadMgrEqsl
+qmake -o Makefile upload.pro
+make clean
+make
+make clean
+echo ".... upLoadMgrEqsl compiled ........"
+echo ""
+
+echo "*** compile qslCardDiag ***"
+cd $LOGDIR/qslCardDiag
+qmake -o Makefile qsldb.pro
+make clean
+make
+make clean
+echo ".... qslCardDiag compiled ........."
+echo ""
+
+echo "*** compile getitMgr ***"
+cd $LOGDIR/getitMgr
+qmake -o Makefile getmgr.pro
+make clean
+make
+make clean
+echo ".... getMgr compiled ......"
+echo ""
+
+echo "*** compile addDlog ***"
+cd $LOGDIR/addDqso
+qmake -o Makefile diglog.pro
+make clean
+make
+make clean
+echo ".... addDlog compiled ......"
+echo ""
+
+echo "*** finished **********"
+echo ""

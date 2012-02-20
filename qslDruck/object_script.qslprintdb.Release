@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\qslPr.o
+./release\qslPrCb.o
+./release\medium.o
+./release\postFile.o
+./release\mediumText.o
+./release\mediumTextCb.o
+./release\dirmngr.o
+./release\translate.o
+./release\moc_qslPr.o
+./release\moc_medium.o
+./release\moc_mediumText.o
+./release\qrc_qtlogRessourcen.o
+);

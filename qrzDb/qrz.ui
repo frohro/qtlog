@@ -1,0 +1,768 @@
+<ui version="4.0" >
+ <class>Qrz</class>
+ <widget class="QMainWindow" name="Qrz" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>577</width>
+    <height>470</height>
+   </rect>
+  </property>
+  <property name="font" >
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle" >
+   <string>QRZ-CD</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>31</y>
+     <width>577</width>
+     <height>439</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" >
+    <item row="0" column="0" >
+     <widget class="QLabel" name="label" >
+      <property name="palette" >
+       <palette>
+        <active>
+         <colorrole role="WindowText" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>55</red>
+            <green>9</green>
+            <blue>240</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>55</red>
+            <green>9</green>
+            <blue>240</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>119</red>
+            <green>119</green>
+            <blue>119</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font" >
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text" >
+       <string>                  QRZ - Callbook</string>
+      </property>
+      <property name="alignment" >
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" >
+     <widget class="QLabel" name="label_5" >
+      <property name="font" >
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text" >
+       <string>Datenbestand :</string>
+      </property>
+      <property name="alignment" >
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" >
+     <widget class="QLabel" name="dbInfo" >
+      <property name="font" >
+       <font>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text" >
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3" >
+     <widget class="QStackedWidget" name="stackedWidget" >
+      <property name="currentIndex" >
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page" >
+       <property name="geometry" >
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>569</width>
+         <height>399</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" >
+        <item row="0" column="0" colspan="7" >
+         <widget class="QTreeWidget" name="qrzListView" >
+          <property name="palette" >
+           <palette>
+            <active>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>238</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>238</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="rootIsDecorated" >
+           <bool>false</bool>
+          </property>
+          <column>
+           <property name="text" >
+            <string>Call</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Image</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Qth</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QLabel" name="label_2" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QLabel" name="labelCall" >
+          <property name="palette" >
+           <palette>
+            <active>
+             <colorrole role="WindowText" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>10</red>
+                <green>58</green>
+                <blue>233</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="WindowText" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>10</red>
+                <green>58</green>
+                <blue>233</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="WindowText" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>119</red>
+                <green>119</green>
+                <blue>119</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font" >
+           <font>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" >
+         <widget class="QLabel" name="labelVname" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3" colspan="3" >
+         <widget class="QLabel" name="labelNname" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item rowspan="4" row="1" column="6" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>20</width>
+            <height>97</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="2" colspan="4" >
+         <widget class="QLabel" name="labelQth" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2" colspan="4" >
+         <widget class="QLabel" name="labelStreet" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="2" colspan="4" >
+         <widget class="QLabel" name="label_12" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="2" >
+         <widget class="QLabel" name="label_8" >
+          <property name="font" >
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text" >
+           <string>Suche     </string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2" colspan="2" >
+         <widget class="QLineEdit" name="lookupW" />
+        </item>
+        <item row="5" column="4" >
+         <widget class="QComboBox" name="comboBox" >
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <item>
+           <property name="text" >
+            <string>Call</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Qth</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Vorname</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="5" column="5" colspan="2" >
+         <widget class="QPushButton" name="ButtonExit" >
+          <property name="palette" >
+           <palette>
+            <active>
+             <colorrole role="Button" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>175</red>
+                <green>215</green>
+                <blue>217</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Button" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>175</red>
+                <green>215</green>
+                <blue>217</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="Button" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>175</red>
+                <green>215</green>
+                <blue>217</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font" >
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>F10  -  Ende</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2" >
+       <property name="geometry" >
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" >
+        <item row="0" column="3" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>20</width>
+            <height>25</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0" colspan="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>19</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="2" colspan="4" >
+         <widget class="QLabel" name="label_9" >
+          <property name="font" >
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text" >
+           <string>QRZ-Datenbanken  von der CD lesen</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6" colspan="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>19</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="2" colspan="4" >
+         <widget class="Line" name="line" >
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2" colspan="4" >
+         <widget class="QLabel" name="label_15" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0" colspan="3" >
+         <widget class="QLabel" name="label_13" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="3" colspan="2" >
+         <widget class="QCheckBox" name="checkBoxCall" >
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>Rufzeichen - Datenbank laden</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="5" colspan="3" >
+         <widget class="QLabel" name="label_14" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3" colspan="2" >
+         <widget class="QCheckBox" name="checkBoxImage" >
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>Image - Datenbank laden</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="3" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>20</width>
+            <height>25</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="7" column="1" colspan="7" >
+         <widget class="QLabel" name="label_10" >
+          <property name="font" >
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text" >
+           <string>     Setze den Pfad zur QRZCD</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>37</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="8" column="1" colspan="4" >
+         <widget class="QLineEdit" name="lineEditPath" />
+        </item>
+        <item row="8" column="5" colspan="2" >
+         <widget class="QPushButton" name="PathButton" >
+          <property name="font" >
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>  Wähle Pfad  </string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="7" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>25</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="9" column="1" colspan="3" >
+         <widget class="QPushButton" name="ButtonLoadDBdata" >
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>Daten laden</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="4" colspan="3" >
+         <widget class="QPushButton" name="ButtonCdExit" >
+          <property name="font" >
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>Ende</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="0" colspan="8" >
+         <widget class="QLabel" name="label_11" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="3" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>20</width>
+            <height>13</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="Seite" >
+       <property name="geometry" >
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>100</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" >
+        <item row="0" column="0" colspan="2" >
+         <widget class="QLabel" name="label_4" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2" >
+         <widget class="QLabel" name="BildLabel" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0" >
+           <size>
+            <width>20</width>
+            <height>213</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0" >
+         <widget class="QLabel" name="labelName" >
+          <property name="font" >
+           <font>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1" >
+         <widget class="QLabel" name="labelCall2" >
+          <property name="text" >
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" colspan="3" >
+         <widget class="QPushButton" name="ButtonBack" >
+          <property name="font" >
+           <font>
+            <pointsize>10</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="text" >
+           <string>-- zurück --</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>577</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile" >
+    <property name="title" >
+     <string>File                </string>
+    </property>
+    <addaction name="actionExit" />
+   </widget>
+   <widget class="QMenu" name="menuCd_Rom" >
+    <property name="title" >
+     <string>Wähle                               </string>
+    </property>
+    <addaction name="actionQrzTabelle" />
+    <addaction name="actionImageView" />
+    <addaction name="actionQrzRead" />
+   </widget>
+   <widget class="QMenu" name="menuHilfe" >
+    <property name="title" >
+     <string>Hilfe       </string>
+    </property>
+    <addaction name="actionHilfeQrz" />
+   </widget>
+   <addaction name="menuFile" />
+   <addaction name="menuCd_Rom" />
+   <addaction name="menuHilfe" />
+  </widget>
+  <action name="actionQrzRead" >
+   <property name="text" >
+    <string>QRZ.db von der CD lesen</string>
+   </property>
+  </action>
+  <action name="actionExit" >
+   <property name="text" >
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionQrzTabelle" >
+   <property name="text" >
+    <string>Rufzeichen Tabelle</string>
+   </property>
+  </action>
+  <action name="actionImageView" >
+   <property name="text" >
+    <string>Bilder ansehen</string>
+   </property>
+  </action>
+  <action name="actionHilfeQrz" >
+   <property name="text" >
+    <string>QRZ-Callbook</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

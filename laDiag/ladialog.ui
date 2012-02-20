@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>laDiag</class>
+ <widget class="QMainWindow" name="laDiag">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>950</width>
+    <height>585</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dx-LaenderPrefix</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>  Prefixliste    DXCC - Länder</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="labelcnt">
+        <property name="text">
+         <string>cnt</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="6">
+       <widget class="QTableWidget" name="laTabelle">
+        <property name="showGrid">
+         <bool>true</bool>
+        </property>
+        <column>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Cont</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ITUz</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>CQz</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>TimeZ</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Breite</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Laenge</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Dxcc</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>WAE</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>WPX</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>ADIF.nr</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Bemerkung</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item row="2" column="0" rowspan="2">
+       <widget class="QLabel" name="label_2">
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>       Suche</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" rowspan="2">
+       <widget class="QLineEdit" name="WlineEditPref"/>
+      </item>
+      <item row="2" column="3" rowspan="2" colspan="2">
+       <spacer>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>13</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="5" rowspan="2">
+       <widget class="QPushButton" name="ButtonENDE">
+        <property name="palette">
+         <palette>
+          <active>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>217</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>217</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>175</red>
+              <green>215</green>
+              <blue>217</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>       F10 - ENDE      </string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>DX-Land</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Adif Index</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Wae Land</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>WAE Liste</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Continente</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <spacer>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>950</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuListen_laden">
+    <property name="title">
+     <string>Laender Prefix                </string>
+    </property>
+    <addaction name="actionSubPrefixdb"/>
+   </widget>
+   <widget class="QMenu" name="menuHilfe">
+    <property name="title">
+     <string>Hilfe                  </string>
+    </property>
+    <addaction name="actionHilfeLaenderListe"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File               </string>
+    </property>
+    <addaction name="actionENDE"/>
+    <addaction name="separator"/>
+    <addaction name="actionNeue_cty_dat"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuListen_laden"/>
+   <addaction name="menuHilfe"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionENDE"/>
+   <addaction name="separator"/>
+  </widget>
+  <action name="actionENDE">
+   <property name="icon">
+    <iconset resource="../qtlogRessourcen.qrc">
+     <normaloff>:/new/prefix1/icon/cancel.png</normaloff>:/new/prefix1/icon/cancel.png</iconset>
+   </property>
+   <property name="text">
+    <string>ENDE</string>
+   </property>
+  </action>
+  <action name="actionLa_Prefix_Liste_updaten">
+   <property name="text">
+    <string>La.Prefix-Liste updaten</string>
+   </property>
+  </action>
+  <action name="actionSubPrefixdb">
+   <property name="text">
+    <string>DX-SubPrefixListe</string>
+   </property>
+  </action>
+  <action name="action_dxcc_Liste_laden">
+   <property name="text">
+    <string>Neue Dxcc-Liste installieren</string>
+   </property>
+  </action>
+  <action name="actionHilfeLaenderListe">
+   <property name="text">
+    <string>DX -Laenderliste</string>
+   </property>
+  </action>
+  <action name="actionNeue_cty_dat">
+   <property name="text">
+    <string>Neue cty-tw.dat installieren</string>
+   </property>
+  </action>
+  <action name="actionSave_adifData">
+   <property name="text">
+    <string>Adif-Liste erzeugen</string>
+   </property>
+  </action>
+  <action name="actionSet_adifData">
+   <property name="text">
+    <string>Adif-Liste laden</string>
+   </property>
+  </action>
+  <action name="actionSave_geoData">
+   <property name="text">
+    <string>Geo-Liste erzeugen</string>
+   </property>
+  </action>
+  <action name="actionSet_geoData">
+   <property name="text">
+    <string>Geo-Liste laden</string>
+   </property>
+  </action>
+  <action name="actionSave_waeData">
+   <property name="text">
+    <string>Wae-Liste erzeugen</string>
+   </property>
+  </action>
+  <action name="actionSet_waeData">
+   <property name="text">
+    <string>Wae-Liste laden</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../qtlogRessourcen.qrc"/>
+ </resources>
+ <connections/>
+</ui>

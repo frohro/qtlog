@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>editLog</class>
+ <widget class="QDialog" name="editLog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1560</width>
+    <height>513</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>EditLog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="labelEdit">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>    Edit Contest Log</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="labelContest">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Contest    </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="4">
+    <widget class="QTableWidget" name="tableLogEdit">
+     <column>
+      <property name="text">
+       <string>Contest</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Trs</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Date</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Time</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Band</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Freq</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mode</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Call</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>sRST</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sent</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Sent2</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>rRST</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rcvd</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rcvd2</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Pts</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>WAE</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Dxcc</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Cnt</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>cPref</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Multi1</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mul1</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Multi2</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mul2</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Qtcflg</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="3">
+    <widget class="QPushButton" name="ButtonExit">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>( ESC )  Return</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="labelRowCnt">
+     <property name="text">
+      <string>rows</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="ButtonConvert">
+     <property name="palette">
+      <palette>
+       <active>
+        <colorrole role="Button">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>192</red>
+           <green>177</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </active>
+       <inactive>
+        <colorrole role="Button">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>192</red>
+           <green>177</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </inactive>
+       <disabled>
+        <colorrole role="Button">
+         <brush brushstyle="SolidPattern">
+          <color alpha="255">
+           <red>192</red>
+           <green>177</green>
+           <blue>102</blue>
+          </color>
+         </brush>
+        </colorrole>
+       </disabled>
+      </palette>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Convert to QtLog Database</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="ButtonDeleteQso">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Delete QSO</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

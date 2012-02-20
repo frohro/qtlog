@@ -1,0 +1,10 @@
+LOAD DATA INFILE '/local/access_log' INTO TABLE tbl_name
+FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\'
+
+
+To reload the table, use and restore with LOAD DATA INFILE 'file_name' REPLACE ...
+To avoid duplicate records, the table must have a PRIMARY KEY or a UNIQUE index. The REPLACE
+keyword causes old records to be replaced with new ones when a new record duplicates an
+old record on a unique key value.
+
+

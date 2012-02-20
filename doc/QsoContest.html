@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+	
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+
+	
+	
+  <title></title>
+  <meta name="GENERATOR" content="OpenOffice.org 3.1  (Unix)">
+
+	
+  <meta name="CREATED" content="20100425;18183400">
+
+	
+  <meta name="CHANGED" content="20100510;12175200">
+</head>
+
+
+<body dir="ltr" lang="de-DE">
+
+<p><font color="#0000ff"><font size="4"><b>Contest Logging</b></font></font></p>
+
+<p>Der Dialog <b>Contest Logging</b> stellt einen simplen Eingabe
+Dialog f&uuml;r einige Contest-Veranstaltungen zur Verf&uuml;gung.</p>
+
+<p>Eingerichtet wurden z.Z lediglich nur die wichtigsten KW &ndash;
+Conteste f&uuml;r die Betriebsarten SSB und CW. Der Dialog ist noch in
+der Entwicklung. Die Contest &ndash; Modelle werden mit jeder
+Contest-Veranstaltung weiter vervollst&auml;ndigt.<br>
+Beim Programm
+Aufruf meldet sich ein blauer Bildschirm mit dem Auswahl-Men&uuml;
+<b>Contest.</b></p>
+
+<p><b>Button New:</b><br>
+Im allgemeinen wird als erstes ein neuer
+Contest angelegt &rarr; NEW HF-CW. Hier stehen ca. 10 Contest-Modelle
+zur Auswahl. Hinter jedem Contestmodell sind die wichtigsten
+Contestvorgaben hinterlegt. Wird auf ein Contesmodell geklickt werden
+f&uuml;r diesen Contest die Qso-Punkte und Multiplikator angezeigt. Die
+Bandauswahl wird gesetzt. Es ist aber immer zweckm&auml;&szlig;ig diese mit
+der Contestausschreibung abzustimmen. Die Bandauswal ist eine
+Information und wird nicht im Contest-Dialog verwaltet. 
+</p>
+
+<p>Mit dem Button Create wird der Contest angelegt. Die Contest_id
+besteht aus dem Contest-K&uuml;rzel und der Jahreszahl des laufenden
+Jahres. Falls erforderlich kann kann die Contest_id mit einem kurzem
+Anhang erweitert werden. Es wird eine Exchange Info ausgegeben die
+best&auml;tigt wird. Das Info Widget <b>Sent exchange</b> gibt einen
+Hinweis f&uuml;r die erforderliche Modifikation der <b>sent </b>variable.
+zB. beim DARC10M Contest wird <b>sent</b> mit dem DOK erg&auml;nzt. 
+</p>
+
+<p><i><b>Dedienungs und Informations Elemente:</b></i><br>
+<b>Contest
+Ergebnis &Uuml;bersicht: </b><span style="font-weight: normal;">Hier wird
+der aktuelle Conteststand je Band dargestellt.<br>
+Anzahl </span><b>Qsos</b><span style="font-weight: normal;">,
+</span><b>Points</b> <span style="font-weight: normal;">Punkte je QSO
+, Punkte </span><b>Multi1</b><span style="font-weight: normal;">,
+Punkte </span><b>Multi2.</b><br>
+QSOsh und Score werden z.Z nicht
+berechnet bzw. hoch gerechnet.<br>
+<b>Band:</b> Im Fenster Band wird
+das aktive Band in kHz angezeigt. Ist RigCtl freigegeben folgt die
+Anzeige der Transceiverfrequenz.<br>
+<b>Button Mode:</b> SSB oder CW.
+Ist RigCtl freigegeben wird die Betriebsart vom Transceiver
+geschaltet.<br>
+<b>Button Edit:</b> Anzeige aller QSOs f&uuml;r diesen
+Contest. Weitere Funktionen gibt es f&uuml;r diesen Dialog z.Z.
+nicht.<br>
+<b>Button Info:</b> Anzeige der Exchange Bedingungen.</p>
+
+<p><i><b>Keyboard:</b></i><br>
+<b>ESC</b> - l&ouml;scht die Eingabe und
+setzt den Cursor in <b>Callsign<br>
+Space ( leer )</b> - toggelt den
+Eingabecursor zwischen Callsign und Exchange<br>
+<b>Taste Pfeil rauf &ndash;
+Pfeil runter</b> &ndash; schaltet das Band vor oder zur&uuml;ck. Ist RigCtl
+freigegeben wird auch der Transceiver geschaltet.</p>
+
+<p><font color="#0000ff"><font size="4"><b>Logging</b></font></font> <b>-</b>
+<span style="font-weight: normal;">im neuen Contest:</span><br>
+Das
+Programm reagiert auf jede Tastatureingabe im Callsign Fenster.
+Werden bei der Rufzeichen Eingabe bereits geloggte und zur Eingabe
+passende QSOs gefunden werden diese angezeigt. Wird ein identisches
+Rufzeichen gefunden wird dieses QSO rot markiert, als bereits
+gearbeitet. Selektiert wird je nach Contestmodell, auf Bandebene oder
+&uuml;ber alle B&auml;nder. Im Runtimefenster stehen immer die zuletzt
+geloggten max. 20 QSOs.</p>
+
+<p><b>Korrekturen am Qso:</b><br>
+Mit einem Doppelklick auf eine QSO
+Zeile wird dieses in den Editmodus gehoben. Der Button <b>Remove QSO</b>
+wird freigegeben und eine Info in rot zeigt <font color="#e00000">Edit
+mode. </font><font color="#000000">Das QSO kann jetzt editiert
+werden. Alle &Auml;nderung sind zul&auml;ssig. Das Rufzeichen kann auch
+ge&auml;ndert bzw. korrigiert werden. Mit '</font><font color="#000000"><i><b>cr</b></i></font><font color="#000000">'
+im Exchange Fenster werden die Korrekturen &uuml;bernommen. Mit dem
+Button </font><font color="#000000"><i><b>Remove</b></i></font><font color="#000000">
+</font><font color="#000000"><i><b>QSO</b></i></font><font color="#000000">
+wird das QSO gel&ouml;scht. Qso-Punkt und Multiplikator-Punkte werden vor
+bzw. zur&uuml;ck gerechnet. </font>
+</p>
+
+<p><font color="#0000ff"><font size="4"><b>Continue</b></font></font> <b>-
+</b><span style="font-weight: normal;">fortf&uuml;hren eines vorhandenen
+Contest</span><br>
+Beim Aufruf werden alle Contest-Modelle die in der
+Contesttabelle stehen angezeigt. Mit einem Klick in die Zeile wird
+der gew&uuml;nscht Contest selektiert, mit dem Button <i><b>Continue </b></i>wird
+der Contest geladen, mit ESC wird ohne Aktion zur&uuml;ck geschaltet.</p>
+
+<p>Der Contest kann jetzt weiter bearbeitet werden, alle Funktionen
+stehen zur Verf&uuml;gung. Zeit oder Datumsgrenzen ( Contest out of time
+) sind nicht vorhanden.</p>
+
+<p><font color="#0000ff"><font size="1"><b>Sent Log</b></font></font><font color="#0000ff">
+</font><b>( Cabrillo, STF )</b> - Logdatei an den Contestveranstalter
+senden<br>
+Beim Aufruf werden die vorhandenen geloggten Conteste
+angezeigt. Mit einem Klick wird der Contest selektiert. Den Button
+<i><b>Sent Log &hellip;</b></i> aufrufen. Der Dialog schaltet zu den
+Details f&uuml;r den Datenexport. Zur Zeit gibt es f&uuml;r jeden Contest nur
+ein Exportformat. Conteste die vom DARC durchgef&uuml;hrt werden, werden
+mit dem Format nach Stuezenbach ( STF ) exportiert, die &uuml;brigen mit
+dem Carillo Format. Der Export im Plain text Format geht, aber ist
+nicht immer durchf&uuml;hrbar, es kommt eine Meldung. Der Dateipfad f&uuml;r
+die zu exportierend Datei festlegen und und mit dem Button OK
+best&auml;tigen.</p>
+
+<p>Im folgenden Dialog sind die contest typischen Angaben zum Contest
+und Operator festzulegen. Mit OK wird die Exportdatei erzeugt. Die
+exportierten QSO Daten k&ouml;nnen mit einem Editor angesehen werden.</p>
+
+<p><font color="#0000ff"><font size="4"><b>Convert to QtLog</b></font></font>
+&ndash; Contest QSOs in die Datenbank &uuml;bernehmen<br>
+Auch bei dieser
+Funktion muss als erstes der Contest selektiert werden Im folgenden
+ContestLog Tabelle wird mit dem Button <i><b>Convert to QtLog
+Database </b></i>die &Uuml;bertragung durchgef&uuml;hrt.</p>
+
+<p><b>Hinweis ! </b>Bei der ersten &Uuml;bertragung der Contest-QSOs in
+die QSO-Datenbank sollte man vorsorglich die Datenbank auf die
+Logtabelle fun stellen und eine Test&uuml;bertragung durchf&uuml;hren. 
+</p>
+
+<p><font color="#0000ff"><font size="4"><b>Delete Contest Log</b></font></font>
+&ndash; Contestlog in der Contestabelle l&ouml;schen<br>
+Als erstes wird der
+zu l&ouml;schende Contest selektiert. Es erfolgt eine R&uuml;ckfrage, bei
+Best&auml;tigung wird der Contest gel&ouml;scht.</p>
+
+<p><font color="#0000ff"><font size="4"><b>CW Keyer</b></font></font> &ndash;
+einbinden<br>
+Der <i>cwdaemon</i> muss installiert sein. Bei den
+meisten Distrubutionen ist der Daemon auf der DVD oder er kann &uuml;ber
+das Inernet installiert werden. Siehe <b>Hilfe Cwdaemon.</b></p>
+
+<p>Nach dem Aufruf von Contestlog muss beim einem CW-Contest immer
+erst der cwdaemon initialisiert werden. Das erfolgt durch den Aufruf
+von CWkeyer. Dieser Dialog stellt ein Sortiment von MACROS f&uuml;r die
+CW-Ausgabe zur Verf&uuml;gung l&auml;dt die Macros und initialisiert den
+Keyer. Wird die Macro-Ansicht f&uuml;r den laufenden CW-Contest nicht
+ben&ouml;tigt, dann den Dialog wieder ausschalten. 
+</p>
+
+
+<p><b>CWSpeed &auml;ndern</b><br>
+WPM / Speed: Der eingestellt Speed steht im Fenste WPM. Mit den
+Tasten Bild-rauf/runter wird die Einstellung ver&auml;ndert.</p>
+
+
+<p><b>F-Tastenbelegung / Macros</b><br>
+Die vordefinierten Macros k&ouml;nnen jederzeit &uuml;berschrieben werden.
+Nach jeder &Auml;nderung muss <b>Save</b> durchgef&uuml;hrt werden. Hiermit
+wird die &Auml;nderung gespeichert und zum Contestdialog durchgestellt.</p>
+
+<p><b>ESC</b> &ndash; Wird mit F1 eine CQ Contest Schleife gestartet,
+kann die Aussendung mit ESC abgebrochen werden.</p>
+
+<p><font color="#0000ff"><font size="4"><b>Rig Control</b></font></font>
+&ndash; einbinden<br>
+Die Hamlib muss installiert und konfiguriert sein.
+Wird im Dialog <i>QtLog-&gt;Configuriere-&gt;Rig Control</i> die
+angezeigte Frequenz mit OK best&auml;tigt, startet RigCtl automatisch.
+Der Transceiver muss eingeschaltet sein, sonst gibt es eine
+Fehlermeldung. Im Dialog <i>Rig Control</i> kann die Hamlib ein -oder
+ausgeschaltet werden. Au&szlig;erdem ist der Pollzyklus ( Retry )
+&auml;nderbar. Siehe Hilfe <i>Rig Cotrol-Hamlib</i></p>
+
+<p><b>ToDo</b><br>
+Es gibt noch viel zu tun.</p>
+
+<p><br>
+<br>
+
+</p>
+
+</body>
+</html>

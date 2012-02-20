@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE>report</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 3.0  (Unix)">
+	<META NAME="CREATED" CONTENT="0;0">
+	<META NAME="CHANGED" CONTENT="20090714;9124700">
+</HEAD>
+<BODY LANG="de-DE" DIR="LTR">
+<P><FONT COLOR="#3366ff"><FONT SIZE=3><B>QSO – Verwaltung</B></FONT></FONT></P>
+<P><FONT COLOR="#330033"><FONT SIZE=3><B>QtLog – Logbook und
+Informationssystem für den Amateurfunk</B></FONT></FONT></P>
+<P><FONT SIZE=3>Das Logbook unterstützt die Verwaltung von QSO,
+DXCC-Länder und AWARDS.</FONT></P>
+<P><FONT SIZE=3>Das Programm ist&nbsp;überwiegend selbsterklärend.
+Leider konnte dieses aber nicht in allen Bereichen erreicht werden.
+Wichtig ist, schnell eine Programmübersicht zu erhalten.<BR>Hierfür
+gibt es für die&nbsp; meisten Dialoge HILFE-Seiten mit direktem
+Zugriff. Es stehen Erläuterungen zur Abfragemethode und
+Datendarstellung zur Verfügung.<BR><BR>Als&nbsp;Datenbasis wird die
+MySQL-Datenbank verwendet.<BR>Das Log Programm besteht aus einem
+Hauptprogramm und mehreren Nebenprogrammen.<BR>Wird QtLog aufgerufen,
+meldet sich der&nbsp;Dialog &quot;QSO-Verwaltung&quot;.<BR>Von hier
+können alle übrige Funktionen aufgerufen werden.<BR><BR><FONT COLOR="#3366ff"><B>Dialog
+QSO - Verwaltung:<BR>-----------------------------------</B></FONT> </FONT>
+</P>
+<P ALIGN=LEFT><FONT SIZE=3><FONT COLOR="#330033"><B>In den Header
+-Auswahl-Menüs</B></FONT><FONT COLOR="#330033"> </FONT>werden alle
+benötigten Methoden zu Abfrage und Verwaltung der QSO-Daten
+angeboten. Hilfe zum Verständnis und zur Handhabung der Daten sind
+in fasst allen Dialogen vorhanden.</FONT></P>
+<P ALIGN=LEFT><FONT SIZE=3>Als erstes sollte das <B>System
+configuriert</B> werden. Entweder 'Konfiguriere' direkt aufrufen oder
+hier im Manual zur Information die Seite 'Konfiguriere' klicken.</FONT></P>
+<P ALIGN=LEFT><FONT SIZE=3>Das Programm QtLog wird in 3
+unterschiedlichen Config Bereichen eingestellt.<BR><B>Logbook</B> :
+Es können mehrere Logbooks verwaltet werden. Angeboten wird das
+Logbook fun zum testen. Ist das Programm ausreichend gestetet, wird
+das eigene Logbook angelegt.<BR><B>Stations Standort </B>: Hier
+werden die persönliche Daten eingetragen. Diese Parameter werden vom
+Programm in vielen Bereichen benötigt.<BR><B>Club </B>: &nbsp;wie
+bekannt.</FONT></P>
+<P ALIGN=LEFT><FONT SIZE=3><B>Die QSO Verwaltung </B>ist in erster
+Linie eine Informationsquelle zu den geführten QSOs.<BR>Die Abfrage
+der QSO-Daten von der Datenbank erfolgt über Datenbankfilter.<BR>Das
+Ergebnis wird in einer Report-Tabelle angezeigt.</FONT></P>
+<P><FONT SIZE=3><FONT COLOR="#3366ff"><B>Der Datenbankfilter</B></FONT>
+besteht aus 6 Gruppen. <BR>&nbsp; &nbsp;&nbsp;<B>Ausgabebegrenzung:&nbsp;</B>
+max. 100 bis 2000 Qsos je Tabelle. - Empfehlung 400 Qsos.<BR>&nbsp; &nbsp;
+<B>Abfragekriterien:</B> Call, Band, Mode usw. ...<BR>&nbsp;
+&nbsp;&nbsp;<B>Abfrage der Award Kenner:</B> Alle konfigurierten
+AWD-Typen.<BR>&nbsp; &nbsp;&nbsp;<B>Zeitraum Vorgaben:</B> Default
+ist das laufende Jahr. Der Zeitraum ist beliebig wählbar.<BR>&nbsp;
+&nbsp;&nbsp;<B>Daten-Sortierung:</B> Datum, Band, Call, DXCC<BR>&nbsp;
+&nbsp;&nbsp;<B>Report-Layout:</B> Freie Auswahl der darzustellenden
+Tabellen-Spalten.&nbsp;<BR>&nbsp; &nbsp; Alle Datenbankfelder&nbsp;
+sind zugänglich und darstellbar.<BR><BR>Hinweise zu einigen
+Merkmalen der
+Datenbankfilters:<BR>---------------------------------------------------------------------<BR><B>Anzeige
+max.:</B> Die Anzeige 2000 Datensätze sollte nicht die Regel sein.
+Viele Datensätze bedeuten auch lange Wartezeiten bis zur Ausgabe.
+200/400 Datensätze sind im allgemeinen ausreichend. Größere
+Datenmengen lassen sich auch schwer übersehen. Besser ist es die
+Auswahlkriterien&nbsp; entsprechend &nbsp;zu wählen.<BR><BR><B>Anzeige
+ohne/mit Zeitraum :</B> Ist der Haken 'Zeitraum' <B>nicht</B> gesetzt
+ist die Zeitraumbegrenzung ausgeschaltet. <BR>Bei gesetztem Haken
+wirkt der voreingestellt Zeitraum. Das Datum 'Von' ist das aktuelle
+Tagesdatum. Das Datum 'Bis' steht defaultmäßig immer auf den
+1.Januar des laufenden Jahres. Stellt man den Textcursor in das Feld
+'suche' ohne Texteingabe und wird der Zeilenvorschub gedrückt,&nbsp;
+werden alle Qsos des laufenden Jahres angezeigt.<BR>Die Qsoausgabe
+mit Zeitraum kann Tag genau abgerufen werden.<BR><BR><B>ReportLayout:</B>
+Die Form der Datendarstellung kann jeder Anwender selbst
+konfigurieren. Im Headermenü &quot;<I>Logbook - Verwaltung</I>&quot;
+&nbsp;die Methode &quot;<I>ReportLayout</I>&quot; aufrufen. In diesem
+Menü werden die gewünschten Spalten der Tabellen zusammengestellt.
+Die Tabellenspalte wird mit einem&nbsp; Klick in den Log-Datensatz
+gewählt oder entfernt. Die Reihenfolge im Fenster 'Anzeige'
+entspricht der Spaltenfolge in der Tabelle. <BR><BR>Es sind 4
+vorkonfigurierte Layouts möglich. <B>EU</B>, <B>DX</B>,&nbsp;<B>QSL
+</B>und <B>Var</B> ( wie variable ).<BR>Diese Konfiguration kann der
+Anwender jeder zeit verändern,<BR>Beispiel:&nbsp;<BR>- Layout
+'EU'&nbsp;wichtige Merkmale &nbsp;für Qsos aus Europa&nbsp;z.B. WAE,
+DLD usw.&nbsp;<BR>- Layout DX entsprechend.&nbsp;<BR>-
+QSL&nbsp;Datenspalte für die QSL Übersicht ( QSL via Büro, LotW ..
+usw ) &nbsp;<BR>- Var &nbsp;zur Forschung in der Datenbank,&nbsp;</FONT></P>
+<P><FONT SIZE=3>Ziel sollte sein die Spaltenanzahl in der Tabelle so
+gering wie möglich zu halten. Viele Spalten benötigen auch viel
+Zeit für den Tabellenaufbau.<BR><BR><BR><B>Daten
+abfragen:</B><BR>----------------------<BR>Zum suchen nach den
+gewünschten QSO-Daten gibt es die Filter :&nbsp; '<B>Suche</B>' und
+'<B>Zeige AWARD-Typen</B>'.<BR><BR><B>Filter Suche :</B><BR>Wird in
+das Eingabefeld unterhalb des Auswahlbuttons kein Kriterium&nbsp;
+angegeben und&nbsp; 'cr' ( Zeilenvorschub ) gedrückt, werden alle
+Qsos die in der Datenbank vorhandenen sind angezeigt, jedoch max.
+2000. Diese Datenmenge lässt sich nicht überblicken und ist daher
+wenig sinnvoll.</FONT></P>
+<P><FONT SIZE=3>Die Eingrenzung der Anzeige erfolgt durch&nbsp;Argumente
+im Auswahl-Button z.B 'Call' . Das Eingabefeld hat eine
+Match-Funktion. Wird&nbsp; nur 'dk' oder 'DK' eingegeben werden alle
+Qsos die mit dem Rufzeichen DK beginnen angezeigt usw.<BR><BR><B>Filter
+AWARD Type:</B><BR>Beim Filter <I>Zeige Award Typen </I>ist es
+ähnlich. Ist kein Auswahlwort angegeben werden alle Qsos mit dem
+Kenner gemäß eingestelltem Type angezeigt.</FONT></P>
+<P><FONT SIZE=3>Beispiel : Es soll der Kenner E33 abgefragt werden.
+Hierfür wird der AWD Type auf DLD gestellt, im Eingabe-Feld der
+Kenner&nbsp; 'E33' eingetragen. Kenner werden immer&nbsp;komplett
+angegeben. Award-Typen und Kenner können nur angezeigt werden, wenn
+im Reportlayout die Spalte 'AWD' eingebunden ist.<BR><B><BR>Die Daten
+im Report
+bearbeiten:</B><BR>--------------------------------------------<BR>Alle
+Felder in der QSO-Tabelle sind editierbar. Mit einem Doppelklick in
+die Datenzelle öffnet sich der Texteditor.&nbsp;<BR>Die Texteingabe
+wird mit 'cr' beendet.&nbsp;<BR>Mit 'ESC' kann der Editor ohne
+Textspeicherung verlassen werden.&nbsp;</FONT></P>
+<P><FONT SIZE=3>Der neue Text wird gespeichert. Mit einem weiterem
+'ESC' wird die Zellenselektion aufgehoben ( der blaue Hintergrund ist
+dann weg ). <BR><BR><B>AWARD-Kenner bearbeiten: </B>( beta Version
+)<B><BR></B>Ist in der Report-Tabelle eine AWARD-Spalte eingebunden
+z.B <B>DLD</B>. Werden in dieser Spalten die eingeloggten 'DOK'
+angezeigt. Wird auf einen <B>DOK </B>geklickt öffnet sich ein
+DockWidget und es werden alle für dieses QSO eingeloggten Kenner
+dargestellt. Ein Klick in eine <B>nicht </B>AWD Tabellenzelle
+schließt das DockWidget.<BR><BR>Im geöffneten DockWidget werden in
+der linken Spalte alle konfigurierten AwardTypen abgebildet. Die
+rechte Spalte enthält die Kenner zu diesem Qso. Es können
+vorhandene Kenner verändert oder neue eingetragen werden. Neue
+AWD-Typen können hier nicht eingerichtet werden.<BR><BR>Wird in der
+AWD-Tabelle ( DockWidget ) in den Doppelrahmen&nbsp;rechts oben&nbsp;
+geklickt schwebt die AWARD-Tabelle über dem Report. Die Größe ist
+jetzt änderbar. Lässt sich aber leider noch nicht auf dem
+Bildschirm verschieben. Die Report-Tabelle kann unterhalb des
+DockWidget verschoben werden. Klickt man mit der Maus in eine nicht
+AWD-Zelle wird das AwardFenster geschlossen weil der Bezug zum AWD
+nicht mehr vorhanden ist.<BR></FONT><BR><BR>
+</P>
+</BODY>
+</HTML>

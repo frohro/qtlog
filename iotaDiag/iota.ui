@@ -1,0 +1,697 @@
+<ui version="4.0" >
+ <class>iota</class>
+ <widget class="QMainWindow" name="iota" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>541</width>
+    <height>584</height>
+   </rect>
+  </property>
+  <property name="font" >
+   <font>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle" >
+   <string>IOTA - Verwaltung</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QGridLayout" >
+    <item row="0" column="0" colspan="5" >
+     <widget class="QLabel" name="label" >
+      <property name="palette" >
+       <palette>
+        <active>
+         <colorrole role="WindowText" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>84</red>
+            <green>125</green>
+            <blue>191</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>84</red>
+            <green>125</green>
+            <blue>191</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>119</red>
+            <green>119</green>
+            <blue>119</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font" >
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text" >
+       <string>   IOTA  - Verwaltung</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="5" >
+     <widget class="QLabel" name="labelCount" >
+      <property name="text" >
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="6" >
+     <widget class="QLabel" name="label_4" >
+      <property name="text" >
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="7" >
+     <widget class="QTabWidget" name="tabWidget" >
+      <property name="font" >
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="focusPolicy" >
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="currentIndex" >
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>  IOTA - Liste       </string>
+       </attribute>
+       <layout class="QGridLayout" >
+        <item row="0" column="0" >
+         <widget class="QTreeWidget" name="iotaList" >
+          <property name="palette" >
+           <palette>
+            <active>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>244</red>
+                <green>255</green>
+                <blue>245</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </active>
+            <inactive>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>244</red>
+                <green>255</green>
+                <blue>245</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </inactive>
+            <disabled>
+             <colorrole role="Base" >
+              <brush brushstyle="SolidPattern" >
+               <color alpha="255" >
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+              </brush>
+             </colorrole>
+            </disabled>
+           </palette>
+          </property>
+          <property name="font" >
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="rootIsDecorated" >
+           <bool>false</bool>
+          </property>
+          <column>
+           <property name="text" >
+            <string>IOTA</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>DXCC - Prefix</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>Inselname</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_1" >
+       <attribute name="title" >
+        <string>Neu / Update      </string>
+       </attribute>
+       <widget class="QLabel" name="label_3" >
+        <property name="geometry" >
+         <rect>
+          <x>64</x>
+          <y>140</y>
+          <width>56</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font" >
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text" >
+         <string>IOTA</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5" >
+        <property name="geometry" >
+         <rect>
+          <x>60</x>
+          <y>188</y>
+          <width>56</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font" >
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text" >
+         <string>Dxcc</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6" >
+        <property name="geometry" >
+         <rect>
+          <x>64</x>
+          <y>232</y>
+          <width>56</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font" >
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text" >
+         <string>Name</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditIota" >
+        <property name="geometry" >
+         <rect>
+          <x>128</x>
+          <y>132</y>
+          <width>101</width>
+          <height>33</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditDxcc" >
+        <property name="geometry" >
+         <rect>
+          <x>128</x>
+          <y>180</y>
+          <width>101</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font" >
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditName" >
+        <property name="geometry" >
+         <rect>
+          <x>128</x>
+          <y>224</y>
+          <width>249</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font" >
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ButtonNeu" >
+        <property name="geometry" >
+         <rect>
+          <x>62</x>
+          <y>284</y>
+          <width>85</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>188</red>
+              <green>216</green>
+              <blue>176</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>188</red>
+              <green>216</green>
+              <blue>176</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>188</red>
+              <green>216</green>
+              <blue>176</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text" >
+         <string>NEU</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ButtonUpdate" >
+        <property name="geometry" >
+         <rect>
+          <x>164</x>
+          <y>284</y>
+          <width>89</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>208</red>
+              <green>220</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>208</red>
+              <green>220</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>208</red>
+              <green>220</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text" >
+         <string>Update</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ButtonBack" >
+        <property name="geometry" >
+         <rect>
+          <x>276</x>
+          <y>284</y>
+          <width>93</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>220</red>
+              <green>220</green>
+              <blue>220</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>220</red>
+              <green>220</green>
+              <blue>220</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>220</red>
+              <green>220</green>
+              <blue>220</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text" >
+         <string>Zurück</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7" >
+        <property name="geometry" >
+         <rect>
+          <x>80</x>
+          <y>64</y>
+          <width>373</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="WindowText" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>84</red>
+              <green>125</green>
+              <blue>191</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="WindowText" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>84</red>
+              <green>125</green>
+              <blue>191</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="WindowText" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>119</red>
+              <green>119</green>
+              <blue>119</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="font" >
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>IOTA  - Datenbestansliste verwalten</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line" >
+        <property name="geometry" >
+         <rect>
+          <x>84</x>
+          <y>96</y>
+          <width>317</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0" >
+     <widget class="QLabel" name="label_2" >
+      <property name="font" >
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text" >
+       <string>   Suche :</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" >
+     <widget class="QLineEdit" name="wLineEdit" />
+    </item>
+    <item row="2" column="2" >
+     <widget class="QComboBox" name="iotaBox" >
+      <property name="palette" >
+       <palette>
+        <active>
+         <colorrole role="Button" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>238</red>
+            <green>230</green>
+            <blue>210</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>238</red>
+            <green>230</green>
+            <blue>210</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>238</red>
+            <green>230</green>
+            <blue>210</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <item>
+       <property name="text" >
+        <string>IOTA</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Dxcc</string>
+       </property>
+      </item>
+      <item>
+       <property name="text" >
+        <string>Name</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="3" >
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="4" colspan="2" >
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="6" >
+     <spacer>
+      <property name="orientation" >
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0" >
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="3" column="0" colspan="7" >
+     <widget class="QPushButton" name="ButtonEnde" >
+      <property name="palette" >
+       <palette>
+        <active>
+         <colorrole role="Button" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>175</red>
+            <green>215</green>
+            <blue>217</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>175</red>
+            <green>215</green>
+            <blue>217</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button" >
+          <brush brushstyle="SolidPattern" >
+           <color alpha="255" >
+            <red>175</red>
+            <green>215</green>
+            <blue>217</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font" >
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="focusPolicy" >
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="text" >
+       <string>F10  -  Ende</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>541</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

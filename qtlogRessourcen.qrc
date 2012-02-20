@@ -1,0 +1,33 @@
+<RCC>
+  <qresource prefix="/new/prefix1" >
+    <file>icon/artscontrol.png</file>
+    <file>icon/fifteenpieces.png</file>
+    <file>icon/add.png</file>
+    <file>icon/32x32/bookmark_folder.png</file>
+    <file>icon/Won-Ton-Soup-3.jpg</file>
+    <file>icon/back.png</file>
+    <file>icon/cancel.png</file>
+    <file>icon/color_line.png</file>
+    <file>icon/configure_shortcuts.png</file>
+    <file>icon/connect_creating.png</file>
+    <file>icon/contexthelp.png</file>
+    <file>icon/fileimport.png</file>
+    <file>icon/fileprint.png</file>
+    <file>icon/filter.png</file>
+    <file>icon/folder_home.png</file>
+    <file>icon/forward.png</file>
+    <file>icon/irkick.png</file>
+    <file>icon/kontact_todo.png</file>
+    <file>icon/package_utilities.png</file>
+    <file>icon/presence_online.png</file>
+    <file>icon/today.png</file>
+    <file>icon/umbrello_diagram_component.png</file>
+    <file>icon/vcs_add.png</file>
+    <file>icon/vcs_update.png</file>
+    <file>icon/view_sidetree.png</file>
+    <file>icon/view_text.png</file>
+    <file>icon/viewmag+.png</file>
+    <file>icon/wp.png</file>
+    <file>icon/www.png</file>
+  </qresource>
+</RCC>
