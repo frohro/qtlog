@@ -574,9 +574,9 @@ entfernen ?</source>
         <location filename="Qtlog.cpp" line="925"/>
         <location filename="Qtlog.cpp" line="928"/>
         <location filename="Qtlog.cpp" line="951"/>
-        <location filename="QtlogCb.cpp" line="184"/>
-        <location filename="QtlogCb.cpp" line="206"/>
-        <location filename="QtlogCb.cpp" line="211"/>
+        <location filename="QtlogCb.cpp" line="183"/>
+        <location filename="QtlogCb.cpp" line="205"/>
+        <location filename="QtlogCb.cpp" line="210"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
@@ -586,37 +586,37 @@ entfernen ?</source>
         <translation>AWD Error</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="119"/>
-        <location filename="QtlogCb.cpp" line="146"/>
+        <location filename="QtlogCb.cpp" line="118"/>
+        <location filename="QtlogCb.cpp" line="145"/>
         <source>   INFO    </source>
         <translation>   INFO    </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="119"/>
+        <location filename="QtlogCb.cpp" line="118"/>
         <source>
 AWD-Auswertung ist im Layout nicht selektiert</source>
         <translation>
 AWD-evaluation is not selected in the layout.</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="146"/>
+        <location filename="QtlogCb.cpp" line="145"/>
         <source>
 AWD-Auswertung ist nicht selektiert</source>
         <translation>
 AWD-evaluation is not selected</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="221"/>
+        <location filename="QtlogCb.cpp" line="220"/>
         <source>Fertig</source>
         <translation>Ready</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="251"/>
+        <location filename="QtlogCb.cpp" line="250"/>
         <source>QtLog System Info </source>
         <translation>QtLog System Info </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="252"/>
+        <location filename="QtlogCb.cpp" line="251"/>
         <source>
 Das Datenbank runtime_Flag steht auf: 0 
 QtLog wurde noch nicht Initialisiert !!
@@ -636,12 +636,12 @@ In this case, a bulky damage has occurred. Look in &quot;.config / Qtlog qtlog.i
 If no deviations found so by emailing me with the &apos;.qtlog / qlogfile&apos; to diek@dl1hbd.de.</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="275"/>
+        <location filename="QtlogCb.cpp" line="274"/>
         <source>Meldung an User:</source>
         <translation>Message to user:</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="276"/>
+        <location filename="QtlogCb.cpp" line="275"/>
         <source>
 Fehlermeldung vom MySQL-Server !
 Die Zugangsberechtigung ist beschaedigt
@@ -653,43 +653,43 @@ Operation is not possible.
 CheckMe:</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="277"/>
+        <location filename="QtlogCb.cpp" line="276"/>
         <source>UserName = </source>
         <translation>UserName = </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="278"/>
+        <location filename="QtlogCb.cpp" line="277"/>
         <source>
 Passwort = </source>
         <translation>
 Password = </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="279"/>
+        <location filename="QtlogCb.cpp" line="278"/>
         <source>
 dbname = </source>
         <translation>
 dbname = </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="283"/>
+        <location filename="QtlogCb.cpp" line="282"/>
         <source>Server-Datenbank INFO</source>
         <translation>Server database INFO</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="299"/>
+        <location filename="QtlogCb.cpp" line="298"/>
         <source>Rel.Nr : </source>
         <translation>Rel.Nr : </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="300"/>
+        <location filename="QtlogCb.cpp" line="299"/>
         <source>
 qtlog - Versions Info - </source>
         <translation>
 qtlog - Version  Info - </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="301"/>
+        <location filename="QtlogCb.cpp" line="300"/>
         <source>
 Die DB_Release_Nr ist ungueltig.
 
@@ -701,7 +701,7 @@ Get information on www.dl1hbd.de, or send a request.
 Operation is not possible!</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="304"/>
+        <location filename="QtlogCb.cpp" line="303"/>
         <source>
 Datenbank - Info
 </source>

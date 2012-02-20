@@ -17,6 +17,8 @@
 #include "setup.h"
 #include "../qtlogDiag/dirmngr.h"
 #include "../qtlogDiag/version.h"
+#include <QTranslator>
+#include <QDebug>
 
 
 extern DirMngr dirMngr;
@@ -27,9 +29,14 @@ int main(int argc, char *argv[])
     QString b, s, h, p;
     int i;
     
+    QTranslator translator;
+    if(translator.load("../setupDiag/qtlogSetup_en")) qDebug()<<"Got the translation for setup.\n";
+    QApplication a(argc, argv);
+    a.installTranslator(&translator);
+
     QString home = QDir::homePath(); 
     s = home+"/.qtlog";                         // prüfe ob Ordner $HOME.qtlog vorhanden ist
-    QDir dir(s);
+    QDir dir(s);                                // Check if file exists $ HOME.qtlog
     if(!dir.exists())
        dir.mkdir(s);                            // nein; anlegen          
     
@@ -37,7 +44,7 @@ int main(int argc, char *argv[])
     i = system(p.toAscii());                    // suche den mysqld_prozess
     h = home;
     h += "/.qtlog/rigstatus";                   // prüfe status auf erfolg
-    QFile iniFile(h);
+    QFile iniFile(h);                           //check status on success
     iniFile.open(QIODevice::ReadOnly);
     QTextStream istream( &iniFile);             // oeffne status_file
     p = istream.readLine(0);                    // nur 1.Zeile
@@ -73,7 +80,6 @@ int main(int argc, char *argv[])
     
 // ------------------------------------
 
-    QApplication a(argc, argv);
     setup setupD;
     setupD.show();
     return a.exec();

@@ -28,6 +28,7 @@ SOURCES += main.cpp \
            setupdata.cpp
 
 RESOURCES = ../qtlogRessourcen.qrc
+TRANSLATIONS += qtlogSetup_en.ts
 
 TARGET = ../setupqtlog
 
