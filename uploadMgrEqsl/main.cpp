@@ -10,7 +10,10 @@
 #include "uploadMgr.h"
 int main(int argc, char **argv)
 {
+    QTranslator translator;
+    if(translator.load("../uploadMgrEqsl/qtlogUpload_en")) qDebug()<<"Got the translation for upload.\n";
     QCoreApplication app(argc, argv);
+    app.installTranslator(&translator);
     QCoreApplication::setOrganizationName("QtLog");
     QCoreApplication::setApplicationName("qtlog");
     UploadMgr manager;

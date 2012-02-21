@@ -9,10 +9,17 @@
 ********************************************************************** */
 
 #include <QApplication>
+#include <QTranslator>
+#include <QDebug>
 #include "start.h"
+
 int main(int argc, char *argv[])
 {
+  QTranslator translator;
+  if(translator.load("../startHelp/qtlogStart_en")) qDebug()<<"Got the translation for startHelp.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
+
   start startD;
   startD.show();
   return a.exec();

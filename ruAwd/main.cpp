@@ -14,7 +14,10 @@
 #include "rdawd.h"
 int main(int argc, char *argv[])
 {
+  QTranslator translator;
+  if(translator.load("../ruAwd/qtlogRuAward_en")) qDebug()<<"Got the translation for ruAwd.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   Rda rD;
   rD.show();
   return a.exec();

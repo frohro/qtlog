@@ -36,3 +36,4 @@ SOURCES += uploadMgr.cpp \
 TARGET = ../bin/uploadEqsldb
 
 DEPENDPATH +=
+TRANSLATIONS += qtlogUpload_en.ts

@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
        exit(0);
     }
   QTranslator translator;
-  if(translator.load("/home/frohro/log/qtlogDiag/qtlog_en")) qDebug()<<"Got the translation.\n";
+  if(translator.load("../qtlogDiag/qtlog_en")) qDebug()<<"Got the translation.\n";
   QApplication a(argc, argv);
   a.installTranslator(&translator);
   QtLog qtlogDialog;

@@ -35,3 +35,5 @@ RESOURCES = ../qtlogRessourcen.qrc
 unix::TARGET = ../bin/ruawddb
 
 DEPENDPATH +=
+
+TRANSLATIONS += qtlogRuAward_en.ts

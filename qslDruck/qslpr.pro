@@ -49,3 +49,5 @@ RESOURCES = ../qtlogRessourcen.qrc
 unix::TARGET = ../bin/qslprintdb
 
 DEPENDPATH +=
+
+TRANSLATIONS += qtlogQSLlpr_en.ts
