@@ -36,3 +36,6 @@ RESOURCES = ../qtlogRessourcen.qrc
 unix::TARGET = ../bin/qrzdb
 
 DEPENDPATH += .
+
+
+TRANSLATIONS += qtlogQRZ_en.ts

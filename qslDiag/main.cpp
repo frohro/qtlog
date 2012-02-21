@@ -17,7 +17,10 @@ DirMngr dirMngr;
 int main(int argc, char *argv[])
 {
   dirMngr.SetProgramDir(argv[0]);
+  QTranslator translator;
+  if(translator.load("../qslDiag/qtlogQSL_en")) qDebug()<<"Got the translation for qsllpr.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   qsl qslDiag;
   qslDiag.show();
   return a.exec();

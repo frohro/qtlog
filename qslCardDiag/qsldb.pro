@@ -50,3 +50,5 @@ unix::TARGET = ../bin/qslcarddb
 
 DEPENDPATH +=
 
+TRANSLATIONS += qtlogQSLdb_en.ts
+

@@ -13,7 +13,10 @@
 #include "qrz.h"
 int main(int argc, char *argv[])
 {
+  QTranslator translator;
+  if(translator.load("../qrzDb/qtlogQRZ_en")) qDebug()<<"Got the translation for qslCardDiag.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   Qrz qr;
   qr.show();
   return a.exec();
