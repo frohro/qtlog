@@ -8,6 +8,7 @@
 #else
 #define DIR_SEP '/'
 #endif
+
 void StartProcess(QString cmd)
 {
 #ifdef Q_WS_WIN
@@ -30,8 +31,6 @@ void StartProcess(QString cmd)
     )
         ;//ErrorExit( "CreateProcess failed." );
     
-    
-    
     CloseHandle( pi.hProcess );
     CloseHandle( pi.hThread );
 #else
@@ -40,9 +39,11 @@ void StartProcess(QString cmd)
     x = system(cmd.toAscii());
 #endif
 }
+
 DirMngr::DirMngr()
 {
 }
+
 void DirMngr::SetProgramDir(QString dir)
 {
 	QFileInfo applInfo(dir);
@@ -59,6 +60,7 @@ void DirMngr::SetProgramDir(QString dir)
 	SetDir(getenv("HOME"),DIR_HOME);
 #endif
 }
+
 void DirMngr::SetDir(QString dir,int where)
 {
 	QString tmp=dir;
@@ -72,6 +74,7 @@ void DirMngr::SetDir(QString dir,int where)
 		case DIR_TEMP:tempDir=tmp;break;
 	}
 }
+
 QString DirMngr::GetDir(int where)
 {
 	switch(where){
@@ -84,6 +87,7 @@ QString DirMngr::GetDir(int where)
 	}//switch
 	return QString("");
 }
+
 QString DirMngr::CreatePath(QString fileName,int where)
 {
 	return GetDir(where)+fileName;

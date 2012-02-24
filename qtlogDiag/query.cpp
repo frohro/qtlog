@@ -13,8 +13,10 @@
 #include <QTabWidget>
 #include <QtGui>
 #include <QtSql>
+
 #include "query.h"
 #include "../qtlogDiag/translate.h"
+
 #include "dirmngr.h"
 #include "quAdif.h"
 
@@ -39,82 +41,93 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    connect(ButtonClear, SIGNAL(clicked()), this, SLOT(buttonClearCb()));
    connect(ButtonCopy, SIGNAL(clicked()), this, SLOT(buttonCopyDataCb()));
    connect(ButtonHilfe, SIGNAL(clicked()), this, SLOT(showHilfeCb()));
+   
    connect(tabWidget, SIGNAL(currentChanged(int)), this, SLOT(tabCurrentChangedCb(int)));
-   queryList->setColumnWidth(0,80);                  
-   queryList->setColumnWidth(1,65);                  
-   queryList->setColumnWidth(2,35);                  
-   queryList->setColumnWidth(3,1200);                
-   queryList->setColumnWidth(4,40);                  
+   
+   queryList->setColumnWidth(0,80);                  // name  
+   queryList->setColumnWidth(1,65);                  // sep
+   queryList->setColumnWidth(2,35);                  // eor
+   queryList->setColumnWidth(3,1200);                // query
+   queryList->setColumnWidth(4,40);                  // no
+   
    logList->setColumnWidth(0,30);                    
-   logList->setColumnWidth(1,90);                    
-   dataList->setColumnWidth(0,80);                   
+   logList->setColumnWidth(1,90);     
+   
+   dataList->setColumnWidth(0,80);        
+   
    logFile = settings.value("logFile").toString();
    transl.installHashTable();                        //-Hash_tabellen zur NamenConvertierung anlegen
-   transl.installHashTableBand();                    
+   transl.installHashTableBand();                    // -.-           Bandtabelle
    QSqlQuery query; 
    qy = "SELECT refnam FROM refnamen WHERE type='2'  OR type='3' ORDER BY idn";
    query.exec(qy);
-   while(query.next()) {                             
+   while(query.next()) {                             // Die restlichen RefNamen ohne *
       i = 0;
       n = 0;
-      s = query.value(n).toString();                 
+      s = query.value(n).toString();                 // refnam
       if(s.compare("Cept") != 0) {
         QTreeWidgetItem *item = new QTreeWidgetItem(logList);
-        item->setText(i++,"");                       
-        item->setText(i++,s);                        
+        item->setText(i++,"");                       // sel keine '*'
+        item->setText(i++,s);                        // refnam
       }
    }
+   
    qy = "SELECT * FROM wquery";
    query.exec(qy);
    n = 0;
-   while(query.next()) {                                      
+   while(query.next()) {                                      // Tabell    
       i = 0;
       n = 0;
       QTreeWidgetItem *item = new QTreeWidgetItem(queryList);
-      item->setText(i++,query.value(n++).toString());         
-      item->setText(i,query.value(n++).toString());           
+      item->setText(i++,query.value(n++).toString());         // name
+      item->setText(i,query.value(n++).toString());           // separator
       item->setTextAlignment(i++,Qt::AlignCenter);
-      item->setText(i,query.value(n++).toString());           
+      item->setText(i,query.value(n++).toString());           // eor
       item->setTextAlignment(i++,Qt::AlignCenter);
-      item->setText(i++,query.value(n++).toString());         
-      item->setText(i++,"");                                  
+      item->setText(i++,query.value(n++).toString());         // query
+      item->setText(i++,"");                                  // No     
    }
    
-   AWD = settings.value("Val").toString();                    
+   AWD = settings.value("Val").toString();                    // AWAD-type
    showTable = 0;
    upItem = NULL;
    cntdpos = 0;
 }
 
+// ----------------
 query::~query()
 {
 }
 
+// ----------------
 void query::goExit() 
 {
   accept();                              
 }
 
-
+// schalte auf Page 0
+// ------------------
 void query::buttonBackCb()
 {
    tabWidget->setCurrentIndex(0);
 }
 
+// ---------------------
 void query::showHilfeCb()
 {
    settings.setValue("Val","DataExport");
    StartProcess("hilfedb &");
 }
 
-
+// ------------------------------------------------------
+// currentPageChanged - nach config query schaltet
 //------------------------------------------------------
 void query::tabCurrentChangedCb(int index)
 {
    QString range, token, t;
    int len, idx, pos;
-   if(index == 1) {                                    
-     
+   if(index == 1) {                                    // logbook_header_page einstellen
+     // Datum, Start, Call, Mode, RSTg, RSTe, AWD, Locator range <2007-11-01> to <2008-01-30> ORDER BY Dxcc
      s = lineEditQuery->text();
      cnt = s.count();  
      
@@ -125,35 +138,35 @@ void query::tabCurrentChangedCb(int index)
      }
      
      pos = 0;
-     if(cnt != 0) {                                   
+     if(cnt != 0) {                                   // check token_str vorhanden
        buttonClearCb();
-       i = s.indexOf("range");                        
+       i = s.indexOf("range");                        // range_index ermitteln
        token = s.left(i);
-       token = token.simplified();                    
-       range = s.mid(i);                              
+       token = token.simplified();                    // token_str aufbereiten
+       range = s.mid(i);                              // range_str aufbereiten
        range = range.simplified();
-       len = token.count();                           
+       len = token.count();                           // token_str einlesen
       
        pos = 1;
        idx = 0;
-       while( 1 ) {                                  
-        while(len != idx +1) {                       
+       while( 1 ) {                                  // datastream
+        while(len != idx +1) {                       // header_str lesen
           t = "";
-          while((token[idx] != QChar(',')) && (idx != len)) {  
+          while((token[idx] != QChar(',')) && (idx != len)) {  // ein Token holen
                t += token[idx]; 
-               idx++;                               
+               idx++;                               // char +1 
           }
           t = t.simplified();
-          insertTok(t,pos);                         
+          insertTok(t,pos);                         // füge token in logList und dataList ein
           pos++;
-          if(idx  == len) break;                    
-          idx++;                                    
-        }                                           
+          if(idx  == len) break;                    // das letzte Feld
+          idx++;                                    // ',' überspringen n. token holen
+        }                                           // das n.Feld
         if(idx  == len) break;
-      }                                             
+      }                                             // ENDE FELD_str
       cntdpos = pos;
-                                                    
-      s = lineEditTrenner->text();                  
+                                                    // -- Separatoren
+      s = lineEditTrenner->text();                  // Feld_Separatoren
       s = s.simplified();  
       if(s.compare(";") == 0)
          comboBoxSep->setCurrentIndex(0);
@@ -167,8 +180,8 @@ void query::tabCurrentChangedCb(int index)
       if(s.compare(":") == 0) 
          comboBoxSep->setCurrentIndex(3);
       
-      
-      s = lineEditEor->text();                     
+      // -- zeilenumbruch
+      s = lineEditEor->text();                       // Zeilenumbruch
       s = s.simplified();  
       if(s.compare("L") == 0)
          comboBoxEor->setCurrentIndex (0);
@@ -177,56 +190,58 @@ void query::tabCurrentChangedCb(int index)
           comboBoxEor->setCurrentIndex (1);
      
       len = range.count();
-      i = range.indexOf("range");                
-      range = range.mid(i +5,len);               
-      idx = 0;                                   
-      while(range[idx] != QChar('<')) range[idx++];         
-      idx++;                                                
+      i = range.indexOf("range");                    // range <2008-01-01> to <2009-01-11>"
+      range = range.mid(i +5,len);                   // <2008-01-01> to <2009-01-11> ORDER BY Dxcc
+      idx = 0;                                       // range - qday: "<2008-01-01> to <2009-01-11>"
+      while(range[idx] != QChar('<')) range[idx++];         // suche '<'
+      idx++;                                                // '<' überspringen
       whv = "";
-      while(range[idx] != QChar('>')) whv += range[idx++];  
+      while(range[idx] != QChar('>')) whv += range[idx++];  // von_datum übernehmen
       idx++;
       whb = "";
-      while(range[idx] != QChar('<')) range[idx++];         
+      while(range[idx] != QChar('<')) range[idx++];         // suche '<'
       idx++;
-      while(range[idx] != QChar('>')) whb += range[idx++];  
+      while(range[idx] != QChar('>')) whb += range[idx++];  //  bis_datum übernehmen
       
       
       QDate d = QDate::fromString (whv,"yyyy-MM-dd");
-      dateEditFrom->setDate(d);                           
+      dateEditFrom->setDate(d);                            // vom
       d = QDate::fromString (whb,"yyyy-MM-dd");
-      dateEditTo->setDate(d);                             
+      dateEditTo->setDate(d);                              // bis
       
       labelQuery->setText(lineEditQname->text());
     }
   }
 }
 
-
+// füge token in logList und dataList ein
+// ----------------------------------------
 void query::insertTok(QString tok, int pos)
 {
   int count;
-      count = logList->topLevelItemCount();          
-      lItem = logList->currentItem();                
+      count = logList->topLevelItemCount();          // Listenlaenge
+      lItem = logList->currentItem();                // arbeits_item
       i = 0;
-      while(i != count ) {                           
+      while(i != count ) {                           // suche tok in logList
         lItem = logList->topLevelItem (i);
         if(lItem->text(1).compare(tok) == 0)
-           break;                                    
+           break;                                    // gefunden
         i++;
       }
-      s = s.setNum(pos);                             
+      s = s.setNum(pos);                             // tok_pos setzen
       lItem->setText(0,s);
       QTreeWidgetItem *itemN = new QTreeWidgetItem(dataList);
-      itemN->setText(0,lItem->text(1));              
+      itemN->setText(0,lItem->text(1));              // tok in dataList einfügen
 }
 
-
+// clear datalist und 1.spalte in logList ( sel )
+// ------------------------------------------------
 void query::buttonClearCb()
 {
-     dataList->clear();                         
-     i = logList->topLevelItemCount();          
-     lItem = logList->currentItem();            
-     n =  logList->indexOfTopLevelItem(lItem);  
+     dataList->clear();                         // clear sel 'sel' in logList löschen
+     i = logList->topLevelItemCount();          // Listenlaenge
+     lItem = logList->currentItem();            // 1.pos einehmen
+     n =  logList->indexOfTopLevelItem(lItem);  // nr layout_item
      n = 0;
      while( n != i ) {
        lItem = logList->topLevelItem (n);
@@ -236,14 +251,15 @@ void query::buttonClearCb()
      cntdpos = 0;
 }
 
-
+// Button Übernehmen  geklickt - config_data übernehmen (in lineEditQuery eintragen )
+// ----------------------------------------------------------------------------------
 void query:: buttonCopyDataCb()
 {
      //Muster: Datum,Start, Ende, Call, Mode, RSTg, RSTe, AWD, Locator range <2007-11-01> to <2008-01-30> ORDER BY Dxcc
      QString q;
-     i = dataList->topLevelItemCount();          
-     lItem = dataList->currentItem();            
-     n =  dataList->indexOfTopLevelItem(lItem);  
+     i = dataList->topLevelItemCount();           // Listenlaenge
+     lItem = dataList->currentItem();             // arbeits_item
+     n =  dataList->indexOfTopLevelItem(lItem);   // anzahl
      n = 0;
      q = "";
      while( n != i ) {
@@ -254,7 +270,7 @@ void query:: buttonCopyDataCb()
           q += ",";
      }
      
-     QDate d = dateEditFrom->date();               
+     QDate d = dateEditFrom->date();               // Vom
      whv = t.setNum(d.year());
      whv += "-";
      t.setNum(d.month());
@@ -266,7 +282,7 @@ void query:: buttonCopyDataCb()
         whv += "0";
      whv += t;
      
-     d = dateEditTo->date();                       
+     d = dateEditTo->date();                       // Bis
      whb = t.setNum(d.year());
      whb += "-";
      t.setNum(d.month());
@@ -292,11 +308,11 @@ void query:: buttonCopyDataCb()
      tabWidget->setCurrentIndex (0);
 }
 
+// ---------------------------------------------------------
 void query::queryListDoubleClicked(QTreeWidgetItem *item, int col)
 {
-    int x;
+    int x = col;
     upItem = item;
-    x = col;
     lineEditQname->setText(item->text(0));
     lineEditTrenner->setText(item->text(1));
     lineEditEor->setText(item->text(2));
@@ -305,11 +321,12 @@ void query::queryListDoubleClicked(QTreeWidgetItem *item, int col)
     tabWidget->setCurrentIndex(1);
 }
 
+// -------------------------------------------------------
 void query::queryListClicked(QTreeWidgetItem *item, int col)
 {
     int x;
-    upItem = item;
     x = col;
+    upItem = item;
     lineEditQname->setText(item->text(0));
     lineEditTrenner->setText(item->text(1));
     lineEditEor->setText(item->text(2));
@@ -317,12 +334,14 @@ void query::queryListClicked(QTreeWidgetItem *item, int col)
     lineEditOutfile->setText(item->text(0));
 }
 
+// -----------------------------------------------
 void query::textEditedQnameCb(QString str)
 {
    lineEditQname->setText(str.toUpper());
 }
 
-
+// kopiere headername: logHeader -> dataHeader, setze cntNr
+// --------------------------------------------------------------
 void query::logListClickedCb(QTreeWidgetItem *item,int col)
 {
     int x;
@@ -333,71 +352,74 @@ void query::logListClickedCb(QTreeWidgetItem *item,int col)
       itemnew->setText(0,item->text(1));
       cntdpos++;
     }
-    else {                                         
-       item->setText(0,"");                        
-       i = dataList->topLevelItemCount();          
-       lItem = dataList->currentItem();            
-       n =  dataList->indexOfTopLevelItem(lItem);  
+    else {                                          // name ist schon belegt - löschen
+       item->setText(0,"");                         // Listenlaenge
+       lItem = dataList->currentItem();             // 1.pos einehmen
+       n =  dataList->indexOfTopLevelItem(lItem);   // nr layout_item
        n = 0;
        while( n != i ) {
          lItem = dataList->topLevelItem (n);
          s = lItem->text(0);
-         x = s.compare(item->text(1));             
+         x = s.compare(item->text(1));              // Vergleich item(1) / Item(0)
          if( !x ) {
-           dataList->takeTopLevelItem(n);          
+           dataList->takeTopLevelItem(n);           // löschen layout_item
            break;
          }
          n++;
        }
        if( x ) {
-         qDebug() << "Grober FEHLER";
+         qDebug() << "Grober FEHLER";               // sollte nicht vorkommen
         return;
        }
     }
 }
 
-
+// entferne name im dataList und cntNr im logList
+// ---------------------------------------------------------
 void query::dataListClickedCb(QTreeWidgetItem *item, int col)
 {
      int x;
      x = col;
-     i = logList->topLevelItemCount();          
+     i = logList->topLevelItemCount();             // Listenlaenge
      lItem = logList->currentItem();
      n = 0;
      while( n != i ) {
        lItem = logList->topLevelItem (n);
        s = lItem->text(1);
-       x = s.compare(item->text(0));            
+       x = s.compare(item->text(0));              // Vergleich item(0) / Item(1)
          if( !x ) {
            lItem->setText(0,"");
            break;
          }
          n++;
        }
-       n =  dataList->indexOfTopLevelItem(item);  
-       dataList->takeTopLevelItem(n);             
+       n =  dataList->indexOfTopLevelItem(item);  // nr layout_item
+       dataList->takeTopLevelItem(n);             // löschen layout_item
 }
-//-------------------------------------------------------------------------------
 
+//-------------------------------------------------------------------------------
+// Update oder INSERT query_str ( falls name nicht vorhanden - INSERT neues query 
+// ------------------------------------------------------------------------------
 
 void query::buttonSaveCb()
 {
-     QSqlQuery query;              
+     QSqlQuery query;               // prüfe ob name bereits vorhanden  ja: update - sonst NEU anlegen
      qy = "SELECT name FROM wquery WHERE name='"+lineEditQname->text()+"'";
-     query.exec(qy);
-     if(query.size() == 1) {                               
+     query.exec(qy); 
+     if(query.size() == 1) {                                  // Update
        qy = "UPDATE wquery SET sep='"+lineEditTrenner->text();
        qy += "',eor='"+lineEditEor->text();
        qy += "',query='"+lineEditQuery->text();  
        qy += "' WHERE name='"+lineEditQname->text()+"'";
        query.exec(qy);
+       
        i = 1;
-       upItem->setText(i++,lineEditTrenner->text());          
-       upItem->setText(i++,lineEditEor->text());              
-       upItem->setText(i++,lineEditQuery->text());            
+       upItem->setText(i++,lineEditTrenner->text());          // sep
+       upItem->setText(i++,lineEditEor->text());              // eor
+       upItem->setText(i++,lineEditQuery->text());            // query
      }
-     else {                                                   
-       if(lineEditQuery->text().count() == 0) {               
+     else {                                                   // neu           
+       if(lineEditQuery->text().count() == 0) {               // kein query
           QMessageBox::information(this,tr(" Info"),tr("Kein Query konfiguriert"),
           QMessageBox::Ok); 
          return;
@@ -417,28 +439,26 @@ void query::buttonSaveCb()
        query.exec(qy);
        i = 0;
        QTreeWidgetItem *item = new QTreeWidgetItem(queryList);
-       item->setText(i++,lineEditQname->text());         
-       item->setText(i,lineEditTrenner->text());         
+       item->setText(i++,lineEditQname->text());           // name
+       item->setText(i,lineEditTrenner->text());           // sep
        item->setTextAlignment(i++,Qt::AlignCenter);
-       item->setText(i,lineEditEor->text());             
+       item->setText(i,lineEditEor->text());               // eor
        item->setTextAlignment(i++,Qt::AlignCenter);
-       item->setText(i++,lineEditQuery->text());         
-       item->setText(i++,"");                            
+       item->setText(i++,lineEditQuery->text());           // query
+       item->setText(i++,"");                              // No    
      }
-    
-    
-    
-    
 }
 
 
-
+// ------------------------------------------------------------------------
+// Ein TEXT_file CSV_format erzeugen  - make_query, dann make_text
+// ------------------------------------------------------------------------
 void query::buttonMkTextCb()
 {
      err = 0;
-     createQuery();                           
+     createQuery();                            // query bilden
      if(err) 
-        return;                               
+        return;                                // Syntax_FEHLER festgestellt
      err = 0;
      if(lineEditOutfile->text().count() == 0) {
         int status = QMessageBox::information(this,tr("Parameter Check"),
@@ -447,20 +467,23 @@ void query::buttonMkTextCb()
        if(status != QMessageBox::Yes)
         return;
        else {
-          showTable = 1;                       
+          showTable = 1;                        // flg für anzeigen
           goExit();
        }
      }
-     else {                                    
+     else {                                     // Datei_name vorhanden
        QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-       mkText();                               
+       mkText();                                // TextDatei erzeugen
        QApplication::restoreOverrideCursor();
-       s = "\n"+t.setNum(cnt)+"  Datensaetze - erzeugt\nDatei:  ";
+       s = "\n"+t.setNum(cnt)+tr("  Datensaetze - erzeugt\nDatei:  ");
        s +=  QDir::homePath();                     
        s += "/";
        s += lineEditOutfile->text()+".csv  \n\n";
-       s += "Zurueck zum ReportDialog";
-       int status = QMessageBox::information(this,tr("Ergebnis Check"),(s),
+       s += tr("Zurueck zum ReportDialog");
+       
+       qDebug() << "str:" << s;
+       
+       int status = QMessageBox::information(this,tr("Ergebnis Check"),s,
                     QMessageBox::Yes,QMessageBox::No); 
        if(status == QMessageBox::Yes)
          goExit();
@@ -468,13 +491,15 @@ void query::buttonMkTextCb()
 }
 
 
-
+// ------------------------------------------------------------------------
+// Ein ADIF_file erzeugen  - make_query, dann make_adif
+// ------------------------------------------------------------------------
 void query::buttonMkAdifCb()
 {
      err = 0;
-     createQuery();                           
+     createQuery();                             // query bilden
      if(err) 
-        return;                               
+        return;                                 // Syntax_FEHLER festgestellt
      err = 0;
      if(lineEditOutfile->text().count() == 0) {
         int status = QMessageBox::information(this,tr("Parameter Check"),
@@ -483,7 +508,7 @@ void query::buttonMkAdifCb()
        if(status != QMessageBox::Yes)
         return;
        else {
-          showTable = 1;                      
+          showTable = 1;                       // flg für anzeigen
           goExit();
        }
      }
@@ -496,14 +521,15 @@ void query::buttonMkAdifCb()
        s += "/";
        s += lineEditOutfile->text()+".adi  \n\n";
        s += "Zurueck zum ReportDialog";
-       int status = QMessageBox::information(this,tr("Ergebnis Check"),(s),
+       int status = QMessageBox::information(this,tr("Ergebnis Check"),tr("%1").arg(s),
                     QMessageBox::Yes,QMessageBox::No); 
        if(status == QMessageBox::Yes)
          goExit();
      }
 }
 
-
+// query erzeugen
+// -----------------------------------------------------------------------
 void query::createQuery()
 {
     QString qtext, sep, s, q, qday;
@@ -528,9 +554,9 @@ void query::createQuery()
     idx = 0;
     cnt = 0;
     len = qtext.count();
-    
-    
-    
+    // "Format: Call, Datum, Band, Ende,  RSTe, RSTg, SRX, AWD, dxcc range <2008-01-01> to <2009-01-11>"
+    // Prüfe die syntax
+    // -----------------
     while(idx !=  len)                        
        if(qtext[idx++] == QChar('<') ) cnt++;
     idx = 0;
@@ -546,35 +572,37 @@ void query::createQuery()
     cnt = 0;
     while(idx !=  len) 
        if(qtext[idx++] == QChar('-') ) cnt++;
-    if(cnt != 4) {                             
+    if(cnt != 4) {                              // check ob im Datum Format  '-' vorhanden
       QMessageBox::information(this,tr("Syntax Fehler"),tr("Im Datum Format fehlen  '-'"),
        QMessageBox::Ok); 
        err = 1;
      return;
     }
     
-    idx = qtext.indexOf("range");             
-    if(idx == -1) {                           
+    // suche nach 'range' trenne data von Datum und ORDER BY
+    idx = qtext.indexOf("range");              // range_index suchen
+    if(idx == -1) {                            // range_index suchen
        QMessageBox::information(this,tr("Syntax Fehler"),tr("' range '  FEHLT !"),
        QMessageBox::Ok); 
        err = 1;
      return;
     }
-    q = qtext.left(idx);                      
-    qday = qtext.mid(idx +5,len);             
-    qday = qday.simplified();                 
-    q = q.simplified();                       
     
-    qy = "SELECT cept,";                      
+    q = qtext.left(idx);                      // split qtext - kopiere Header_Felder
+    qday = qtext.mid(idx +5,len);             // Datum_str + ORDER BY ( wenn vorhanden )
+    qday = qday.simplified();                 // space entfernen
+    q = q.simplified();                       // space entfernen
+    // -- baue header_str
+    qy = "SELECT cept,";                      // muss sein
     t = "";
     n = 0;
     err = 0;
     len = q.count();
     idx = 0;
-    while( 1 ) {                              
-         while(len != idx +1) {               
+    while( 1 ) {                              // datastream
+         while(len != idx +1) {               // header_str lesen
            t = "";
-           while((q[idx] != QChar(',')) && (idx != len)) {  
+           while((q[idx] != QChar(',')) && (idx != len)) {   // ein Token lesen
                t += q[idx]; 
                if(t.count() > 10) {
                  f = tr("Hier fehlt ein Komma ! ")+t;
@@ -583,32 +611,33 @@ void query::createQuery()
                  err = 1;
                  return;
                }
-               idx++;                                
+               idx++;                                // char +1   
            }
        
-           t = t.simplified();                       
-           f = t;                                    
-           if(idx  == len) break;                    
-           t = transl.getDbField(t);                 
+           t = t.simplified();                       // Komma gefunden
+           f = t;                                    // token sichern
+           if(idx  == len) break;                    // ist das letzte Feld
+           t = transl.getDbField(t);                 // Header_namen übersetzen - FEHLER prüfen
            if(t.compare("?") == 0) {
-              t = f+" ?";                            
+              t = f+" ?";                            // header_name unbekannt
               err = 1;
-             break;                                  
+             break;                                  // Name falsch
            }
-           idx++;                                    
-           if(idx  == len) break;                    
-           qy += t+",";                              
+           idx++;                                    // ',' überspringen n. token holen
+           if(idx  == len) break;                    // das letzte Zeichen ist ein komma
+           qy += t+",";                              // qy_string
          }
-         t = transl.getDbField(t);                   
+         t = transl.getDbField(t);                   // das letzt Wort übersetzen - FEHLER prüfen
          if(t.compare("?") == 0) {
-            t = f+" ?";                              
+            t = f+" ?";                              // header_name unbekannt
             err = 2;
-           break;                                    
+           break;                                    // Name falsch
          }
-         qy += t;                                    
+         qy += t;                                    // query_str
          if(idx  == len) break;
          if(err) break;
-    }                                               
+    }                                               // ENDE FELD_str
+    
     if(err) {
       f = tr("Feldnamen Error : ")+t;
       QMessageBox::information(this,tr("Syntax Fehler"),(f),
@@ -616,54 +645,57 @@ void query::createQuery()
         err = 1;
       return;
     }
-
+// --                                              // query aufbauen
     f = qy;
-    idx = f.indexOf("AWD");               
+    idx = f.indexOf("AWD");                        // hole AWD_index, wenn vorhanden
     n = idx;
-    awdPos = idx;                         
-    if( idx != -1 ) {                     
-      i = 0;                              
+    awdPos = idx;                                  // Char_AWD_pos im header, nicht gefunden -1
+    
+    if( idx != -1 ) {                              // ist AWD vorhanden ?
+      i = 0;                                       // ja;
       cnt = 0;
       while(i !=  n)
-       if(f[i++] == QChar(',') ) cnt++;   
-      awdPos = cnt +1;                    
-      qy = f.left(idx);                   
-      if( idx != -1 ) {                   
+       if(f[i++] == QChar(',') ) cnt++;            // zähle kommata
+      awdPos = cnt +1;                             // wort_AWD_position im query +1 für 'cept'
+      qy = f.left(idx);                            // kopiere Header_Felder bis AWD_Feld
+      if( idx != -1 ) {                            // da AWD gefunden - SUB_query einfügen
         s = "(SELECT awkenner FROM "+logFile+"awd WHERE awtype='";
         s += settings.value("Val").toString();
         s += "' AND id=qid)";
         qy += s;
-        s = f.mid(idx +3);                
+        s = f.mid(idx +3);                         // jetzt: AWD überspringen und den Rest_Header anhängen
         qy += s;
       }
     }
     
     qy += " FROM "+logFile+"om LEFT JOIN ("+logFile+"qsl,"+logFile+") ON (omid=oid AND qsoid=id)";
-    qy += " WHERE ";                      
-    idx = 0;                              
-    while(qday[idx] != QChar('<')) qday[idx++];         
-    idx++;                                              
+    qy += " WHERE ";                                    // WHERE class
+    
+    idx = 0;                                            // range - qday: "<2008-01-01> to <2009-01-11>"
+    while(qday[idx] != QChar('<')) qday[idx++];         // suche '<'
+    idx++;                                              // '<' überspringen
     whv = "";
-    while(qday[idx] != QChar('>')) whv += qday[idx++];  
+    while(qday[idx] != QChar('>')) whv += qday[idx++];  // von_datum übernehmen
     idx++;
     whb = "";
-    while(qday[idx] != QChar('<')) qday[idx++];         
+    while(qday[idx] != QChar('<')) qday[idx++];         // suche '<'
     idx++;
-    while(qday[idx] != QChar('>')) whb += qday[idx++];  
+    while(qday[idx] != QChar('>')) whb += qday[idx++];  //  bis_datum übernehmen
+
     qy += " day BETWEEN '"; 
     qy += whv;
     qy += "' AND '";
     qy += whb;
     qy += "'";
-    idx = qday.indexOf("ORDER BY");                    
-    if(idx != -1) {                                    
+    idx = qday.indexOf("ORDER BY");                    // suche ORDER BY
+    if(idx != -1) {                                    // wenn gefunden füge ORDER BY  'Name' ein
       qy += " ORDER BY ";
       s = qday.mid(idx +8);  
       s = s.simplified(); 
       f = s;
       s = transl.getDbField(s);                        //
          if(s.compare("?") == 0) {
-            t = f+" ?";                                
+            t = f+" ?";                                // header_name unbekannt
             f = tr("Feldnamen Error : ")+t;
             QMessageBox::information(this,tr("Syntax Fehler"),(f),
             QMessageBox::Ok);
@@ -675,8 +707,10 @@ void query::createQuery()
 }
 
 
-
-
+// ===========================================================
+// -----------------------------------------------------------
+//  erzeuge CSV_Daten_file - verwende date und time FORMATE 
+// -----------------------------------------------------------
 void query::mkText()
 {
     QString p, hfeld,rip;
@@ -684,8 +718,8 @@ void query::mkText()
     int col, idx;
     cnt = 0;
     path =  QDir::homePath();                     
-    path += "/";                                      
-    p = path+lineEditOutfile->text()+".csv";          
+    path += "/";                                       // auch bei ADI_datei ändern !!!!
+    p = path+lineEditOutfile->text()+".csv";           // file öffnen
 
     QFile file(p);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -698,30 +732,30 @@ void query::mkText()
     rip += " ";
     
     QSqlQuery query; 
-    query.exec(qy);                                  
-    n = query.size();                                
-    col = query.record().count();                    
-    while(query.next() ) {                           
+    query.exec(qy);                                   // query ausführen
+    n = query.size();                                 // Tabellen_größe
+    col = query.record().count();                     // Anzahl Tabellen_felder
+    while(query.next() ) {                            // db_loop
       idx = 0;
       p = "";
       Call = "";
       Cept = "";
-      while( idx != col ) {                          
-        n = 0;                                       
-        hfeld = query.record().fieldName(idx);       
-        val = query.value(idx).toString();           
-        if(hfeld.compare("id") == 0) {               
+      while( idx != col ) {                           // -- data_header_loop --
+        n = 0;                                        // ----------------------
+        hfeld = query.record().fieldName(idx);        // dbfeld_name pos(col)
+        val = query.value(idx).toString();            // Feld_Data_value(col)
+        if(hfeld.compare("id") == 0) {                // ist satz_ID
            id = val;
         }
        else 
-        if(hfeld.compare("cept") == 0) { 
-           Cept = val;                               
+        if(hfeld.compare("cept") == 0) {  
+           Cept = val;                                // Cept
         }
        else
-        if(hfeld.compare("rufz") == 0) {             
+        if(hfeld.compare("rufz") == 0) {              // Call
           Call = val;
-          if(Cept.count() != 0) {                    
-              val = Cept+Call;                       
+          if(Cept.count() != 0) {                     // ist cept schon da ?
+              val = Cept+Call;                        // bilde cept/Call
               p += val+rip;
            }
            else 
@@ -729,65 +763,66 @@ void query::mkText()
         }
        else
         if(hfeld.compare("band") == 0) {
-           val = transl.getMyband(val);              
+           val = transl.getMyband(val);               // Band getMyBand(QString sysband)
            p += val+rip;
         }
        else
-        if(hfeld.compare("day") == 0) {              
-          if(comboBoxDform->currentIndex() == 0)     
+        if(hfeld.compare("day") == 0) {              // datum_format einfügen
+          if(comboBoxDform->currentIndex() == 0)     // 2000-02-01
             p += val+rip;
-          else {                                     
+          else {                                     // 20000201
              val = val.remove(QChar('-'), Qt::CaseInsensitive);
              p += val+rip;
           }
        }
        else
-        if(hfeld.compare("btime") == 0) {            
-          if(comboBoxTform->currentIndex() == 1) {   
+        if(hfeld.compare("btime") == 0) {             // zeit_format einfügen
+          if(comboBoxTform->currentIndex() == 1) {    // hhmmss
              val = val.remove(QChar(':'), Qt::CaseInsensitive);
           }
           else
-           if(comboBoxTform->currentIndex() == 2) {  
+           if(comboBoxTform->currentIndex() == 2) {  // hhmm
              val = val.remove(QChar(':'), Qt::CaseInsensitive);
              val = val.left(4);
            }
           p += val+=rip;
         }
        else 
-        if(hfeld.compare("etime") == 0) {            
-          if(comboBoxTform->currentIndex() == 1) {   
+        if(hfeld.compare("etime") == 0) {             // zeit_format
+          if(comboBoxTform->currentIndex() == 1) {    // hhmmss
              val = val.remove(QChar(':'), Qt::CaseInsensitive);
           }
           else
-           if(comboBoxTform->currentIndex() == 2) {  
+           if(comboBoxTform->currentIndex() == 2) {  // hhmm
              val = val.remove(QChar(':'), Qt::CaseInsensitive);
              val = val.left(4);
            }
            p += val+rip;
         }
-       else {                                       
+       else {                                        // default 
           p += val;
         if( idx +1  == col )
             ;
         else
           p += rip;
        }
-       idx++;                                      
+       idx++;                                        // nächstes Feld
       }
-      out << p << "\n";                            
+      out << p << "\n";                              // ein Datensatz fertig
       cnt++;
     }
     file.close();
 }
 
-
-
+// ====================================================================
+// erzeuge ADIF_daten_file
+// --------------------------------------------------------------------
 void query::mkAdif()
 {
     QString fp;
     path =  QDir::homePath();                     
     path += "/";
-    fp = path+lineEditOutfile->text()+".adi";         
+    fp = path+lineEditOutfile->text()+".adi";         // file öffnen
    
     quadi adi;
     adi.createAdifTableHeader();
@@ -798,9 +833,9 @@ void query::mkAdif()
     query.exec(s);
     while(query.next()) { 
        n = 0;
-       t = query.value(n++).toString();         
-       s = query.value(n++).toString();         
-       adi.loadAdifAwdTable(t,s);               
+       t = query.value(n++).toString();         // atype
+       s = query.value(n++).toString();         // adiftype
+       adi.loadAdifAwdTable(t,s);               // in Tabelle eintragen
     }
     
     adi.setDayForm(comboBoxDform->currentIndex());

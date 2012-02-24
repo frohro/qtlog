@@ -47,9 +47,10 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
   wAwd->setText(settings.value("ClubAwd").toString());
   wQslMgr->setText(settings.value("QslMgr").toString());
   
+  // setup SIGNAL and SLOT connection
   connect(ButtonExit, SIGNAL(clicked()), this, SLOT(goExit()));
   
-  
+  // Standort - Bei jedem Tastedruck wird ein Flag gesetzt - Text verändert.
   connect(wCall, SIGNAL(textChanged(const QString)), this, SLOT(wCallCb(const QString&)));
   connect(wName, SIGNAL(textChanged(const QString)), this, SLOT(textMoved(const QString&)));
   connect(wQth, SIGNAL(textChanged(const QString)), this, SLOT(textMoved(const QString&)));
@@ -60,18 +61,18 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
   connect(wBreite, SIGNAL(textChanged(const QString)), this, SLOT(textMoved(const QString&)));
   connect(wMail, SIGNAL(textChanged(const QString)), this, SLOT(textMoved(const QString&)));
   connect(wWww, SIGNAL(textChanged(const QString)), this, SLOT(textMoved(const QString&)));
-
+  // save CLUB
   connect(ClubButton, SIGNAL(clicked()), this, SLOT(buttonClicked()));
   connect(NewLogButton, SIGNAL(clicked()), this, SLOT(makeLogFile()));
   connect(DelLogButton, SIGNAL(clicked()), this, SLOT(deleteLogFile()));
   connect(dblogsList, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)), this, SLOT(changeLogCb(QTreeWidgetItem *, int)));
    if( state == 0 )
-      tabWidget->setCurrentIndex ( 5 );       
+      tabWidget->setCurrentIndex ( 5 );        // Config DB zeigen
    else
-      tabWidget->setCurrentIndex ( 0 );       
+      tabWidget->setCurrentIndex ( 0 );        // normal - config LOG's default
    dblogsList->setColumnWidth(2,60);
    QSqlQuery query;
-   qy = "SELECT * FROM dblogs";               
+   qy = "SELECT * FROM dblogs";                // dblogs laden
    query.exec(qy);
    while(query.next()) {
       i = 0;
@@ -85,18 +86,18 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    }
    work = 0;
    workLog->setFocus();
-   tabWidget->setCurrentIndex(settings.value("Val").toInt()); 
-   qy = "SELECT * FROM tlocation";                            
+   tabWidget->setCurrentIndex(settings.value("Val").toInt()); // setze Page
+   qy = "SELECT * FROM tlocation";                            // Standort-Tabelle laden
    query.exec(qy);
-   row = query.size();                                        
-   locationTable->setRowCount(row);            
+   row = query.size();                                         // 12 Sätze
+   locationTable->setRowCount(row);             // TabellenLänge setzen - col ist schon gesetzt
    locationTable->setColumnWidth(0,70);
    locationTable->setColumnWidth(1,80);
    row = 0;
    while(query.next()) {
       col = 0;
       i = 0;
-      QTableWidgetItem *rowItem = new QTableWidgetItem(tr("%1").arg((0)*(0)));     
+      QTableWidgetItem *rowItem = new QTableWidgetItem(tr("%1").arg((0)*(0)));      // id
       rowItem->setText(query.value(i++).toString());
       locationTable->setVerticalHeaderItem(row,rowItem);
       QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg((row)*(col))); //logging
@@ -104,21 +105,18 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
       newItem->setText(s);
       locationTable->setItem(row,col++,newItem);
       if(s.count() != 0)
-        comboBoxHome->addItem(newItem->text());                         
-      newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));      
+        comboBoxHome->addItem(newItem->text());                          // comboBoxHOME füllen
+      newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));       // Standort
       newItem->setText(query.value(i++).toString());
       locationTable->setItem(row,col++,newItem);
       row++;
    }
    s = settings.value("qthId").toString();
-   wId->setText(s);                                
+   wId->setText(s);                                                      // default: HOME i == 1
    i = s.toInt();
    i--;
-   comboBoxHome->setCurrentIndex(i);               
-   //if(settings.value("EqslRealtime").toString().toInt() == 0)
-   
-   //else
-   
+   comboBoxHome->setCurrentIndex(i);                                     // index_HOME i = 0;
+
    lotwUser->setText(settings.value("LotUser").toString());
    lotwPasswd->setText(settings.value("LotPasswd").toString());
    eqslUser->setText(settings.value("EqslUser").toString());
@@ -135,7 +133,9 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
 confDialog::~confDialog()
 {
 }
-//--------------------------------------------------------------
+
+// Locator immer GroßBuchstaben
+//--------------------------------------------------
 void confDialog::keyPressEvent( QKeyEvent * event )
 {
    switch ( event->key() ) {
@@ -145,8 +145,10 @@ void confDialog::keyPressEvent( QKeyEvent * event )
    }
 }
 
+// *********************************************
 
-
+// Rufzeichen immer Großbuchstaben
+// ------------------------------------
 void confDialog::wCallCb(QString call)
 {
     call = call.toUpper();
@@ -154,7 +156,8 @@ void confDialog::wCallCb(QString call)
     work++;
 }
 
-
+// Locator immer GroßBuchstaben
+// ----------------------------------------------
 void confDialog::wLocatorCb(QString loc)
 {
     loc = loc.toUpper();
@@ -162,7 +165,8 @@ void confDialog::wLocatorCb(QString loc)
     work++;
 }
 
-
+// text_widget wurden editiert
+// ----------------------------------------------
 void confDialog::textMoved(const QString &str)
 {
    QString st;
@@ -170,13 +174,15 @@ void confDialog::textMoved(const QString &str)
    work++;                                      
 }
 
-
+// config für update einstellen ( daten speichern )
+// ----------------------------------------------
 void confDialog::buttonClicked()
 {
    work++;                                      
 }
 
-
+// comboBox_home_id verändert
+// ----------------------------------------------
 void confDialog::comboBoxHomeCb(int idx)
 {
    s.setNum(++idx);
@@ -200,11 +206,11 @@ void confDialog::internetParamSaveCb()
     settings.setValue("EqslUser",eqslUser->text());
     settings.setValue("EqslPasswd",eqslPasswd->text());
     
-    if(lotwPasswd->text().count() != 0) {   
+    if(lotwPasswd->text().count() != 0) {    // check DIR lotw
       QString h = QDir::homePath();
       s = h+"/lotw";
       QFile file(s);
-      if(file.exists(s) == false) {        
+      if(file.exists(s) == false) {         // wenn DIR lotw nicht vorhanden, anlegen  
         QDir dir(s);
         dir.mkpath(s);
         s += "/tmp";
@@ -212,7 +218,7 @@ void confDialog::internetParamSaveCb()
       }
     }
     
-    if(eqslPasswd->text().count() != 0) {   
+    if(eqslPasswd->text().count() != 0) {   // check DIR eQSL
       QString h = QDir::homePath();
       s = h+"/eQsl";
       QFile file(s);
@@ -223,20 +229,22 @@ void confDialog::internetParamSaveCb()
     }
 }
 
-
+// sichere Celltext
+// ------------------------------------------------------
 void confDialog::saveColValCb(QTableWidgetItem * item)
 {
      colval = item->text();
 }
 
-
-
-
+// Standorte editiert
+// *******************************************************************
+// Daten in der Standort_Tabelle editieren und in der DB updaten
+// SIGNAL ( itemChanged(QTableWidgetItem *));
 //-------------------------------------------------------------------
 void confDialog::updateLocationItemCb( QTableWidgetItem *item )
 {
  QString nam;
-        if (item != locationTable->currentItem())         
+        if (item != locationTable->currentItem())    // fremde items nicht bearbeiten     
           return;
         row = locationTable->row( item );             
         col = locationTable->column ( item );         
@@ -244,17 +252,17 @@ void confDialog::updateLocationItemCb( QTableWidgetItem *item )
            item->setText(colval);
            return;
         }
-        if(col == 0)
-          nam = "logging";                            
+        if(col == 0)                                 // nicht editierbar
+          nam = "logging";                           // spalten_name  
         else
-          nam = "place";                              
+          nam = "place";                             // spalten_name
         QSqlQuery query;
         QTableWidgetItem * v = locationTable->verticalHeaderItem ( row );
         qy = "UPDATE tlocation SET "+nam+"='"+item->text()+"' WHERE lid="+v->text();
         query.exec(qy);
-        n = comboBoxHome->currentIndex();               
+        n = comboBoxHome->currentIndex();            // currentItem sichern         
         comboBoxHome->clear();
-        QTableWidgetItem * sitem;                       
+        QTableWidgetItem * sitem;                    // neues arbeits_item erzeugen     
         row = 0;
         col = 0;
         while(row != 12) {
@@ -267,7 +275,8 @@ void confDialog::updateLocationItemCb( QTableWidgetItem *item )
         comboBoxHome->setCurrentIndex(n);
 }
 
-
+// save settings
+// ----------------------------------------------
 void confDialog::writeSettings()
 {
   settings.setValue("Logfile",LogLabel->text());
@@ -282,25 +291,20 @@ void confDialog::writeSettings()
   settings.setValue("Breite",wBreite->text());
   settings.setValue("Mail",wMail->text());
   settings.setValue("www",wWww->text());
-  
-  //if(checkBoxRealtimeUp->isChecked() == FALSE)
-  
-  //else
-  
-
+  // Club
   settings.setValue("Club",wClub->text());
   settings.setValue("KennerType",wKennerType->text());
   settings.setValue("Kenner",wKenner->text());
   settings.setValue("ClubAwd",wAwd->text());
   settings.setValue("QslMgr",wQslMgr->text());
   
-  QSqlQuery query;   
+  QSqlQuery query;                                     // prüfe ob Operator angelegt ist
   n = 0;
   qy="SELECT ocall,logbook,logging FROM toperator WHERE ocall='"+wCall->text()+"' AND logbook='";
   qy += settings.value("Logfile").toString()+"'";
   query.exec(qy);
   i = query.size();
-  if( !i ) {   
+  if( !i ) {                                          // nicht vorhandn
     
     s = "INSERT INTO toperator VALUES ('";
     s += wCall->text();
@@ -309,13 +313,15 @@ void confDialog::writeSettings()
     s += "','";
     s += "','"+wName->text();
     s += "','"+wQth->text();
-    s += "','"; 
+    s += "','"; // street
     s += "','"+wMail->text();
     s += "')";
     query.exec(s);
   }
 }
 
+// Dialog_ENDE
+// ----------------------
 void confDialog::goExit()                
 {
   if( work ) {                           
@@ -324,7 +330,8 @@ void confDialog::goExit()
   accept();                              
 }
 
-
+// Arbeitslog ändern - neu setzen
+// ---------------------------------
 void confDialog::changeLogCb(QTreeWidgetItem * item, int col)
 {
    i = col;                              
@@ -333,18 +340,20 @@ void confDialog::changeLogCb(QTreeWidgetItem * item, int col)
    state = 2;
 }
 
-
+// help
+// ---------------------------------
 void confDialog::getHilfeCb()
 {
    settings.setValue("Val","Configuriere");
    StartProcess("hilfedb &");
 }
 
-
+// =================================================================
+// create new LOG_table
 //=================================================================
 void confDialog::makeLogFile()
 {
-   if(workLog->text().count() == 0) {  
+   if(workLog->text().count() == 0) {        // kein Name angegeben
     QMessageBox::information(this,
         tr("Vermisse den Lognamen"),
         tr("Bitte einen Logbookname angegeben"),
@@ -352,7 +361,8 @@ void confDialog::makeLogFile()
         QMessageBox::NoButton, QMessageBox::NoButton);
      return;
    }
-
+   
+   // table OM's
    QSqlQuery query;
    qy = "DROP TABLE IF EXISTS `"+workLog->text()+"om`";
    query.exec(qy);
@@ -364,7 +374,8 @@ void confDialog::makeLogFile()
    qy += "UNIQUE KEY `oidx` (`rufz`,`omid`)";
    qy += ")";
    query.exec(qy);
-
+   
+   // table fun
    qy = "DROP TABLE IF EXISTS `"+workLog->text()+"`";
    query.exec(qy);
    qy = "CREATE TABLE `"+workLog->text()+"` (";
@@ -408,7 +419,8 @@ void confDialog::makeLogFile()
    qy += "KEY `qidx` (`oid`)";
    qy += ")";
    query.exec(qy);
-
+   
+   // table funawd
    qy = "DROP TABLE IF EXISTS `"+workLog->text()+"awd`";
    query.exec(qy);
    qy = "CREATE TABLE `"+workLog->text()+"awd` (";
@@ -421,47 +433,49 @@ void confDialog::makeLogFile()
    qy += "KEY `aidx` (`aid`,`qid`)";
    qy += ")";
    query.exec(qy);
-
+   
+   // table funqsl
    qy = "DROP TABLE IF EXISTS "+workLog->text()+"qsl";
    query.exec(qy);
-   qy = "CREATE TABLE `"+workLog->text()+"qsl` ("; 
-   qy += "`eid` int(11) NOT NULL auto_increment,"; 
-   qy += "`qsoid` int(11) NOT NULL,";              
-   qy += "`qcall` varchar(16) default NULL,";      
-   qy += "`qsoday` date default NULL,";            
+   qy = "CREATE TABLE `"+workLog->text()+"qsl` (";  // QSL_Datensatz anlegen
+   qy += "`eid` int(11) NOT NULL auto_increment,";  // QSL_id
+   qy += "`qsoid` int(11) NOT NULL,";               // QSO_id ( Verbindung zum QSO )
+   qy += "`qcall` varchar(16) default NULL,";       // QSO_rufzeichen aus Qso_satz
+   qy += "`qsoday` date default NULL,";             // Qso_Datum
 
-   qy += "`contestid` varchar(80) default NULL,";  
-   qy += "`ag` varchar(30) default NULL,";         
-   qy += "`eqslr` varchar(4) default NULL,";       
-   qy += "`eqsls` varchar(4) default NULL,";       
-   qy += "`eqslrd` date default NULL,";            
-   qy += "`eqslsd` date default NULL,";            
-   qy += "`lotqslr` varchar(4) default NULL,";     
-   qy += "`lotqsls` varchar(4) default NULL,";     
-   qy += "`lotqslrd` date default NULL,";          
-   qy += "`lotqslsd` date default NULL,";          
-   qy += "`contactdOp` varchar(12) default NULL,"; 
-   qy += "`freqrx` varchar(10) default NULL,";     
-   qy += "`srx` varchar(16) default NULL,";        
-   qy += "`srxstr` varchar(16) default NULL,";     
-   qy += "`stx` varchar(16) default NULL,";        
-   qy += "`stxstr` varchar(16) default NULL,";     
-   qy += "`qinfo` varchar(12) default NULL,";      
-   qy += "`comment` varchar(128) default NULL,";   
-   qy += "`custom1` varchar(80) default NULL,";    
-   qy += "`custom2` varchar(80) default NULL,";    
-   qy += "`sel` varchar(6) default NULL,";         
+   qy += "`contestid` varchar(80) default NULL,";  // 38 CONTEST_ID QSO Contest Identifier
+   qy += "`ag` varchar(30) default NULL,";         //    Authenticity Guaranteed
+   qy += "`eqslr` varchar(4) default NULL,";       // 39 EQSL_QSL_RCVD status e_qsl: Y, N, R, I, V
+   qy += "`eqsls` varchar(4) default NULL,";       // 40 EQSL_QSL_SEND status e_qsl: Y, N, R, Q, I
+   qy += "`eqslrd` date default NULL,";            // 41 EQSL_QSLRDATE
+   qy += "`eqslsd` date default NULL,";            // 42 EQSL_QSLSDATE
+   qy += "`lotqslr` varchar(4) default NULL,";     // 43 LOTW_QSL_RCVD status Logbook_over_the_world: Y, N, R, I, V 
+   qy += "`lotqsls` varchar(4) default NULL,";     // 44 LOTW_QSL_SENT status Logbook_over_the_world: Y, N, R, Q, I 
+   qy += "`lotqslrd` date default NULL,";          // 45 LOTW_QSLRDATE
+   qy += "`lotqslsd` date default NULL,";          // 46 LOTW_QSLSDATE
+   qy += "`contactdOp` varchar(12) default NULL,"; // CONTACTED_OP individual operatig callsign to contacted st.
+   qy += "`freqrx` varchar(10) default NULL,";     // 50 FREQ_RX the logging station received freq in MHz
+   qy += "`srx` varchar(16) default NULL,";        // 51 SRX contest QSO received serial number
+   qy += "`srxstr` varchar(16) default NULL,";     // 52 SRX_STRING  contest QSO received serial information
+   qy += "`stx` varchar(16) default NULL,";        // 53 TRX  contest QSO transmitted serial number
+   qy += "`stxstr` varchar(16) default NULL,";     // 54 TRX_STRING  contest QSO transmitted serial information
+   qy += "`qinfo` varchar(12) default NULL,";      // 55 SWL indicates -the QSO information pertains to an SWL repot
+   qy += "`comment` varchar(128) default NULL,";   // 56 COMMENT comment field for QSO
+   qy += "`custom1` varchar(80) default NULL,";    // 57 user
+   qy += "`custom2` varchar(80) default NULL,";    // 58 user
+   qy += "`sel` varchar(6) default NULL,";         // 59 besondere Anwendungen
    qy += "PRIMARY KEY  (`qsoid`),";
    qy += "KEY `eidx` (`eid`,`qsoid`))";
    query.exec(qy);
-
+   
+   // fundx
    qy = "DROP TABLE IF EXISTS `"+workLog->text()+"dx`";
    query.exec(qy);
    qy = "CREATE TABLE `"+workLog->text()+"dx` (";
    qy += "`dxpref` varchar(5) NOT NULL default '',";
    qy += "`mode` varchar(8) default NULL,";
-   qy += "`cntx` smallint(6) default NULL,";       
-   qy += "`cntb` smallint(6) default NULL,";       
+   qy += "`cntx` smallint(6) default NULL,";       // bis 65.000   
+   qy += "`cntb` smallint(6) default NULL,";       // bis 65.000
    qy += "`b160` char(2) default NULL,";
    qy += "`b80` char(2) default NULL,";
    qy += "`b60` char(2) default NULL,";
@@ -484,7 +498,7 @@ void confDialog::makeLogFile()
    qy += "PRIMARY KEY (`dxpref`,`mode`))";
    query.exec(qy);
 
-
+   // funqslcard
    qy = "DROP TABLE IF EXISTS `"+workLog->text()+"card`";
    query.exec(qy);
    qy = "CREATE TABLE `"+workLog->text()+"card` (";
@@ -502,7 +516,7 @@ void confDialog::makeLogFile()
    qy += "KEY `qslidx` (`cid`,`qsocid`))";
    query.exec(qy);
 
-  
+   // neues log in log_dir eintragen
   i = 0;
   QTreeWidgetItem *item = new QTreeWidgetItem(dblogsList);
   item->setText(i++,workLog->text());    
@@ -513,8 +527,9 @@ void confDialog::makeLogFile()
   query.exec(qy);
 }
 
-
-
+// ----------------------------------------------------
+// delete LOG 
+// -----------------------------------------------------
 void confDialog::deleteLogFile()
 {
   int x;
@@ -536,14 +551,14 @@ void confDialog::deleteLogFile()
         Item =  dblogsList->topLevelItem (i);
         s = Item->text(0);
         x = s.compare(workLog->text());
-        if( x == 0 ) break;                       
+        if( x == 0 ) break;                         // gefunden  
         i++;
     }
-    if ( x == 0 ) {
+    if ( x == 0 ) {                                 // selectiertes logbook zeigen
        dblogsList->setCurrentItem(Item,i);        
        s = tr("\nLogbook  ' ")+workLog->text()+tr(" ' loeschen         ");
     }
-    else {                                        
+    else {                                          // nicht gefunden
       s = tr("\nLogbook   ' ")+workLog->text()+tr(" '  nicht gefunden ! ?   ");
     }
     int status = QMessageBox::question( this,
@@ -553,7 +568,7 @@ void confDialog::deleteLogFile()
        QMessageBox::NoButton);
        if(status != QMessageBox::Yes)
           return;
-  dblogsList->takeTopLevelItem (i);         
+  dblogsList->takeTopLevelItem (i);                 // delete item
 
   QSqlQuery query;
   qy = "DROP TABLE IF EXISTS "+workLog->text();      

@@ -865,18 +865,18 @@
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
-                <property name="displayFormat">
-                 <string>yyyy.MM.dd</string>
-                </property>
-                <property name="calendarPopup">
-                 <bool>true</bool>
-                </property>
                 <property name="date">
                  <date>
                   <year>2000</year>
                   <month>1</month>
                   <day>1</day>
                  </date>
+                </property>
+                <property name="displayFormat">
+                 <string>yyyy.MM.dd</string>
+                </property>
+                <property name="calendarPopup">
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -969,6 +969,9 @@
                 <property name="text">
                  <string>   Nach</string>
                 </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
                </widget>
               </item>
               <item row="1" column="0">
@@ -999,7 +1002,7 @@
                 </item>
                 <item>
                  <property name="text">
-                  <string>Dxcc</string>
+                  <string>DXcc</string>
                  </property>
                 </item>
                </widget>
@@ -1009,6 +1012,12 @@
            </item>
            <item row="1" column="7">
             <widget class="QGroupBox" name="groupBox_4">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
              <property name="title">
               <string>Report </string>
              </property>
@@ -1052,12 +1061,15 @@
                <widget class="QLabel" name="label_4">
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <weight>50</weight>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="text">
                  <string> Layout</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>

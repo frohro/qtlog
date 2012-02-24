@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'confMode.h'
 **
-** Created: Thu Feb 16 20:58:54 2012
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
+** Created: Fri Feb 24 14:20:56 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../confMode.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'confMode.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.0. It"
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.7.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_confMode[] = {
 
  // content:
-       6,       // revision
+       5,       // revision
        0,       // classname
        0,    0, // classinfo
       14,   14, // methods
@@ -63,38 +63,9 @@ static const char qt_meta_stringdata_confMode[] = {
     "getHilfeModeCb()\0currentIndexchangedCb(int)\0"
 };
 
-void confMode::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        confMode *_t = static_cast<confMode *>(_o);
-        switch (_id) {
-        case 0: _t->goExit(); break;
-        case 1: _t->bandListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 2: _t->modeListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 3: _t->pwrListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 4: _t->lineListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 5: _t->awdListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 6: _t->customsListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 7: _t->rigListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 8: _t->RigSaveButton(); break;
-        case 9: _t->RigClearButton(); break;
-        case 10: _t->SaveConfValues(); break;
-        case 11: _t->NewAwdValues(); break;
-        case 12: _t->getHilfeModeCb(); break;
-        case 13: _t->currentIndexchangedCb((*reinterpret_cast< int(*)>(_a[1]))); break;
-        default: ;
-        }
-    }
-}
-
-const QMetaObjectExtraData confMode::staticMetaObjectExtraData = {
-    0,  qt_static_metacall 
-};
-
 const QMetaObject confMode::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_confMode,
-      qt_meta_data_confMode, &staticMetaObjectExtraData }
+      qt_meta_data_confMode, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -120,8 +91,23 @@ int confMode::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
-            qt_static_metacall(this, _c, _id, _a);
+        switch (_id) {
+        case 0: goExit(); break;
+        case 1: bandListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: modeListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: pwrListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 4: lineListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 5: awdListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 6: customsListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 7: rigListCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 8: RigSaveButton(); break;
+        case 9: RigClearButton(); break;
+        case 10: SaveConfValues(); break;
+        case 11: NewAwdValues(); break;
+        case 12: getHilfeModeCb(); break;
+        case 13: currentIndexchangedCb((*reinterpret_cast< int(*)>(_a[1]))); break;
+        default: ;
+        }
         _id -= 14;
     }
     return _id;

@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'qtlog.ui'
 **
-** Created: Thu Feb 16 20:57:55 2012
-**      by: Qt User Interface Compiler version 4.8.0
+** Created: Fri Feb 24 14:36:10 2012
+**      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -653,8 +653,8 @@ public:
         palette7.setBrush(QPalette::Disabled, QPalette::Base, brush8);
         dateEditBis->setPalette(palette7);
         dateEditBis->setFocusPolicy(Qt::NoFocus);
-        dateEditBis->setCalendarPopup(true);
         dateEditBis->setDate(QDate(2000, 1, 1));
+        dateEditBis->setCalendarPopup(true);
 
         gridLayout5->addWidget(dateEditBis, 0, 1, 1, 1);
 
@@ -690,6 +690,7 @@ public:
         label_5 = new QLabel(groupBox_7);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setFont(font9);
+        label_5->setAlignment(Qt::AlignCenter);
 
         gridLayout6->addWidget(label_5, 0, 0, 1, 1);
 
@@ -705,6 +706,7 @@ public:
 
         groupBox_4 = new QGroupBox(frame);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
+        groupBox_4->setFont(font1);
         gridLayout7 = new QGridLayout(groupBox_4);
         gridLayout7->setObjectName(QString::fromUtf8("gridLayout7"));
         BoxLayout = new QComboBox(groupBox_4);
@@ -715,7 +717,8 @@ public:
 
         label_4 = new QLabel(groupBox_4);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font1);
+        label_4->setFont(font9);
+        label_4->setAlignment(Qt::AlignCenter);
 
         gridLayout7->addWidget(label_4, 0, 0, 1, 1);
 
@@ -992,7 +995,7 @@ public:
          << QApplication::translate("QtLog", "Datum", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("QtLog", "Band", 0, QApplication::UnicodeUTF8)
          << QApplication::translate("QtLog", "Call", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("QtLog", "Dxcc", 0, QApplication::UnicodeUTF8)
+         << QApplication::translate("QtLog", "DXcc", 0, QApplication::UnicodeUTF8)
         );
         groupBox_4->setTitle(QApplication::translate("QtLog", "Report ", 0, QApplication::UnicodeUTF8));
         BoxLayout->clear();

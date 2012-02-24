@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'Qtlog.h'
 **
-** Created: Thu Feb 16 20:58:46 2012
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
+** Created: Fri Feb 24 14:36:17 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../Qtlog.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'Qtlog.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.0. It"
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.7.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_QtLog[] = {
 
  // content:
-       6,       // revision
+       5,       // revision
        0,       // classname
        0,    0, // classinfo
       52,   14, // methods
@@ -115,76 +115,9 @@ static const char qt_meta_stringdata_QtLog[] = {
     "processWriteDatagram(int,QString)\0"
 };
 
-void QtLog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        QtLog *_t = static_cast<QtLog *>(_o);
-        switch (_id) {
-        case 0: _t->goExit(); break;
-        case 1: _t->addLog(); break;
-        case 2: _t->addClog(); break;
-        case 3: _t->addDlog(); break;
-        case 4: _t->awdDxStatusSsbAc(); break;
-        case 5: _t->awdDxStatusCwAc(); break;
-        case 6: _t->awdJahresModeAc(); break;
-        case 7: _t->awdJahresBandAc(); break;
-        case 8: _t->awdDLDstatusAc(); break;
-        case 9: _t->awdIOTAstatusAc(); break;
-        case 10: _t->logconfAc(); break;
-        case 11: _t->standortAc(); break;
-        case 12: _t->clubAc(); break;
-        case 13: _t->InternetOnAc(); break;
-        case 14: _t->rigCtlAc(); break;
-        case 15: _t->confmodeAc(); break;
-        case 16: _t->verbindungenAc(); break;
-        case 17: _t->rigAc(); break;
-        case 18: _t->reportLayoutAc(); break;
-        case 19: _t->dataSaveAc(); break;
-        case 20: _t->adifExportAc(); break;
-        case 21: _t->adifImportAc(); break;
-        case 22: _t->queryTextoutAc(); break;
-        case 23: _t->qslEingangAc(); break;
-        case 24: _t->qslDruckAc(); break;
-        case 25: _t->admindbAc(); break;
-        case 26: _t->dxTableAc(); break;
-        case 27: _t->prefTableAc(); break;
-        case 28: _t->ruDistrictAwdListAc(); break;
-        case 29: _t->qrzTableAc(); break;
-        case 30: _t->dokVerwaltungAc(); break;
-        case 31: _t->iotaVerwaltungAc(); break;
-        case 32: _t->notizAc(); break;
-        case 33: _t->VersionAc(); break;
-        case 34: _t->RigCtlHamlibAc(); break;
-        case 35: _t->InfoAc(); break;
-        case 36: _t->checkReport(); break;
-        case 37: _t->checkBoxSortCb(); break;
-        case 38: _t->boxLimitCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 39: _t->groupEditLineCb(); break;
-        case 40: _t->groupEditLineCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 41: _t->boxAwdCb((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 42: _t->boxSortCb((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 43: _t->awdEditLineCb(); break;
-        case 44: _t->boxLayoutCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 45: _t->updateReportItem((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 46: _t->updateAwdItem((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 47: _t->removeQsoCb(); break;
-        case 48: _t->checkBoxDateCb(); break;
-        case 49: _t->checkAwdItem((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 50: _t->processPendingDatagram(); break;
-        case 51: _t->processWriteDatagram((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        default: ;
-        }
-    }
-}
-
-const QMetaObjectExtraData QtLog::staticMetaObjectExtraData = {
-    0,  qt_static_metacall 
-};
-
 const QMetaObject QtLog::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_QtLog,
-      qt_meta_data_QtLog, &staticMetaObjectExtraData }
+      qt_meta_data_QtLog, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -210,8 +143,61 @@ int QtLog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 52)
-            qt_static_metacall(this, _c, _id, _a);
+        switch (_id) {
+        case 0: goExit(); break;
+        case 1: addLog(); break;
+        case 2: addClog(); break;
+        case 3: addDlog(); break;
+        case 4: awdDxStatusSsbAc(); break;
+        case 5: awdDxStatusCwAc(); break;
+        case 6: awdJahresModeAc(); break;
+        case 7: awdJahresBandAc(); break;
+        case 8: awdDLDstatusAc(); break;
+        case 9: awdIOTAstatusAc(); break;
+        case 10: logconfAc(); break;
+        case 11: standortAc(); break;
+        case 12: clubAc(); break;
+        case 13: InternetOnAc(); break;
+        case 14: rigCtlAc(); break;
+        case 15: confmodeAc(); break;
+        case 16: verbindungenAc(); break;
+        case 17: rigAc(); break;
+        case 18: reportLayoutAc(); break;
+        case 19: dataSaveAc(); break;
+        case 20: adifExportAc(); break;
+        case 21: adifImportAc(); break;
+        case 22: queryTextoutAc(); break;
+        case 23: qslEingangAc(); break;
+        case 24: qslDruckAc(); break;
+        case 25: admindbAc(); break;
+        case 26: dxTableAc(); break;
+        case 27: prefTableAc(); break;
+        case 28: ruDistrictAwdListAc(); break;
+        case 29: qrzTableAc(); break;
+        case 30: dokVerwaltungAc(); break;
+        case 31: iotaVerwaltungAc(); break;
+        case 32: notizAc(); break;
+        case 33: VersionAc(); break;
+        case 34: RigCtlHamlibAc(); break;
+        case 35: InfoAc(); break;
+        case 36: checkReport(); break;
+        case 37: checkBoxSortCb(); break;
+        case 38: boxLimitCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 39: groupEditLineCb(); break;
+        case 40: groupEditLineCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 41: boxAwdCb((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 42: boxSortCb((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 43: awdEditLineCb(); break;
+        case 44: boxLayoutCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 45: updateReportItem((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 46: updateAwdItem((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 47: removeQsoCb(); break;
+        case 48: checkBoxDateCb(); break;
+        case 49: checkAwdItem((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 50: processPendingDatagram(); break;
+        case 51: processWriteDatagram((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        default: ;
+        }
         _id -= 52;
     }
     return _id;

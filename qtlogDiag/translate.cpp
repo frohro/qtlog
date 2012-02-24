@@ -8,6 +8,8 @@
    V 1.5 : 01.12.2007
 ********************************************************************** */
 
+// translate.cpp - 20.06.2007
+// NamenConverter: Uebersetze db.feldnamen nach User_Feldnamen und zurueck
 
 #include <QtGui>
 #include <QtSql>
@@ -25,49 +27,53 @@ translate::~translate()
 void translate::installHashTable()
 {
  QString d, u;
- int b, b2, idx;
+ int b, b2;
  QString s;
+ 
     QSqlQuery query; 
-    idx = 1;
-    qy = "SELECT dbfield,refnam,breite,br2,type FROM refnamen WHERE type!=0 ORDER BY idn"; 
+    qy = "SELECT dbfield,refnam,breite,br2,type FROM refnamen WHERE type!=0 ORDER BY idn"; // Tabelle Feldnamen lesen
     query.exec(qy);
     i = query.size();
     while(query.next()) {
        i = 0;
-       d = query.value(i++).toString();  
-       u = query.value(i++).toString();  
-       b = query.value(i++).toInt();     
-       b2 = query.value(i++).toInt();    
+       d = query.value(i++).toString();  // db_field
+       u = query.value(i++).toString();  // usr_field
+       b = query.value(i++).toInt();     // FeldBreite
+       b2 = query.value(i++).toInt();    // b2_FeldBreite qsl_Tabelle
       
-       toUsr.insert(d,u);                
-       toDb.insert(u,d);                 
-       toBr.insert(u,b);                 
-       toBr2.insert(u,b2);               
-       toLog.insert(d,query.value(i++).toInt()); 
+       toUsr.insert(d,u);                // db_name   -> user_name - Uebersetzungstabelle
+       toDb.insert(u,d);                 // user_name -> db_name
+       toBr.insert(u,b);                 // usr_name  -> feld_breite
+       toBr2.insert(u,b2);               // usr_name  -> b2_feld_breite -  qsl_Tabelle
+       toLog.insert(d,query.value(i++).toInt()); // AWD_type 2=fun , 3=funsql
     }
 }
 
+// --- wird nicht verwendet -----------------------------------
 void translate::clearHashTable()
 {
-       toUsr.clear();                
-       toDb.clear();                 
-       toBr.clear();                 
-       toBr2.clear();                
+       toUsr.clear();                // db_name   -> user_name - Uebersetzungstabelle
+       toDb.clear();                 // user_name -> db_name
+       toBr.clear();                 // usr_name  -> feld_breite
+       toBr2.clear();                // usr_name  -> b2_feld_breite qsl_Tabelle
 }
 
+// -----------------------------------------------------------
 void translate::setUsrField(QString dbfield, QString user)
 {
     toUsr.insert(dbfield,user); 
 }
 
-
+//  - return USR_Feldnamen
+// -----------------------------------------------------------
 QString translate::getUsrField(QString dbfield)
 {
      QHash<QString, QString>::const_iterator in = toUsr.find(dbfield);
      return in.value();
 }
 
-
+// - return DB_Feldnamen
+// ----------------------------------------------------------
 QString translate::getDbField(QString usrfield)
 {
     QHash<QString, QString>::const_iterator i = toDb.find(usrfield);
@@ -76,26 +82,30 @@ QString translate::getDbField(QString usrfield)
     return i.value();                       
 }
 
+// - return Feld_breite
 int translate::getFieldBr(QString usrfield)
 {
     QHash<QString, int>::const_iterator i = toBr.find(usrfield);
     return i.value();
 }
 
+// - return Feld_breite_2 (qsl_tabelle)
 int translate::getFieldBr2(QString usrfield)
 {
     QHash<QString, int>::const_iterator i = toBr2.find(usrfield);
     return i.value();
 }
 
-
+// - return index <= 36 fun - >=37 funsql
+// -----------------------------------------------------------
 int translate::getLogTable(QString dbfield)
 {
     QHash<QString, int>::const_iterator i = toLog.find(dbfield);
     return i.value();
 }
 
-
+// BAND_übersetzung_Tabelle aufbauen
+// ----------------------------------
 void translate::installHashTableBand()
 {
  QString b, mb;
@@ -105,14 +115,15 @@ void translate::installHashTableBand()
     i = query.size();
     while(query.next()) {
         i = 0;
-        b = query.value(i++).toString();     
-       mb = query.value(i++).toString();     
-       toMband.insert(b,mb);                 
-       toSband.insert(mb,b);                 
+        b = query.value(i++).toString();     // sysBand
+       mb = query.value(i++).toString();     // myBand
+       toMband.insert(b,mb);                 // sysBand -> myBand
+       toSband.insert(mb,b);                 // myBand  -> sysBand
     }
 }
 
-
+// - return MyBand
+// ----------------------------------------------------------
 QString translate::getMyband(QString sysband)
 {
     QHash<QString, QString>::const_iterator i = toMband.find(sysband);
@@ -121,7 +132,8 @@ QString translate::getMyband(QString sysband)
     return i.value();                        
 }
 
-
+// - return sysBand
+// ----------------------------------------------------------
 QString translate::getSysband(QString myband)
 {
    QHash<QString, QString>::const_iterator i = toSband.find(myband);

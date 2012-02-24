@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'query.h'
 **
-** Created: Thu Feb 16 20:58:58 2012
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
+** Created: Fri Feb 24 14:20:59 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../query.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'query.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.0. It"
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.7.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_query[] = {
 
  // content:
-       6,       // revision
+       5,       // revision
        0,       // classname
        0,    0, // classinfo
       14,   14, // methods
@@ -62,38 +62,9 @@ static const char qt_meta_stringdata_query[] = {
     "tabCurrentChangedCb(int)\0"
 };
 
-void query::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        query *_t = static_cast<query *>(_o);
-        switch (_id) {
-        case 0: _t->goExit(); break;
-        case 1: _t->queryListDoubleClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 2: _t->queryListClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 3: _t->textEditedQnameCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 4: _t->buttonSaveCb(); break;
-        case 5: _t->buttonMkTextCb(); break;
-        case 6: _t->buttonMkAdifCb(); break;
-        case 7: _t->logListClickedCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 8: _t->dataListClickedCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 9: _t->buttonBackCb(); break;
-        case 10: _t->buttonClearCb(); break;
-        case 11: _t->buttonCopyDataCb(); break;
-        case 12: _t->showHilfeCb(); break;
-        case 13: _t->tabCurrentChangedCb((*reinterpret_cast< int(*)>(_a[1]))); break;
-        default: ;
-        }
-    }
-}
-
-const QMetaObjectExtraData query::staticMetaObjectExtraData = {
-    0,  qt_static_metacall 
-};
-
 const QMetaObject query::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_query,
-      qt_meta_data_query, &staticMetaObjectExtraData }
+      qt_meta_data_query, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -119,8 +90,23 @@ int query::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
-            qt_static_metacall(this, _c, _id, _a);
+        switch (_id) {
+        case 0: goExit(); break;
+        case 1: queryListDoubleClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: queryListClicked((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 3: textEditedQnameCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: buttonSaveCb(); break;
+        case 5: buttonMkTextCb(); break;
+        case 6: buttonMkAdifCb(); break;
+        case 7: logListClickedCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 8: dataListClickedCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 9: buttonBackCb(); break;
+        case 10: buttonClearCb(); break;
+        case 11: buttonCopyDataCb(); break;
+        case 12: showHilfeCb(); break;
+        case 13: tabCurrentChangedCb((*reinterpret_cast< int(*)>(_a[1]))); break;
+        default: ;
+        }
         _id -= 14;
     }
     return _id;

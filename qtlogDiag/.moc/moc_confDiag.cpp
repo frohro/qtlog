@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'confDiag.h'
 **
-** Created: Thu Feb 16 20:58:49 2012
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
+** Created: Fri Feb 24 14:20:53 2012
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -10,8 +10,8 @@
 #include "../confDiag.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'confDiag.h' doesn't include <QObject>."
-#elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.0. It"
+#elif Q_MOC_OUTPUT_REVISION != 62
+#error "This file was generated using the moc from 4.7.4. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,7 +20,7 @@ QT_BEGIN_MOC_NAMESPACE
 static const uint qt_meta_data_confDialog[] = {
 
  // content:
-       6,       // revision
+       5,       // revision
        0,       // classname
        0,    0, // classinfo
       13,   14, // methods
@@ -60,37 +60,9 @@ static const char qt_meta_stringdata_confDialog[] = {
     "getHilfeCb()\0"
 };
 
-void confDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
-{
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        confDialog *_t = static_cast<confDialog *>(_o);
-        switch (_id) {
-        case 0: _t->textMoved((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 1: _t->buttonClicked(); break;
-        case 2: _t->makeLogFile(); break;
-        case 3: _t->deleteLogFile(); break;
-        case 4: _t->changeLogCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 5: _t->wCallCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 6: _t->wLocatorCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 7: _t->goExit(); break;
-        case 8: _t->comboBoxHomeCb((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 9: _t->internetParamSaveCb(); break;
-        case 10: _t->updateLocationItemCb((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 11: _t->saveColValCb((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
-        case 12: _t->getHilfeCb(); break;
-        default: ;
-        }
-    }
-}
-
-const QMetaObjectExtraData confDialog::staticMetaObjectExtraData = {
-    0,  qt_static_metacall 
-};
-
 const QMetaObject confDialog::staticMetaObject = {
     { &QDialog::staticMetaObject, qt_meta_stringdata_confDialog,
-      qt_meta_data_confDialog, &staticMetaObjectExtraData }
+      qt_meta_data_confDialog, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
@@ -116,8 +88,22 @@ int confDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
-            qt_static_metacall(this, _c, _id, _a);
+        switch (_id) {
+        case 0: textMoved((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 1: buttonClicked(); break;
+        case 2: makeLogFile(); break;
+        case 3: deleteLogFile(); break;
+        case 4: changeLogCb((*reinterpret_cast< QTreeWidgetItem*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 5: wCallCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 6: wLocatorCb((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 7: goExit(); break;
+        case 8: comboBoxHomeCb((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: internetParamSaveCb(); break;
+        case 10: updateLocationItemCb((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 11: saveColValCb((*reinterpret_cast< QTableWidgetItem*(*)>(_a[1]))); break;
+        case 12: getHilfeCb(); break;
+        default: ;
+        }
         _id -= 13;
     }
     return _id;
