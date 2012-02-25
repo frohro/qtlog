@@ -25,15 +25,19 @@ class translate
     QHash <QString, int> toBr2;        
     QHash <QString, QString> toMband;  
     QHash <QString, QString> toSband;  
-    QHash <QString, int> toLog;        
+    QHash <QString, int> toLog; 
+    
     void installHashTable();
     void clearHashTable();
     int getLogTable(QString);
+    
     QString getUsrField(QString);
     void setUsrField(QString,QString);
     QString getDbField(QString);
+    
     int getFieldBr(QString);
     int getFieldBr2(QString);
+    
     void installHashTableBand();
     QString getMyband(QString);
     QString getSysband(QString);

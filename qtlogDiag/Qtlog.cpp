@@ -7,7 +7,8 @@
    any later version.
    V 1.5 : 01.12.2007, 06.06.09
 ********************************************************************** */
-
+   // log.git 02/2012
+   
 #include <QApplication>
 #include <QtGui>
 #include <QtSql>
@@ -93,9 +94,7 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    // AWD selektion
    connect (BoxAwd, SIGNAL(activated(int)), this, SLOT(boxAwdCb(int)));
    connect (awdEditLine, SIGNAL(returnPressed()), this, SLOT(awdEditLineCb()));
-   // Box_Sort changed
-   connect (BoxSort, SIGNAL(activated(int)), this, SLOT(boxSortCb(int)));
-   // Box_layout changed
+   // Box_Layout changed
    connect (BoxLayout, SIGNAL(currentIndexChanged(QString)), this, SLOT(boxLayoutCb(QString)));
    
    setupAction();
@@ -143,9 +142,32 @@ void QtLog::setupAction()
    labelOperator->setText(s);
    dock->hide();                                   // AWD Widget                  
    awdTable->setColumnWidth(0,70);            
-   awdTable->setColumnWidth(1,90);            
-   QSqlQuery query; 
+   awdTable->setColumnWidth(1,90);  
+   n = 0;
+   BoxSort->clear();
+   BoxSort->insertItem(n++,transl.getUsrField("day"));
+   BoxSort->insertItem(n++,transl.getUsrField("band"));
+   BoxSort->insertItem(n++,transl.getUsrField("rufz"));
+   BoxSort->insertItem(n++,transl.getUsrField("dxcc"));
    
+   n = 0;
+   BoxGroup->clear();
+   BoxGroup->insertItem(n++,transl.getUsrField("rufz"));
+   BoxGroup->insertItem(n++,transl.getUsrField("band"));
+   BoxGroup->insertItem(n++,transl.getUsrField("mode"));
+   BoxGroup->insertItem(n++,transl.getUsrField("dxcc"));
+   BoxGroup->insertItem(n++,transl.getUsrField("wae"));
+   BoxGroup->insertItem(n++,transl.getUsrField("wpx"));
+   BoxGroup->insertItem(n++,transl.getUsrField("loc"));
+   BoxGroup->insertItem(n++,transl.getUsrField("contestid"));
+   BoxGroup->insertItem(n++,transl.getUsrField("qslmsg"));
+   BoxGroup->insertItem(n++,transl.getUsrField("rig"));
+   BoxGroup->insertItem(n++,transl.getUsrField("qth"));
+	 
+   connect(BoxSort, SIGNAL(activated(int)), this, SLOT(boxSortCb(int)));
+   
+// --
+   QSqlQuery query; 
    BoxAwd->clear();                           
    qy = "SELECT atype FROM wawdlist WHERE aset !='0' ORDER BY aset";
    query.exec(qy);                               // fill AWD_Box: with names
@@ -195,7 +217,9 @@ void QtLog::setupAction()
    cflg = 180;       // alarm time for work without callsign                        
    eflg = 0;                                      
    dflg = 0;                                      
-                                                  
+                   
+   
+   
    connect (reportTable, SIGNAL(itemChanged(QTableWidgetItem *)), this,SLOT(updateReportItem(QTableWidgetItem *)));
    connect (reportTable, SIGNAL(itemClicked(QTableWidgetItem *)), this,SLOT(checkAwdItem(QTableWidgetItem *)));
    connect (awdTable, SIGNAL(itemChanged(QTableWidgetItem*)), this,SLOT(updateAwdItem(QTableWidgetItem * )));

@@ -475,6 +475,8 @@ void query::buttonMkTextCb()
        QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
        mkText();                                // TextDatei erzeugen
        QApplication::restoreOverrideCursor();
+       
+       
        s = "\n"+t.setNum(cnt)+tr("  Datensaetze - erzeugt\nDatei:  ");
        s +=  QDir::homePath();                     
        s += "/";

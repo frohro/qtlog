@@ -565,61 +565,6 @@
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
-                <item>
-                 <property name="text">
-                  <string>Call</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Band</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Mode</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Dxcc</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>WAE</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Wpx</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Locator</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>ContId</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>QslMgr</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Rig</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Qth</string>
-                 </property>
-                </item>
                </widget>
               </item>
               <item row="1" column="0">
@@ -985,26 +930,6 @@
                 <property name="focusPolicy">
                  <enum>Qt::NoFocus</enum>
                 </property>
-                <item>
-                 <property name="text">
-                  <string>Datum</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Band</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>Call</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>DXcc</string>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>

@@ -36,9 +36,9 @@ int main(int argc, char *argv[])
     }
   QTranslator translator;
   
-  if(translator.load("/home/frohro/log/qtlogDiag/qtlog_en")) qDebug()<<"Got the translation.\n";
+  //if(translator.load("/home/frohro/log/qtlogDiag/qtlog_en")) qDebug()<<"Got the translation.\n";
   
-  //translator.load("/home/diek/log.git/qtlogDiag/qtlog_en");  // for testing
+  translator.load("/home/diek/log.git/qtlogDiag/qtlog_en");  // for testing
   
   QApplication a(argc, argv);
   a.installTranslator(&translator);

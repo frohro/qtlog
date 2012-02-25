@@ -21,8 +21,9 @@
 // -------------------------------------------------------------------
 // Query default 
 // -------------------------------------------------------------------
-// example
+// example:
 // SELECT id,cept,rufz,band,mode,name,qth,day,btime,(SELECT awkenner FROM funawd WHERE awtype='DLD' AND id=qid),dxcc FROM funom LEFT JOIN (funqsl,fun) ON (omid=oid AND qsoid=id) WHERE lotqsls='Y'
+
 // default
 void QtLog::buildQuery()
 {
@@ -89,15 +90,15 @@ void QtLog::buildQuery()
      }
      qy += " ORDER BY ";
      s = transl.getDbField(BoxSort->currentText());
-     qDebug() << "sort:" << BoxSort->currentText();
-     qDebug() << s; 
-     
+ 
      if(s.indexOf("day") != -1) {
         qy += "day DESC,btime DESC";
      }
      else
        qy += transl.getDbField(BoxSort->currentText())+" DESC";
+     
      qDebug() << "qy is:"<< qy <<"\n";
+     
      readData(qy,awdPos);
      groupEditLine->setFocus();
 }
@@ -108,7 +109,7 @@ void QtLog::buildQuery()
 void QtLog::awdQuery()
 {
   if( awdPos != -1 ) {
-    i = qystr.indexOf("AWD");                       // get AWD_index    
+    i = qystr.indexOf("AWD");                       // get AWD_index in the qystr   
     qy = qystr.left(i);                    
     qy += "awkenner";
     qy += qystr.mid(i+3);
@@ -170,7 +171,7 @@ void QtLog::textExportData(QString q, int awdp)
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // read data from DB and display
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void QtLog::readData(QString q, int awdpos)
 {
       QString b;
