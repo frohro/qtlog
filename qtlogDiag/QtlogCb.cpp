@@ -8,6 +8,8 @@
    V 1.5 : 01.12.2007
 ********************************************************************** */
 
+// QtLOg_CB    01.05.2007 dl1hbd 
+
 #include <QtGui>
 #include <QSettings>
 #include <QtSql>
@@ -16,32 +18,32 @@
 #include "confDiag.h"
 #include "version.h"
 
-
-
-
-
-
+// -------------------------------------------------------------------
+// Query default 
+// -------------------------------------------------------------------
+// example
+// SELECT id,cept,rufz,band,mode,name,qth,day,btime,(SELECT awkenner FROM funawd WHERE awtype='DLD' AND id=qid),dxcc FROM funom LEFT JOIN (funqsl,fun) ON (omid=oid AND qsoid=id) WHERE lotqsls='Y'
+// default
 void QtLog::buildQuery()
 {
-   i = qystr.indexOf("AWD");             
+   i = qystr.indexOf("AWD");                                                // get Index for AWD
    qy = qystr.left(i);                   
    if( i != -1 ) {                       
       s = "(SELECT awkenner FROM "+logFile+"awd WHERE awtype='"+BoxAwd->currentText()+"' AND id=qid)";
       qy += s;
-      s = qystr.mid(i +3);               
+      s = qystr.mid(i +3);                                                  // skip AWD in the string        
       qy += s;
    }
    qy += " FROM "+logFile+"om LEFT JOIN ("+logFile+"qsl,"+logFile+") ON (omid=oid AND qsoid=id)";
    qy += " WHERE ";
    s = transl.getDbField(BoxGroup->currentText());
    if(s.compare("band") == 0) {
-     p = "SELECT mband FROM wband WHERE mband='"+groupEditLine->text()+"'"; 
+     p = "SELECT mband FROM wband WHERE mband='"+groupEditLine->text()+"'"; // check band format
      QSqlQuery query;
      query.exec(p);
-     if(!query.size()) {                                                    
-        QString f = "\nBandnamen immer kompl. eingeben";
+     if(!query.size()) {                                                    // report bugs
         QMessageBox::information( this,
-        tr("Band Fehler"),f,
+        tr("Band Fehler"),tr("\nBandnamen immer kompl. eingeben"),
         QMessageBox::Ok | QMessageBox::Default,
         QMessageBox::NoButton, QMessageBox::NoButton);
         groupEditLine->setFocus(); 
@@ -53,7 +55,7 @@ void QtLog::buildQuery()
    }
    else
      qy += s+" LIKE '"+groupEditLine->text()+"%'";
-     if(checkBoxDateEpoch->isChecked() == true) {        
+     if(checkBoxDateEpoch->isChecked() == true) {                           // if set epoch
        qy += " AND day BETWEEN "; 
        QDate d = dateEditBis->date();                    
        qy += "'"+s.setNum(d.year());
@@ -87,6 +89,9 @@ void QtLog::buildQuery()
      }
      qy += " ORDER BY ";
      s = transl.getDbField(BoxSort->currentText());
+     qDebug() << "sort:" << BoxSort->currentText();
+     qDebug() << s; 
+     
      if(s.indexOf("day") != -1) {
         qy += "day DESC,btime DESC";
      }
@@ -97,12 +102,13 @@ void QtLog::buildQuery()
      groupEditLine->setFocus();
 }
 
-
+// ------------------------------------------------------------------------
+// Query for BoxAWD - ohne Kenner
 //------------------------------------------------------------------------
 void QtLog::awdQuery()
 {
   if( awdPos != -1 ) {
-    i = qystr.indexOf("AWD");              
+    i = qystr.indexOf("AWD");                       // get AWD_index    
     qy = qystr.left(i);                    
     qy += "awkenner";
     qy += qystr.mid(i+3);
@@ -122,7 +128,8 @@ void QtLog::awdQuery()
   }
 }
 
-
+// ------------------------------------------------------------------------
+// Query für BoxAWD - mit Kenner
 //------------------------------------------------------------------------
 void QtLog::awdQuerykenner()
 {
@@ -149,8 +156,9 @@ void QtLog::awdQuerykenner()
   }
 }
 
-
-
+// -------------------------------------------------------------------------
+// Query vom Text export Data
+// -------------------------------------------------------------------------
 void QtLog::textExportData(QString q, int awdp)
 {
    QString h;
@@ -160,7 +168,8 @@ void QtLog::textExportData(QString q, int awdp)
    readData(h,awdp);
 }
 
-
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// read data from DB and display
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void QtLog::readData(QString q, int awdpos)
 {
@@ -171,62 +180,63 @@ void QtLog::readData(QString q, int awdpos)
       QSqlQuery query; 
       query.exec(q);                                       
       //qDebug() << query.lastError();
-      i = query.size();                                    
-      col = query.record().count();                        
-      reportTable->setColumnCount(col -1);                 
-      reportTable->setRowCount(i);                         
+      i = query.size();                                    // Tabellen_Laenge ( anzahl rows )          
+      col = query.record().count();                        // Anzahl Header_Felder         
+      reportTable->setColumnCount(col -1);                 // länge Horizontal_Header ohne Id_nr setzen        
+      reportTable->setRowCount(i);                         // Tabellen Laenge setzen      
       n = 0;                                               
       s = query.record().fieldName(n++);                   
       //Pos '0' im Horizontal_header ist das Datum ( nicht die linke obere Ecke ! )
-      reportTable->setColumnWidth(0,80);                   
-      while(n  != col) {                                   
-         s = query.record().fieldName(n);                  
+      reportTable->setColumnWidth(0,80);                   // Spaltenbreite für HeaderItem setzen
+      while(n  != col) {                                   // HorizontalHeader - aufbauen          
+         s = query.record().fieldName(n);                  // Feld_namen lesen         
          QTableWidgetItem * cItem = new QTableWidgetItem(tr("%1").arg((n)));
-         if( !(QString::compare(s,"band"))) bflg = n -1;   
-         if(n == awdpos) {                                 
-             cItem->setText(BoxAwd->currentText());        
+         if( !(QString::compare(s,"band"))) bflg = n -1;   // suche 'band'-spalte
+         if(n == awdpos) {                                 // check AWD_Kenner_position im Header
+             cItem->setText(BoxAwd->currentText());        // falls gefunden: BoxAwd_Text setzen
              b = "AWD";
          }
          else {
-           b = transl.getUsrField(s);                            
-           cItem->setText(b);                                    
+           b = transl.getUsrField(s);                       // Header_feld_namen übersetzen      
+           cItem->setText(b);                               // in item eintragen   
          }
          
-         reportTable->setHorizontalHeaderItem(n -1,cItem);       
-         reportTable->setColumnWidth(n -1,transl.getFieldBr(b)); 
-         n++;                                                    
+         reportTable->setHorizontalHeaderItem(n -1,cItem);       // und im Header eintragen     
+         reportTable->setColumnWidth(n -1,transl.getFieldBr(b)); // Spaltenbreite für HeaderItem setzen
+         n++;                                                    // nächstes Feld ( Spalte )
       }
     
-      row = 0;                                                   
-      while(query.next()) {                                      
-        z = 0;                                                   
-        r = 0;                                                   
-        i = 0;                                                   
-        s = query.value(i++).toString();                         
+      row = 0;                                                   // zeilen_zähler
+      while(query.next()) {                                      // Die QSO_Daten lesen
+        z = 0;                                                   // col
+        r = 0;                                                   // row
+        i = 0;                                                   // query_index
+        s = query.value(i++).toString();                         // Id für vertikal_header holen
         QTableWidgetItem *rowItem = new QTableWidgetItem(tr("%1").arg((r++)*(z++))); //Id_item erzeugen
-        rowItem->setText(s);                                     
-        reportTable->setVerticalHeaderItem(row,rowItem);         
+        rowItem->setText(s);                                     // text eintragen
+        reportTable->setVerticalHeaderItem(row,rowItem);         // Id ( ist QSO_satz_nr ) setzen
         c = 0;
-        while( c != col -1 ) {                                   
+        while( c != col -1 ) {                                   // alle folgenden Spalten bearbeiten
           QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg((row)*(c))); 
-          if( c == bflg ) {                                      
-             newItem->setText(transl.getMyband(query.value(i++).toString()));  
+          if( c == bflg ) {                                      // check BAND
+             newItem->setText(transl.getMyband(query.value(i++).toString())); // band_text
           }
           else
-            newItem->setText(query.value(i++).toString());       
-          reportTable->setItem(row,c++,newItem);                 
+            newItem->setText(query.value(i++).toString());       // text eintragen
+          reportTable->setItem(row,c++,newItem);                 // an row,col übergeben
         }
-        row++;                                                   
+        row++;                                                   // nächster Satz
      }
      statusBar()->showMessage(tr("Fertig"));
-     s = "Anzeige : "+s.setNum(row)+" QSO's   -  "+p.setNum(col)+"  Spalten    ";
-     mStatLabel->setText(s); 
+     mStatLabel->setText(tr("Anzeige : %1 QSO's - %2 Spalten").arg(s.setNum(row),p.setNum(col))); 
+     
      groupEditLine->setFocus();
      QApplication::restoreOverrideCursor();
 }
 
-
-
+// -----------------------------------------------------------------------------------------
+// check dabase connection
+// -----------------------------------------------------------------------------------------
 void QtLog::CheckDBconnection()
 {
    s = getenv("HOME");                         
@@ -258,7 +268,7 @@ void QtLog::CheckDBconnection()
       exit(0);
   }
   else {
-    db.setHostName(settings.value("host").toString());           
+    db.setHostName(settings.value("host").toString());             // Datenbank oeffnen
     db.setDatabaseName(settings.value("dbname").toString());
     db.setUserName(settings.value("dbuser").toString());
     db.setPassword(settings.value("dbpasswd").toString());
@@ -285,16 +295,16 @@ void QtLog::CheckDBconnection()
          QMessageBox::Ok | QMessageBox::Default,
          QMessageBox::NoButton, QMessageBox::NoButton);
      lfile.close();
-     exit(0);                                 
+     exit(0);                              // Abbruch
   }
-   
+   // check db_Release_Nr
    QDateTime heute = QDateTime::currentDateTime();
    QSqlQuery query;                           
    qy = "SELECT relnr FROM dblogs";
    query.exec(qy);
    query.next();
    s = query.value(0).toString();
-   if(s.compare(RELEASE) != 0) {              
+   if(s.compare(RELEASE) != 0) {          // check db_release_nr identisch mit Programm_Version        
      s = RELEASE;
      out << tr("Rel.Nr : ")+s+"\n";
      out << tr("\nqtlog - Versions Info - ")+heute.toString (Qt::TextDate)+"\n";
@@ -306,7 +316,7 @@ void QtLog::CheckDBconnection()
          QMessageBox::Ok | QMessageBox::Default,
          QMessageBox::NoButton, QMessageBox::NoButton);
      lfile.close();
-     exit(0);                                 
+     exit(0);                            // Abbruch
    }
    out << "Start : qtlog - "+heute.toString (Qt::TextDate)+"\n";
    out << VERSION << "Rel" << RELEASE"\n";

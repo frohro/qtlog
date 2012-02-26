@@ -7,6 +7,7 @@
    any later version.
    V 1.5 : 01.12.2007
 ********************************************************************** */
+
 #include <QtGui>
 #include "qtlogdelegate.h"
 
@@ -14,7 +15,8 @@ QtlogDelegate::QtlogDelegate(QObject *parent)
     : QItemDelegate(parent) {
 }
 
-
+// create Editor
+// --------------------------------------------------------------------
 QWidget *QtlogDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem&,
     const QModelIndex &index) const
 {
@@ -32,6 +34,7 @@ QWidget *QtlogDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem
     return editor;
 }
 
+// -------------------------------------------
 void QtlogDelegate::commitAndCloseEditor()
 {
     QLineEdit *editor = qobject_cast<QLineEdit *>(sender());
@@ -39,6 +42,7 @@ void QtlogDelegate::commitAndCloseEditor()
     emit closeEditor(editor);
 }
 
+// copy modeldata into the Editor ------------------------------------------------
 void QtlogDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QLineEdit *edit = qobject_cast<QLineEdit *>(editor);
@@ -47,7 +51,8 @@ void QtlogDelegate::setEditorData(QWidget *editor, const QModelIndex &index) con
     }
 }
 
-
+// when the user has finished editing call setModelData
+// ------------------------------------------------------------------------------
 void QtlogDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
     const QModelIndex &index) const
 {

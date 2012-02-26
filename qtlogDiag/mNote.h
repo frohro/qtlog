@@ -14,7 +14,7 @@
 #include <QDialog>
 #include <QSettings>
 #include "ui_mnote.h"
-#include "mNote.h"
+
 class QLabel;
 class mNote : public QDialog,
                     private Ui::mNote

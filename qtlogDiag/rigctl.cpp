@@ -394,7 +394,7 @@ int rigctl::deleteServerProz()
          p = "kill "+s;
          i = system(p.toAscii());        // kill proz_Id
       }
-      return 0;                          // rigctld_proz entfernt - falls vorhanden war
+      return 0;                          // rigctld_proz entfernt - falls er vorhanden war
 }
 
 // ------------------------------------------------
