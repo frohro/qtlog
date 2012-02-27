@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         StartProcess("startoptdb &");
        exit(0);
     }
-<<<<<<< HEAD
+//<<<<<<< HEAD
     
     QTranslator translator;
     QLocale locale;
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     if(Lang != 82) {                        // every country except Germany
-       home+="/log.git/qtlogDiag/qtlog_en";
+       home+="/log/qtlogDiag/qtlog_en";
        translator.load(home);  
        a.installTranslator(&translator);
     }
@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
     qtlogDialog.show();
  
     return a.exec();
+/*
 =======
   QTranslator translator;
   if(translator.load("../qtlogDiag/qtlog_en")) qDebug()<<"Got the translation.\n";
@@ -67,4 +68,5 @@ int main(int argc, char *argv[])
   qtlogDialog.show();
   return a.exec();
 >>>>>>> 798097ced011160e4523e0ff40c826fd2aae7fa7
+*/
 }
