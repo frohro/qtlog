@@ -17,7 +17,10 @@ DirMngr dirMngr;
 int main(int argc, char *argv[])
 {
    dirMngr.SetProgramDir(argv[0]);
+   QTranslator translator;
+   if(translator.load("../dxSpot/qtlogDXSpot_en")) qDebug()<<"Got the translation.\n";
    QApplication dxsp(argc, argv);
+   dxsp.installTranslator(&translator);
    dxspot dxspotDiag;
    dxspotDiag.show();
    //QTimer::singleShot(0, &manager, SLOT(execute()));

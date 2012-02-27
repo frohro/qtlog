@@ -13,7 +13,10 @@
 #include "iota.h"
 int main(int argc, char *argv[])
 {
+  QTranslator translator;
+  if(translator.load("../iotaDiag/qtlogIota_en")) qDebug()<<"Got the translation.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   iota iotaD;
   iotaD.show();
   return a.exec();

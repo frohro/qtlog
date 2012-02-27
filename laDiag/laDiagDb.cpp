@@ -80,7 +80,7 @@ void laDiag::getLaTable(QString q)
     laTabelle->setItem(row,col,newItem);
     row++;
   }
-  s = s.setNum(row) +" Eintraege";
+  s = s.setNum(row) + tr(" Eintraege");
   labelcnt->setText(s);
   WlineEditPref->setFocus();
 }

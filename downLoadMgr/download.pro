@@ -28,3 +28,5 @@ SOURCES += downloadMgr.cpp \
            main.cpp
         
 TARGET = ../bin/downloadmgrdb
+
+TRANSLATIONS += qtlogDownload_en.ts

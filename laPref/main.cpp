@@ -13,7 +13,10 @@
 #include "prefDiag.h"
 int main(int argc, char *argv[])
 {
+  QTranslator translator;
+  if(translator.load("../laPref/qtlogPrefix_en")) qDebug()<<"Got the translation.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   prefDiag pDiag;
   pDiag.show();
   return a.exec();

@@ -42,3 +42,6 @@ unix::TARGET = ../bin/ladb
 
 DEPENDPATH +=
 
+TRANSLATIONS += qtlogLaDialog_en.ts
+
+
