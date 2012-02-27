@@ -27,7 +27,7 @@ class translate
     QHash <QString, QString> toSband;  
     QHash <QString, int> toLog; 
     
-    void installHashTable();
+    void installHashTable(int);
     void clearHashTable();
     int getLogTable(QString);
     

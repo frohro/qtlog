@@ -28,6 +28,7 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    QFont font;
    font.setPointSize(n);                           
    setFont(font);
+   
    connect(ButtonExit, SIGNAL(clicked()), this, SLOT(goExit()));
    connect(queryList, SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)), this, SLOT(queryListDoubleClicked(QTreeWidgetItem*,int)));
    connect(queryList, SIGNAL(itemClicked(QTreeWidgetItem *,int)), this, SLOT(queryListClicked(QTreeWidgetItem*,int)));
@@ -56,7 +57,8 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    dataList->setColumnWidth(0,80);        
    
    logFile = settings.value("logFile").toString();
-   transl.installHashTable();                        //-Hash_tabellen zur NamenConvertierung anlegen
+   
+   transl.installHashTable(settings.value("Language").toInt()); //-Hash_tabellen zur NamenConvertierung anlegen
    transl.installHashTableBand();                    // -.-           Bandtabelle
    QSqlQuery query; 
    qy = "SELECT refnam FROM refnamen WHERE type='2'  OR type='3' ORDER BY idn";

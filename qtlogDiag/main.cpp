@@ -15,10 +15,16 @@
 #include "dirmngr.h"
 #include <QTranslator>
 #include <QDebug>
-
+#include <QLocale>
+ 
 DirMngr dirMngr;
+
+// -------------------------------------
 int main(int argc, char *argv[])
 {
+  int Lang = 1;                              // language
+  QString home = QDir::homePath(); 
+  
     dirMngr.SetProgramDir(argv[0]);
     if( argc >= 2 ) {
        QString b = argv[1];
@@ -34,15 +40,21 @@ int main(int argc, char *argv[])
         StartProcess("startoptdb &");
        exit(0);
     }
-  QTranslator translator;
-  
-  //if(translator.load("/home/frohro/log/qtlogDiag/qtlog_en")) qDebug()<<"Got the translation.\n";
-  
-  translator.load("/home/diek/log.git/qtlogDiag/qtlog_en");  // for testing
-  
-  QApplication a(argc, argv);
-  a.installTranslator(&translator);
-  QtLog qtlogDialog;
-  qtlogDialog.show();
-  return a.exec();
+    
+    QTranslator translator;
+    QLocale locale;
+    Lang = locale.country();                // 82 for Germany
+    Lang = 100;                             // only for TEST dl1hbd - country outside Germany
+
+    QApplication a(argc, argv);
+    if(Lang != 82) {                        // every country except Germany
+       home+="/log.git/qtlogDiag/qtlog_en";
+       translator.load(home);  
+       a.installTranslator(&translator);
+    }
+    
+    QtLog qtlogDialog((QWidget *)0, Lang);
+    qtlogDialog.show();
+ 
+    return a.exec();
 }

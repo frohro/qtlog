@@ -31,7 +31,11 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    dbList->setColumnWidth(0,25);
    dbList->setColumnWidth(1,80);
    
-   transl.installHashTable();                          // installiere Übersetzungstabelle
+   
+   qDebug() << "Language_layout:" << settings.value("Language");
+   
+   
+   transl.installHashTable(settings.value("Language").toInt());  // installiere Übersetzungstabelle
    
    QSqlQuery query; 
    qy = "SELECT sel,refnam FROM refnamen WHERE sel='*' ORDER BY idn DESC";

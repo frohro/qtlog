@@ -12,12 +12,16 @@
 #include <QSettings>
 #include "admin.h"
 #include "../qtlogDiag/dirmngr.h"
+
 DirMngr dirMngr;
+
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
   dirMngr.SetProgramDir(argv[0]);
+  
   admin adminDialog;
   adminDialog.show();
+  
   return a.exec();
 }

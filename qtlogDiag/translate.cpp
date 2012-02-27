@@ -14,6 +14,8 @@
 #include <QtGui>
 #include <QtSql>
 #include "translate.h"
+
+// ----------------------
 translate::translate()
 {
   i = 0;
@@ -24,14 +26,25 @@ translate::~translate()
 }
 //- Refnamen_Tabelle aus DB lesen - Hash_Tabellen aufbauen
 //---------------------------------------------------------
-void translate::installHashTable()
+void translate::installHashTable(int lang)
 {
  QString d, u;
  int b, b2;
  QString s;
  
     QSqlQuery query; 
-    qy = "SELECT dbfield,refnam,breite,br2,type FROM refnamen WHERE type!=0 ORDER BY idn"; // Tabelle Feldnamen lesen
+ 
+    //qDebug() << "Language_transl:" << settings.value("Language").toInt();
+    
+    //if(settings.value("Language").toInt() == 82)      // Germany
+    if(lang == 82) 
+        qy = "SELECT dbfield,refnam,breite,br2,type FROM refnamen WHERE type!=0 ORDER BY idn"; // Tabelle Feldnamen lesen
+    else                  // outside Germany only English
+       qy = "SELECT dbfield,ref_en,breite,br2,type FROM refnamen WHERE type!=0 ORDER BY idn"; // Tabelle
+       
+       
+    qDebug() << qy;
+    
     query.exec(qy);
     i = query.size();
     while(query.next()) {

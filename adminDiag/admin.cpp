@@ -15,8 +15,10 @@
 #include "admin.h"
 #include "../qtlogDiag/dirmngr.h"
 #include "../qtlogDiag/version.h"
+
 extern DirMngr dirMngr;
 
+// ---------------------------------------------
 admin::admin(QWidget * parent) : QMainWindow(parent),
 settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
 {
@@ -59,26 +61,32 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
    setupAction();
    lItem = 0;
    sItem = 0;
-   udpSocket = new QUdpSocket(this);  
+   udpSocket = new QUdpSocket(this);      // Datagram_server
    ltreeWidget = logList;
 }
+
+// -----------------------------
 void admin::setupAction()
 {
    readSettings();
-   logList->setColumnWidth(0,60);     
-   logList->setColumnWidth(1,60);     
-   logList->setColumnWidth(2,40);     
+   logList->setColumnWidth(0,60);          // Log_name
+   logList->setColumnWidth(1,60);          // Einträge
+   logList->setColumnWidth(2,40);          // Rel
+   
    sysList->setColumnWidth(0,120);
    
-   RefTable->setColumnWidth(0,100);
-   RefTable->setColumnWidth(1,180);
-   RefTable->setColumnWidth(2,160);
-   RefTable->setColumnWidth(3,60);
-   RefTable->setColumnWidth(4,60);
-   RefTable->setColumnWidth(5,60);
+   RefTable->setColumnWidth(0,100);        // sys.Name
+   RefTable->setColumnWidth(1,100);        // User.Name
+   RefTable->setColumnWidth(2,100);        // User_en
+   RefTable->setColumnWidth(3,135);        // Adif.Name
+   
+   //RefTable->setColumnWidth(4,60);
+   //RefTable->setColumnWidth(5,60);
+   
    customsTable->setColumnWidth(0,80);
    customsTable->setColumnWidth(1,190);
-   if(settings.value("dbconf").toInt() == 0) {      
+   
+   if(settings.value("dbconf").toInt() == 0) {      // liegt ein Fehler vor ?
      s = tr("\nDas Runtime-Flag 'dbconf' steht auf Null.\nDas Flag ist beschaedigt, ");
      s += tr("oder QtLog ist nicht initialisiert\n");
      s += tr("Das Programm schaltet ab");
@@ -87,19 +95,19 @@ void admin::setupAction()
          tr(s.toAscii()),
          QMessageBox::Ok | QMessageBox::Default,
          QMessageBox::NoButton, QMessageBox::NoButton);
-     exit(0);                                      
+     exit(0);                                       // Abbruch       
    }
    else {
-     openDatabase();                               
-     showTables(1);                                
+     openDatabase();                                // normaler db_connect   
+     showTables(1);                                 // Log + SysTabellen zeigen
    }
-   if(settings.value("Val").toInt() == 1) {        
-       dirsel = 0;                                 
+   if(settings.value("Val").toInt() == 1) {         // ADIF_Export
+       dirsel = 0;                                  // dirselector auf Pfad stellen
        adifExpCb();
    }
    else
-    if(settings.value("Val").toInt() == 2) {       
-       dirsel = 1;                                 
+    if(settings.value("Val").toInt() == 2) {       // ADIF_Import
+       dirsel = 1;                                 // dirselector auf Datei waehlen stellen
        adifImpCb();
     }
    QSqlQuery query;
@@ -114,90 +122,94 @@ void admin::setupAction()
    while(query.next()) {
        i = 0;
        n = 0;
-       i = query.value(n++).toInt();                          
-       comboBoxHome->addItem(query.value(n++).toString());    
+       i = query.value(n++).toInt();                       // id   
+       comboBoxHome->addItem(query.value(n++).toString()); // logging_text
    }
    
    comboBoxHome->setCurrentIndex(1);                          
    SavePathEdit->setText(settings.value("dumpPath").toString());
 }
 
+// ---------------------------
 void admin::openDatabase()
 {
     //db = QSqlDatabase::addDatabase(settings.value("qsqlDatabase").toString());
     db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName(settings.value("host").toString());                         
-    db.setDatabaseName(settings.value("dbname").toString());                   
+    db.setHostName(settings.value("host").toString());              // oeffne die Datenbank           
+    db.setDatabaseName(settings.value("dbname").toString());        // logdb        
     db.setUserName(settings.value("dbuser").toString());                       
-    db.setPassword(settings.value("dbpasswd").toString());                     
+    db.setPassword(settings.value("dbpasswd").toString());          // z.B "dieter";        
     if(!db.open()) {
-       qDebug() << "usrDB_FEHLER - " << db.lastError();     
+       qDebug() << "usrDB_FEHLER - " << db.lastError();     // sollte hier nicht vorkommen
     }
 }
 
-
-
+// ==========================================================================
+// Tabellen_Namen und Größen in logList u. sysList darstellen
+// ==========================================================================
 void admin::showTables(int f)
 {
-    i = f;                                             
+    i = f;                                              // dummy
     QSqlQuery query;
-    qy = "SELECT * FROM dblogs";                       
+    qy = "SELECT * FROM dblogs";                        // alle logtabellen laden
     query.exec(qy);
     while(query.next()) {
        i = 0;
        n = 0;
        QTreeWidgetItem *item = new QTreeWidgetItem(logList);
-       item->setText(i++,query.value(n++).toString()); 
-       item->setText(i++,query.value(n++).toString()); 
-       item->setText(i++,query.value(n++).toString()); 
-       item->setText(i++,query.value(n++).toString()); 
+       item->setText(i++,query.value(n++).toString());  // logFile
+       item->setText(i++,query.value(n++).toString());  // QSO's
+       item->setText(i++,query.value(n++).toString());  // Rel.
+       item->setText(i++,query.value(n++).toString());  // letzte Sicherung
     }
 
-    int row = logList->topLevelItemCount();            
-    QTreeWidgetItem *Item;                             
+    int row = logList->topLevelItemCount();            // Anzahl Logtabellen
+    QTreeWidgetItem *Item;                             // Arbeitsitem bilden
     qy = "SHOW TABLES FROM "+settings.value("dbname").toString();
-    query.exec(qy);                                    
+    query.exec(qy);                                    // hole alle Tabellen_Namen von der db
     while(query.next()) {
        n = 0;
-       s = query.value(n++).toString();                
+       s = query.value(n++).toString();                // 1.Tabellen_name
        i = 0;
-       while(row != i ) {                              
-         Item =  logList->topLevelItem (i++);          
-         b = Item->text(0);                            
-         x = b.size();                                 
+       while(row != i ) {                              // row = Anzahl logtabellen
+         Item =  logList->topLevelItem (i++);          // Item von Loglist ( log_Basisnamen )
+         b = Item->text(0);                            // hole Name
+         x = b.size();                                 // Namenlänge basisnamen
          b = s.left(x);                                //
-         if((b.compare(Item->text(0)) == 0)) {         
-             x = 0;                                    
-           break;                                      
+         if((b.compare(Item->text(0)) == 0)) {         // Vergleiche mit Name aus der db
+             x = 0;                                    // wenn gefunden x = 0;
+           break;                                      // ist fun oder funom, funawd, fundx
          }
        }
-       if( x == 0 )                                    
-        ;                                              
-       else {                                          
-        QTreeWidgetItem *item = new QTreeWidgetItem(sysList); 
-        item->setText(0,s);                            
+       if( x == 0 )                                    // wenn x=0 nichts -tun
+        ;                                              // ist log_name
+       else {                                          // sonst:
+        QTreeWidgetItem *item = new QTreeWidgetItem(sysList); // item bilden
+        item->setText(0,s);                            // und name in sysList eintragen
        }
     }
-    
-    row = sysList->topLevelItemCount();              
-    QTreeWidgetItem *sItem;                          
+     // Alle Tabellen_Größen der system_tabellen ermitteln und in sysList eintragen
+    row = sysList->topLevelItemCount();                // Anzahl_tabellen in sysList
+    QTreeWidgetItem *sItem;                            // arbeits_system_item erzeugen
     i = 0;
     while( row != i ) {
-       sItem =  sysList->topLevelItem (i);           
-       s = sItem->text(0);                           
+       sItem =  sysList->topLevelItem (i);             // 1.item
+       s = sItem->text(0);                             // name holen
        qy = "SELECT COUNT(*) FROM "+s;
-       query.exec(qy);                               
+       query.exec(qy);                                 // Tabellen_länge aus der db holen
        query.next();
-       sItem->setText(1,query.value(0).toString());  
+       sItem->setText(1,query.value(0).toString());    // laenge eintragen
        i++;
     }
 }
 
+// ---------------------
 admin::~admin()
 {
     writeSettings();
 }
 
+// -----------------------
 void admin::writeSettings()
 {
   settings.setValue("admin/Size",size());
@@ -205,18 +217,21 @@ void admin::writeSettings()
   settings.setValue("dumpPath",SavePathEdit->text());
 }
 
+// -------------------------
 void admin::readSettings()
 {
   resize(settings.value("admin/Size",sizeHint()).toSize());
   restoreState(settings.value("admin/Properties").toByteArray());
 }
 
+// ------------------------
 void admin::goExit()                           
 {
     db.close();                                
     qApp->quit();
 }
 
+// ------------------------
 void admin::keyPressEvent( QKeyEvent * event )
 {
    switch ( event->key() ) {
@@ -226,89 +241,100 @@ void admin::keyPressEvent( QKeyEvent * event )
    }
 }
 
-
+// Hilfe
+// --------------------------
 void admin::getHilfeCb()
 {
    settings.setValue("Val","DB-Administration");
    StartProcess("hilfedb &");
 }
 
+// --------------------------------------------
 void admin::stackedWidgetCb( int page )
 {
      switch(page) {
-     case 0:                                             
-              logList->setEnabled(true);                 
-              sysList->setEnabled(true);                 
+     case 0:                                             // Datensicherung DUMP / RESTORE
+              logList->setEnabled(true);                 // freigeben
+              sysList->setEnabled(true);                 // freigeben
              break;
-     case 1:                                             
-              logList->setEnabled(true);                 
-              sysList->setEnabled(false);                
-              getCustomsfields();                        
+     case 1:                                             // Daten ADIF Im/Export
+              logList->setEnabled(true);                 // freigeben
+              sysList->setEnabled(false);                // sperren
+              getCustomsfields();                        // tabelle awd laden
              break;
-     case 2:                                  
-              sysList->setEnabled(false);               
-              logList->setEnabled(true);                
+     case 2:                                  // Daten_Convertierung von V 1.4/1.4 -> 1.5
+              sysList->setEnabled(false);               // sperren
+              logList->setEnabled(true);                // freigeben
              break;
-     case 3 :                                           
-              logList->setEnabled(false);               
-              sysList->setEnabled(false);               
-              getRefnamen();                            
+     case 3 :                                           // Referenz-Namen verwalten
+              logList->setEnabled(false);               // sperren
+              sysList->setEnabled(false);               // sperren
+              getRefnamen();                            // Tabelle Ref.Namen laden
              break;
      }
 }
 
+// ADIF - Export
+// --------------------------------
 void admin::adifExpCb()
 {
-   ButtonAdifExport->setEnabled(true);                              
-   ButtonAdifExport->setPalette( QPalette(QColor(180, 210, 200)));  
-   ButtonAdifImport->setEnabled(false);                             
-   ButtonAdifImport->setPalette( QPalette(QColor(238, 238, 238)));  
-   checkBoxQslMode->setEnabled(false);                              
-   checkBoxQslMode->setPalette( QPalette(QColor(238,238,238)));     
-   comboBoxRig->setEnabled(false);                                  
-   comboBoxRig->setPalette( QPalette(QColor(238,238,238)));         
-   comboBoxHome->setEnabled(false);                                 
-   comboBoxHome->setPalette( QPalette(QColor(238,238,238)));        
+   ButtonAdifExport->setEnabled(true);                              // freigeben
+   ButtonAdifExport->setPalette( QPalette(QColor(180, 210, 200)));  // gruen
+   
+   ButtonAdifImport->setEnabled(false);                             // sperren
+   ButtonAdifImport->setPalette( QPalette(QColor(238, 238, 238)));  // grau
+   checkBoxQslMode->setEnabled(false);                              // sperren
+   checkBoxQslMode->setPalette( QPalette(QColor(238,238,238)));     // grau
+   comboBoxRig->setEnabled(false);                                  // sperren
+   comboBoxRig->setPalette( QPalette(QColor(238,238,238)));         // grau
+   comboBoxHome->setEnabled(false);                                 // sperren
+   comboBoxHome->setPalette( QPalette(QColor(238,238,238)));        // grau
+   
    SavePathAdif->setText("");
    dirsel = 0;
    ButtonAdifDir->setText(tr("Waehle ADIF Pfad"));
    stackedWidget->setCurrentIndex(1);
 }
 
+// ADIF - IMPORT
+// --------------------------------
 void admin::adifImpCb()
 {
-   ButtonAdifExport->setEnabled(false);                             
-   ButtonAdifExport->setPalette( QPalette(QColor(238, 238, 238)));  
+   ButtonAdifExport->setEnabled(false);                             // sperren
+   ButtonAdifExport->setPalette( QPalette(QColor(238, 238, 238)));  // grau
    
-   ButtonAdifImport->setEnabled(true);                              
-   ButtonAdifImport->setPalette( QPalette(QColor(180, 210, 200)));  
+   ButtonAdifImport->setEnabled(true);                              // freigeben
+   ButtonAdifImport->setPalette( QPalette(QColor(180, 210, 200)));  // grün
+   
    checkBoxQslMode->setEnabled(true);
-   checkBoxQslMode->setPalette( QPalette(QColor(180, 210, 200)));   
+   checkBoxQslMode->setPalette( QPalette(QColor(180, 210, 200)));   // grün
    
-   comboBoxRig->setEnabled(true);                                   
-   comboBoxRig->setPalette( QPalette(QColor(180, 210, 200)));       
-   comboBoxHome->setEnabled(true);                                  
-   comboBoxHome->setPalette( QPalette(QColor(180, 210, 200)));      
+   comboBoxRig->setEnabled(true);                                   // freigeben
+   comboBoxRig->setPalette( QPalette(QColor(180, 210, 200)));       // grün
+   comboBoxHome->setEnabled(true);                                  // freigeben
+   comboBoxHome->setPalette( QPalette(QColor(180, 210, 200)));      // grün
    SavePathAdif->setText("");
    dirsel = 1;
    ButtonAdifDir->setText(tr("Waehle ADIFdatei"));
    stackedWidget->setCurrentIndex(1);
 }
 
-
+// Datensicherung DUMP / RESTORE
+// ---------------------------------
 void admin::dumpCb()
 {
    stackedWidget->setCurrentIndex(0);
 }
 
-
+// ReferenzNamen verwalten
+// ----------------------------------
 void admin::refNamenCb()
 {
    stackedWidget->setCurrentIndex(3);
 }
 
-
-
+// toggel checkBoxLog
+// -------------------------------------------------------
 void admin::toggelLogBoxCb()
 {
     if(checkBoxLog->isChecked() == FALSE)
@@ -317,7 +343,8 @@ void admin::toggelLogBoxCb()
        checkBoxDb->setChecked(TRUE);
 }
 
-
+// toggel checkBoxDB
+// -------------------------------------------------------
 void admin::toggelDbBoxCb()
 {
     if(checkBoxDb->isChecked() == FALSE)
@@ -326,7 +353,8 @@ void admin::toggelDbBoxCb()
        checkBoxLog->setChecked(TRUE);
 }
 
-
+// toggel QSL_Mode
+// -------------------------------------------------------
 void admin::toggelQslModeCb()
 {
     if(checkBoxQslMode->isChecked() == FALSE) {
@@ -339,31 +367,38 @@ void admin::toggelQslModeCb()
     }
 }
 
+// ----
 
-
+// logList_Item changed
+// ------------------------------------------------------
 void admin::logListCb(QTreeWidgetItem *item,int)
 {
    if( logList != ltreeWidget ) {
-     ltreeWidget->clearSelection ();              
+     ltreeWidget->clearSelection ();               // alte selection loescheen
    }
-   ltreeWidget = logList;                         
+   ltreeWidget = logList;                          // jetzt logList selectiert
    sItem = 0;
    lItem = item;
-   val = lItem->text(0);                          
+   val = lItem->text(0);                           // jetzt logList selectiert
 }
 
+// ----
 
+// // sysList_Item changed
+// -------------------------------------------------------
 void admin::sysListCb(QTreeWidgetItem *item,int)
 {
    if( sysList != ltreeWidget ) {
-     ltreeWidget->clearSelection ();         
+     ltreeWidget->clearSelection ();               // alte selection loeschen
    }
    lItem = 0;
-   ltreeWidget = sysList;                    
+   ltreeWidget = sysList;                          // jetzt sysList selectiert
    sItem = item;
-   val = item->text(0);                      
+   val = item->text(0);                            // Tabellen_namen sichern
 }
 
+
+// -------------------------------------------------------
 QString admin::DirSelector()
 {
    if( !dirsel ) {
@@ -380,7 +415,9 @@ QString admin::DirSelector()
 }
 
 
-
+// ------------------------------------------------------
+// DUMP in Initialisierungs_Ordner  als TEST
+// ------------------------------------------------------
 void admin::getSaveDirCb()
 {
    dirsel = 0;
@@ -388,10 +425,12 @@ void admin::getSaveDirCb()
 }
 
 
-
+// =====================================================================
+// DUMP alle Tabellen oder eine einzelne Tabelle
+// ---------------------------------------------
 void admin::dbDump()
 {
-    if(SavePathEdit->text().count() == 0) {       
+    if(SavePathEdit->text().count() == 0) {       // ist ein Path gewaehlt ?
       QMessageBox::information( this,
         tr("INFO"),
         tr("\nBitte DUMP-Ordner waehlen !!"),
@@ -402,7 +441,7 @@ void admin::dbDump()
 #ifdef Q_WS_WIN
     pathToMysql=settings.value("mySQLPath","").toString();
 #endif
-    if(checkBoxDb->isChecked() == TRUE ) {    
+    if(checkBoxDb->isChecked() == TRUE ) {     // gesetzt - Alle Tabellen Dumpen
         QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
         s = pathToMysql+"mysqldump -u"+settings.value("dbuser").toString()+" -p";
         s += settings.value("dbpasswd").toString();
@@ -410,27 +449,30 @@ void admin::dbDump()
         StartProcess(s.toAscii());
         QApplication::restoreOverrideCursor();
     }
-    else {                                   
+    else {                                   // LOG_tabelle dumpen
        QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
        if(lItem) {
          s = pathToMysql+"mysqldump -u"+settings.value("dbuser").toString()+" -p"+settings.value("dbpasswd").toString()+" --opt "+settings.value("dbname").toString()+" ";
-          s += lItem->text(0)+" ";          
-          s += lItem->text(0)+"qsl ";       
-          s += lItem->text(0)+"om ";        
-          s += lItem->text(0)+"awd ";       
-          s += lItem->text(0)+"card ";      
-          s += lItem->text(0)+"dx ";        
+          s += lItem->text(0)+" ";          // fun
+          s += lItem->text(0)+"qsl ";       // fun_qsl
+          s += lItem->text(0)+"om ";        // fun_om
+          s += lItem->text(0)+"awd ";       // fun_awd
+          s += lItem->text(0)+"card ";      // fun_qslcard
+          s += lItem->text(0)+"dx ";        // fun_dx
           s += "wawdlist > ";               
           s+= SavePathEdit->text()+"backup-"+lItem->text(0)+".sql";
-          StartProcess(s.toAscii());        
+          StartProcess(s.toAscii());         // DUMP
+	  
           QString tag, monat, jahr, dform;
-          QDate d = QDate::currentDate();   
+          QDate d = QDate::currentDate();   // Datum von heute
           tag = s.setNum(d.day());
           monat = s.setNum(d.month());
           jahr = s.setNum(d.year());
+	  
           if(tag.count() < 2) tag = "0"+tag;
           if(monat.count() < 2) monat = "0"+monat;
-          
+	  
+          // Datum_Datensicherung
           qy = "UPDATE dblogs SET saved='"+jahr+"-"+monat+"-"+tag;
           qy += "' WHERE logname='"+lItem->text(0)+"'";
           QSqlQuery query;
@@ -439,11 +481,11 @@ void admin::dbDump()
           lItem->setText(3,s);
        }
        else
-         if(sItem) {                         
+         if(sItem) {                          // System_tabelle dumpen
             s = pathToMysql + "mysqldump -u"+settings.value("dbuser").toString()+" -p"+settings.value("dbpasswd").toString()+" --opt "+settings.value("dbname").toString();
             s += " "+sItem->text(0)+" > ";
             s+= SavePathEdit->text()+"backup-"+sItem->text(0)+".sql";
-            StartProcess(s.toAscii());       
+            StartProcess(s.toAscii());        // DUMP
          }
        else {
           QApplication::restoreOverrideCursor();
@@ -455,7 +497,7 @@ void admin::dbDump()
        }
     }
     
-    s = "cp "+QDir::homePath();             
+    s = "cp "+QDir::homePath();             // sichere immer auch qtlog.ini
     s += "/.config/QtLog/qtlog.ini "+SavePathEdit->text();
     StartProcess(s.toAscii());
     
@@ -463,7 +505,9 @@ void admin::dbDump()
 }
 
 
-
+// ======================================================================
+// RESTORE database kompl. oder eine einzelne Tabelle
+// --------------------------------------------------------
 void admin::dbRestore()
 {
   int i;
@@ -475,7 +519,7 @@ void admin::dbRestore()
 #ifdef Q_WS_WIN
     pathToMysql=settings.value("mySQLPath","").toString();
 #endif
-     if(checkBoxDb->isChecked() == TRUE ) {         
+     if(checkBoxDb->isChecked() == TRUE ) {          // gesetzt, RESTORE alle Tabellen
         p += SavePathEdit->text()+"backup-db.sql";
         if(!file.exists(p)) {
            QApplication::restoreOverrideCursor();
@@ -486,23 +530,23 @@ void admin::dbRestore()
           return;
         }
         QSqlQuery query;
-        
+        // hier müsste noch pathToMysql rein ! ?
         qy = "DROP DATABASE IF EXISTS "+settings.value("dbname").toString(); 
         query.exec(qy);
-        
+         // auch hier müsste noch pathToMysql rein ! ?
         qy = "CREATE DATABASE logdb";                                        
         query.exec(qy);
         qy = "USE logdb";
         query.exec(qy);
  
-        
+        // Windows: dbuser hinzugefuegt, sollte unter Linux auch gehen
         s = pathToMysql + "mysql -u"+settings.value("dbuser").toString()+" -p"+settings.value("dbpasswd").toString();
         s += " "+ settings.value("dbname").toString()+" < ";
         s += p;
         StartProcess(s.toAscii());
         i = 1;
      }
-     else {                                              
+     else {                                              // RESTORE eine log_Tabelle
         if( lItem) {
           p = SavePathEdit->text()+"backup-"+lItem->text(0)+".sql";
           if(!file.exists(p)) {
@@ -513,7 +557,7 @@ void admin::dbRestore()
              QMessageBox::Ok);
             return;
           }
-         
+         // fun, funqsl, funom, funawd, funcard, fundx, wawdlist
           s = pathToMysql + "mysql -u"+settings.value("dbuser").toString()+" -p"+settings.value("dbpasswd").toString()+" "+settings.value("dbname").toString()+" < ";
           s+= p;
           StartProcess(s.toAscii());
@@ -527,7 +571,7 @@ void admin::dbRestore()
           i = 0;
        }
        else
-          if( sItem ) {                                  
+          if( sItem ) {                                  // eine system_tabelle 
              p = SavePathEdit->text()+"backup-"+sItem->text(0)+".sql";
              if(!file.exists(p)) {
                 QApplication::restoreOverrideCursor();
@@ -553,10 +597,11 @@ void admin::dbRestore()
      }
      logList->clear();
      sysList->clear();
-     showTables(i);                              
+     showTables(i);                               // Ergebnis in logList und sysList anzeigen.
      QApplication::restoreOverrideCursor();
 }
 
+// ----------------------------
 void admin::message()
 {
      qDebug() << "FEHLER";

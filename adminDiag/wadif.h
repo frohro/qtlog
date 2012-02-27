@@ -11,32 +11,42 @@
 #include <QtGui>
 #ifndef WADIF_H
 #define WADIF_H
+
 class wadif {
+  
  public:
    wadif();
   ~wadif();
+  
      QString qy, s, f, Error;
-     QString tmp, etmp;                    
-     int getState();                       
-     int getCount();                       
+     QString tmp, etmp;                    // query_felder für Export
+     
+     int getState();                       // Fehler_Status abfragen
+     int getCount();                       // Anzahl importierer Datensäze
      QString getErrorInfo();
      int i, n, count;
-     QHash <QString, QString> toAdif;       
-     QHash <QString, QString> toAdifBand;   
-     QHash <QString, QString> toSysBand;    
-     QHash <QString, QString> toAdifCustom; 
+     
+     QHash <QString, QString> toAdif;       // dbfield -> adifname - qso_datensatz
+     QHash <QString, QString> toAdifBand;   // dbBand -> adifBand
+     QHash <QString, QString> toSysBand;    // adifBand -> sysBand
+     
+     QHash <QString, QString> toAdifCustom; // customs uebersetzung
+     
      QString Lcn, Cqz, Ituz, Dxcc;
 
-     void openRefListQso(int);             
-     void openRefListQsl(int);             
-     void openRefListAwd(int);             
+     void openRefListQso(int);             // Speicher reservieren
+     void openRefListQsl(int);             // Speicher reservieren
+     void openRefListAwd(int);             // Speicher reservieren
+     
      void closeRefLists();                 
      void loadRefList();                   
      void loadRefListAwd();
+     
      char * getAdifName(char * );          
      char * getdbName(char * );            
      char * getdbNameQsl(char * );         
-     char * getdbNameAwd(char *);          
+     char * getdbNameAwd(char *);         
+     
      void setValue(char *, QString);
      void setValueQsl(char *, QString);
      void setValueAwd(char *, QString);
@@ -44,7 +54,7 @@ class wadif {
      
      QString getValue(char *);               
      QString getValueQsl(char *);
-
+// --
      void createAdifTableHeader();           
      void loadAdifAwdTable(QString,QString); 
      void doExport(QString,QString,int);     
@@ -60,9 +70,11 @@ class wadif {
      QString getAdifBand(QString);         
      QString getSysBand(QString);          
      void clearBandHash();
-     int getla(QString);                   
+     int getla(QString); 
+     
  protected:
-
+   
+// Liste Datensatz_Spalten_namen -> ADIF-Feldnamen
   typedef class {
   public:
      int pos;             
@@ -71,13 +83,17 @@ class wadif {
     char adifnam[28];     
     char value[255];      
   }ADIFHEAD;
+  
   ADIFHEAD * adh;         
   ADIFHEAD * adhq;        
-  ADIFHEAD * adhw;        
+  ADIFHEAD * adhw;    
+  
  private:
+   
    int qsoFields;         
    int qslFields;
    int awdFields;
+   
    int state;
 };
 #endif

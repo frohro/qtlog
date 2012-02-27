@@ -24,9 +24,10 @@
 #include "dirmngr.h"
 #include "query.h"
 #include "rigctl.h"
+
 #define SHOWAWD_TIME 30
 
-QtLog::QtLog(QWidget * parent) : QMainWindow(parent),
+QtLog::QtLog(QWidget * parent, int lang) : QMainWindow(parent),
 settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
 {
   setupUi(this);
@@ -35,6 +36,7 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
   font.setPointSize(n);                              
   setFont(font);
   
+   Lang = lang;                                           // Language
    connect(actionENDE, SIGNAL(triggered(bool)), this, SLOT(goExit())); 
    // -- Award.status
    connect(actionDxStatusSSB, SIGNAL(triggered(bool)), this, SLOT(awdDxStatusSsbAc()));
@@ -111,13 +113,16 @@ void QtLog::setupAction()
    mStatLabel = new QLabel;
    statusBar()->addPermanentWidget(mStatLabel);
    stackedWidget->setCurrentIndex (0);             // set wellpap
+   
    dbstat = settings.value("dbconf").toInt();  
    db = QSqlDatabase::addDatabase("QMYSQL");       // create DB Instanz
    CheckDBconnection();                            // check open db
    
    logFile = settings.value("Logfile").toString(); // check logfile
-   transl.installHashTable();                      // create Hash_table for name translating  
-   transl.installHashTableBand();                  //                   for band 
+   
+   settings.setValue("Language",Lang);             // != 82 outside Germany - English
+   transl.installHashTable(Lang);                  // create Hash_table for name translating  
+   transl.installHashTableBand();                  //                   for band translating
    
    checkBoxSort->hide();
    QDate heute = QDate::currentDate();             // create date and time 
@@ -140,17 +145,18 @@ void QtLog::setupAction()
    LogbookName ->setText(logFile);                 // set the name of working logbook
    s = "-  Operator : "+ settings.value("Call").toString();  
    labelOperator->setText(s);
-   dock->hide();                                   // AWD Widget                  
-   awdTable->setColumnWidth(0,70);            
+   dock->hide();                 
+   awdTable->setColumnWidth(0,70);                 // AWD Widget 
    awdTable->setColumnWidth(1,90);  
-   n = 0;
-   BoxSort->clear();
+   
+   n = 0;                                          // fill Bocsort
+   BoxSort->clear(); 
    BoxSort->insertItem(n++,transl.getUsrField("day"));
    BoxSort->insertItem(n++,transl.getUsrField("band"));
    BoxSort->insertItem(n++,transl.getUsrField("rufz"));
    BoxSort->insertItem(n++,transl.getUsrField("dxcc"));
    
-   n = 0;
+   n = 0;                                          // fill BoxGroup
    BoxGroup->clear();
    BoxGroup->insertItem(n++,transl.getUsrField("rufz"));
    BoxGroup->insertItem(n++,transl.getUsrField("band"));
@@ -165,7 +171,6 @@ void QtLog::setupAction()
    BoxGroup->insertItem(n++,transl.getUsrField("qth"));
 	 
    connect(BoxSort, SIGNAL(activated(int)), this, SLOT(boxSortCb(int)));
-   
 // --
    QSqlQuery query; 
    BoxAwd->clear();                           
@@ -214,7 +219,7 @@ void QtLog::setupAction()
      operatorId = query.value(0).toInt();
    }
    
-   cflg = 180;       // alarm time for work without callsign                        
+   cflg = 180;                                             // alarm time for work without callsign                        
    eflg = 0;                                      
    dflg = 0;                                      
                    
@@ -236,6 +241,7 @@ QtLog::~QtLog()
 
 // #####################################
 
+// -----------------
 void QtLog::goExit()
 {
   qApp->quit();
@@ -377,8 +383,8 @@ void QtLog::checkBoxDateCb()
     groupEditLine->setFocus();                      
 }
 
-// sort dataset up or down
-// -------------------------
+// sort dataset up or down   - no function
+// ---------------------------------------
 void QtLog::checkBoxSortCb()
 {
     if(checkBoxSort->isChecked() == false)
@@ -396,7 +402,7 @@ void QtLog::checkBoxSortCb()
 void QtLog::boxLimitCb(QString text )
 {
      s = text;                                   
-     buildQuery();                 // make new query and display                  
+     buildQuery();                  // make new query and display                  
 }
 
 
@@ -405,7 +411,7 @@ void QtLog::boxLimitCb(QString text )
 void QtLog::groupEditLineCb()
 {
      dflg = 1;                                    
-     buildQuery();                 // make query and display            
+     buildQuery();                  // make query and display            
 }
 
 // other group
@@ -414,7 +420,7 @@ void QtLog::groupEditLineCb(QString str)
 {
    if(str.count() >= 3) {
      dflg = 1;                                    
-     buildQuery();                          
+     buildQuery();                  // make query and display          
    }
 }
 
@@ -507,6 +513,7 @@ void QtLog::awdIOTAstatusAc()           // awd IOTA-Status
    StartProcess("awdstdb &");
 }
 
+
 // ---------------------------------
 // logging menue
 // ---------------------------------
@@ -570,6 +577,7 @@ void QtLog::queryTextoutAc()            // set new table layout
   }
 }
 
+
 // ----------------------------
 // menue data security
 // ----------------------------
@@ -591,7 +599,7 @@ void QtLog::adifImportAc()                // ADIF import
    StartProcess("admindb &");
 }
 
-// --------------------
+// ----------------------------------------
 // nenue operating mode
 // -----------------------------------------
 void QtLog::confmodeAc()                   // changed; band, mode, pwr
@@ -683,9 +691,9 @@ void QtLog::notizAc()                        // create new not_table
    note->exec();
 }
 
-// --------------
+// ------------------------------
 // menue help
-// --------------
+// -----------------------------
 void QtLog::VersionAc()
 {
    auth *au = new auth();
@@ -704,9 +712,9 @@ void QtLog::RigCtlHamlibAc()
     StartProcess("hilfedb &");
 }
 
-// ++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++
 // menue config
-// ++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++
 void QtLog::logconfAc()                      
 {                                            
     settings.setValue("Val",0);     // Logbook         
