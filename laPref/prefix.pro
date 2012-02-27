@@ -35,3 +35,5 @@ RECOURCES = ../qtlogRessourcen.qrc
 unix::TARGET = ../bin/prefdb
 
 DEPENDPATH +=
+
+TRANSLATIONS += qtlogPrefix_en.ts

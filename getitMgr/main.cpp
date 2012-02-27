@@ -8,7 +8,10 @@
 #include "getmgr.h"
 int main(int argc, char **argv)
 {
-    QCoreApplication app(argc, argv);
+    QTranslator translator;
+    if(translator.load("../getitMgr/qtlogGetMgr_en")) qDebug()<<"Got the translation.\n";
+    QApplication app(argc, argv);
+    app.installTranslator(&translator);
     getMgr manager;
     QTimer::singleShot(0, &manager, SLOT(execute()));
     app.exec();

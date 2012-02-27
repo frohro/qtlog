@@ -13,7 +13,10 @@
 #include "dok.h"
 int main(int argc, char *argv[])
 {
+  QTranslator translator;
+  if(translator.load("../dokDiag/qtlogDok_en")) qDebug()<<"Got the translation.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   dok dokD;
   dokD.show();
   return a.exec();

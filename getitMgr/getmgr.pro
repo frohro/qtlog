@@ -24,3 +24,5 @@ SOURCES += getmgr.cpp \
            main.cpp
 
 TARGET = ../bin/getmgrdb
+
+TRANSLATIONS += qtlogGetMgr_en.ts

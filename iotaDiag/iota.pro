@@ -39,3 +39,5 @@ unix::TARGET = ../bin/iotadb
 
 DEPENDPATH += .
 
+TRANSLATIONS += qtlogIota_en.ts
+

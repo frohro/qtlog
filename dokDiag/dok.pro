@@ -39,3 +39,5 @@ RESOURCES = ../qtlogRessourcen.qrc
 unix::TARGET = ../bin/dokdb
 
 DEPENDPATH += .
+
+TRANSLATIONS += qtlogDok_en.ts

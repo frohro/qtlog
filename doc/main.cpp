@@ -16,7 +16,10 @@ DirMngr dirMngr;
 int main(int argc, char *argv[])
 {
   dirMngr.SetProgramDir(argv[0]);
+  QTranslator translator;
+  if(translator.load("../doc/qtlogDoc_en")) qDebug()<<"Got the translation.\n";
   QApplication a(argc, argv);
+  a.installTranslator(&translator);
   hilfe hDiag;
   hDiag.show();
   return a.exec();

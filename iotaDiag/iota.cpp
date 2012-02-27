@@ -107,7 +107,7 @@ void iota::showIota(QString q)
       item->setTextAlignment(i++,Qt::AlignCenter);
       item->setText(r++,query.value(i).toString());        
     }
-    t = "Eintraege : "+t.setNum(n);
+    t = tr("Eintraege : ")+t.setNum(n);
     labelCount->setText(t);
     wLineEdit->setFocus();                        
 }

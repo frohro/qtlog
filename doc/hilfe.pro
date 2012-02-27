@@ -38,3 +38,4 @@ unix::TARGET = ../bin/hilfedb
 
 DEPENDPATH +=
 
+TRANSLATIONS += qtlogDoc_en.ts

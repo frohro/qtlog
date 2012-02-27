@@ -34,3 +34,5 @@ unix::TARGET =  ../bin/startoptdb
 
 DEPENDPATH += .
 
+TRANSLATIONS += qtlogStart_en.ts
+

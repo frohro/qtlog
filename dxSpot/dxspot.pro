@@ -43,3 +43,5 @@ unix::TARGET = ../bin/dxspotdb
 
 DEPENDPATH +=
 
+TRANSLATIONS += qtlogDXSpot_en.ts
+

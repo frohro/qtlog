@@ -8,7 +8,10 @@
 #include "downloadMgr.h"
 int main(int argc, char **argv)
 {
-    QCoreApplication app(argc, argv);
+    QTranslator translator;
+    if(translator.load("../downLoadMgr/qtlogDownload_en")) qDebug()<<"Got the translation.\n";
+    QApplication app(argc, argv);
+    app.installTranslator(&translator);
     DownloadMgr manager;
     QTimer::singleShot(0, &manager, SLOT(execute()));
     app.exec();
