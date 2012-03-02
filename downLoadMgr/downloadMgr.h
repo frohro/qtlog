@@ -16,7 +16,9 @@ class DownloadMgr: public QObject
     Q_OBJECT
     QNetworkAccessManager manager;
     QList<QNetworkReply *> currentDownloads;
+    
 public:
+  
     DownloadMgr();
     ~DownloadMgr();
     QSettings settings;
@@ -28,12 +30,17 @@ public:
     void doDownload(const QUrl &url);
     QString saveFileName(const QUrl &url);
     bool saveToDisk(const QString &filename, QIODevice *data);
+    
 public slots:
+  
     void execute();
     void downloadFinished(QNetworkReply *reply);
+    
 private slots:
+  
     void processWriteDatagram(int, QString);
     void processPendingDatagram();
+    
 private:
     QUdpSocket *udpSocket;
 };

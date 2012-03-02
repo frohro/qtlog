@@ -11,10 +11,11 @@
 #include <QApplication>
 #include <QtGui>
 #include <QtSql>
-#include "dok.h"
-#include "../qtlogDiag/dirmngr.h"
-extern DirMngr dirMngr;
 
+#include "dok.h"
+//#include "../qtlogDiag/dirmngr.h"
+
+// -------------------------------------------
 dok::dok(QWidget * parent) : QMainWindow(parent),
 settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
 {
@@ -35,7 +36,7 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
     connect(BoxDOK, SIGNAL(currentIndexChanged(int)), this, SLOT(boxDokChangedCb(int)));
     connect(wEditDok, SIGNAL(textEdited(QString)), this, SLOT(wEditDokCb(QString)));
     connect(wEditDxcc, SIGNAL(textEdited(QString)), this, SLOT(wEditDxccCb(QString)));
-
+    // SDOK
     connect(ButtonSdokUpdate, SIGNAL(clicked()), this, SLOT(sdokUpdateCb()));
     connect(ButtonSdokNeu, SIGNAL(clicked()), this, SLOT(sdokNeuCb()));
     connect(ButtonSdokDel, SIGNAL(clicked()), this, SLOT(sdokDeleteCb()));
@@ -46,34 +47,39 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
     connect(wEditHdok, SIGNAL(textEdited(QString)), this, SLOT(wEditHdokCb(QString)));
     connect(tabWidget, SIGNAL(currentChanged(int)), this, SLOT(tabwidgetCurrentChangedCb(int)));
     connect(ButtonHilfe, SIGNAL(clicked()), this, SLOT(getHilfeCb()));
+    
     //db = QSqlDatabase::addDatabase(settings.value("qsqlDatabase").toString());
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName(settings.value("host").toString());      
     db.setDatabaseName(settings.value("dbname").toString());
     db.setUserName(settings.value("dbuser").toString());
     db.setPassword(settings.value("dbpasswd").toString());
+    
     if(!db.open()) {
        qDebug() << "usrDB_FEHLER - " << db.lastError();     
     }
-    readSettings();                              
+    
+    readSettings();            
+    
     sdokListe->clear();
-    sdokListe->setColumnWidth(0,80);             
-    sdokListe->setColumnWidth(1,90);             
-    sdokListe->setColumnWidth(2,150);            
-    sdokListe->setColumnWidth(3,80);             
-    sdokListe->setColumnWidth(4,100);            
-    sdokListe->setColumnWidth(5,100);            
+    sdokListe->setColumnWidth(0,80);             // S-DOK
+    sdokListe->setColumnWidth(1,90);             // Call
+    sdokListe->setColumnWidth(2,150);            // Anlass
+    sdokListe->setColumnWidth(3,80);             // DOK
+    sdokListe->setColumnWidth(4,100);            // Von
+    sdokListe->setColumnWidth(5,100);            // Bis
     dokListe->clear();
-    dokListe->setColumnWidth(0,60);              
-    dokListe->setColumnWidth(1,160);             
-    dokListe->setColumnWidth(2,50);              
+    dokListe->setColumnWidth(0,60);              // DOK
+    dokListe->setColumnWidth(1,160);             // OV-Name
+    dokListe->setColumnWidth(2,50);              // dxcc
     tabWidget->setCurrentIndex(0);
     tabIdx = 0;
 
-    QDate heute = QDate::currentDate();         
-    dateEditVon->setDate(heute);                
-    heute = heute.addMonths(12);                
+    QDate heute = QDate::currentDate();         // erzeuge das Datum von heute
+    dateEditVon->setDate(heute);                // setze Datum von heute
+    heute = heute.addMonths(12);                // +12 Monate
     dateEditBis->setDate(heute);
+    
     qy = "SELECT * FROM tdok WHERE kdxcc = 'DL' ORDER BY dok";
     showDok(qy);
 }
@@ -83,7 +89,7 @@ dok::~dok()
    writeSettings();
 }
 
-
+// ------------------
 void dok::goExit()                               
 {
     db.close();                                  
@@ -99,39 +105,45 @@ void dok::keyPressEvent( QKeyEvent * event )
    }
 }
 
-
+// Settings
+// ---------------------
 void dok::readSettings()
 {
     resize(settings.value("dok/Size",sizeHint()).toSize());
     restoreState(settings.value("dok/Properties").toByteArray());
 }
 
-
+// Settings
+// ---------------------
 void dok::writeSettings()
 {
     settings.setValue("dok/Size",size());
     settings.setValue("dok/Properties",saveState());
 }
 
+// ----------------------------------------
 void dok::tabwidgetCurrentChangedCb(int i)
 {
    switch(i) {
-      case 0: break;               
+      case 0: break;               // Dok_Liste zeigen
       case 1: break;               
       case 2 : if( tabIdx != 3 )
-                 getSdokList();    
+                 getSdokList();    // SDOK _Liste zeigen
                tabIdx = 2;
               break;
-      case 3 :                     
+      case 3 :                     // SDOK Edit
               break;
    }
 }
+
+// ---------------------
 void dok::getHilfeCb()
 {
    settings.setValue("Val","DOK Verwaltung");
-   StartProcess("hilfedb &");
+   system("hilfedb &");
 }
 
+// ---------------------
 void dok::wEditDokCb(QString st)
 {
     QString f;
@@ -139,6 +151,7 @@ void dok::wEditDokCb(QString st)
     wEditDok->setText(f);
 }
 
+// ----------------------
 void dok::wEditDxccCb(QString st)
 {
     QString f;
@@ -147,7 +160,9 @@ void dok::wEditDxccCb(QString st)
 }
 
 
-
+// -------------------------------------------------------
+// showDOK
+// -------------------------------------------------------
 void dok::showDok(QString q)
 {
     dokListe->clear();
@@ -158,13 +173,13 @@ void dok::showDok(QString q)
       i = 0;
       r = 0;
       QTreeWidgetItem *item = new QTreeWidgetItem(dokListe);
-      item->setText(r++,query.value(i).toString());        
+      item->setText(r++,query.value(i).toString());        // DOK
       item->setTextAlignment(i++,Qt::AlignCenter);
-      item->setText(r++,query.value(i++).toString());      
-      item->setText(r++,query.value(i).toString());        
+      item->setText(r++,query.value(i++).toString());      // OV-Name
+      item->setText(r++,query.value(i).toString());        // Dxcc
       item->setTextAlignment(i++,Qt::AlignCenter);
-      item->setText(r++,query.value(i++).toString());      
-      item->setText(r++,query.value(i++).toString());      
+      item->setText(r++,query.value(i++).toString());      // DistriktName
+      item->setText(r++,query.value(i++).toString());      // Bemerkungen
     }
     t = BoxDOK->currentText();
     t += " : "+s.setNum(n);
@@ -174,7 +189,9 @@ void dok::showDok(QString q)
 }
 
 
-
+// -------------------------------------------------------
+// In DOK_Liste suchen
+// -------------------------------------------------------
 void dok::getDokCb(QString str)
 {
     QString f;
@@ -184,7 +201,8 @@ void dok::getDokCb(QString str)
     showDok(qy);
 }
 
-
+// BoxDok verändert
+// ------------------------------
 void dok::boxDokChangedCb(int id)
 {
   id = 0;
@@ -192,7 +210,9 @@ void dok::boxDokChangedCb(int id)
 }
 
 
-
+// --------------------------------------------------------
+// dokListe clicked
+// --------------------------------------------------------
 void dok::dokListeClickedCb(QTreeWidgetItem * item, int i)
 {
      int d = i;
@@ -206,7 +226,8 @@ void dok::dokListeClickedCb(QTreeWidgetItem * item, int i)
      uItem = item;
 }
 
-
+// ----------------------------------------------------------
+// Button_Update
 //----------------------------------------------------------
 void dok::dokUpdateCb()
 {
@@ -227,7 +248,9 @@ void dok::dokUpdateCb()
 }
 
 
-
+// ----------------------------------------------------------
+// Button_NEU
+// ----------------------------------------------------------
 void dok::dokNeuCb()
 {
    if(wEditDok->text().count() == 0)
@@ -249,18 +272,20 @@ void dok::dokNeuCb()
    query.exec(qy);
    r = 0;
    QTreeWidgetItem *item = new QTreeWidgetItem(dokListe);
-   item->setText(r,wEditDok->text());              
+   item->setText(r,wEditDok->text());              // DOK
    item->setTextAlignment(r++,Qt::AlignCenter);
-   item->setText(r++,wEditOVname->text());         
-   item->setText(r,wEditDxcc->text());             
+   item->setText(r++,wEditOVname->text());         // OV-Name
+   item->setText(r,wEditDxcc->text());             // Dxcc
    item->setTextAlignment(r++,Qt::AlignCenter);
-   item->setText(r++,wEditDistrikt->text());       
-   item->setText(r++,wEditBemerkung->text());      
+   item->setText(r++,wEditDistrikt->text());       // DistriktName
+   item->setText(r++,wEditBemerkung->text());      // Bemerkungen
    tabWidget->setCurrentIndex(0);
 }
 
 
-
+// ---------------------------------------------------------------------
+// Button_Delete
+// ---------------------------------------------------------------------
 void dok::dokDeleteCb()
 {
     QSqlQuery query;
@@ -272,7 +297,9 @@ void dok::dokDeleteCb()
 }
 
 
-
+// ======================================================================
+// SDOK
+// ======================================================================
 void dok::wEditSdokCb(QString st)
 {
     QString f;
@@ -280,12 +307,14 @@ void dok::wEditSdokCb(QString st)
     wEditSdok->setText(f);
 }
 
+// -----------------------------
 void dok::wEditCallCb(QString st)
 {
     QString f;
     f = st.toUpper();
     wEditCall->setText(f);
 }
+
 //-------------------------------
 void dok::wEditHdokCb(QString st)
 {
@@ -295,7 +324,9 @@ void dok::wEditHdokCb(QString st)
 }
 
 
-
+// -------------------------------------------------------------
+// SDOK selectieren
+// ------------------------------------------------------------
 void dok::getSdokList()
 {
     qy = "SELECT * FROM tsdok";
@@ -303,7 +334,9 @@ void dok::getSdokList()
 }
 
 
-
+// ------------------------------------------------------------
+// S_DOKs_data_tabelle zeigen
+// ------------------------------------------------------------
 void dok::getSdokData(QString q)
 {
     sdokListe->clear();
@@ -314,14 +347,14 @@ void dok::getSdokData(QString q)
       i = 0;
       r = 0;
       QTreeWidgetItem *item = new QTreeWidgetItem(sdokListe);
-      item->setText(r++,query.value(i++).toString());        
-      item->setText(r++,query.value(i++).toString());        
-      item->setText(r++,query.value(i++).toString());        
-      item->setText(r++,query.value(i).toString());          
+      item->setText(r++,query.value(i++).toString());        // SDOK
+      item->setText(r++,query.value(i++).toString());        // SDOK
+      item->setText(r++,query.value(i++).toString());        // Anlass
+      item->setText(r++,query.value(i).toString());          // DOK
       item->setTextAlignment(i++,Qt::AlignCenter);
-      item->setText(r++,query.value(i++).toString());        
-      item->setText(r++,query.value(i++).toString());        
-      item->setText(r++,query.value(i++).toString());        
+      item->setText(r++,query.value(i++).toString());        // Von
+      item->setText(r++,query.value(i++).toString());        // Bis
+      item->setText(r++,query.value(i++).toString());        // ID
     }
     t = tr("-  S-DOK  ");
     t += s.setNum(n);
@@ -329,7 +362,8 @@ void dok::getSdokData(QString q)
     wlineEditSdok->setFocus();                   
 }
 
-
+// BoxSDOK verändert
+// -------------------------------------------------------
 void dok::boxSdokChangedCb(int id)
 {
   id = 0;
@@ -337,7 +371,9 @@ void dok::boxSdokChangedCb(int id)
 }
 
 
-
+// -------------------------------------------------------
+// In S-DOK_Liste suchen
+// -------------------------------------------------------
 void dok::getSdokCb(QString str)
 {
     QString f;
@@ -353,27 +389,30 @@ void dok::getSdokCb(QString str)
 }
 
 
-
+// --------------------------------------------------------
+// SDOK_Liste clicked
+// --------------------------------------------------------
 void dok::sdokListeClickedCb(QTreeWidgetItem * item, int i)
 {
      int d = i;
      d = 0;
-     wEditSdok->setText(item->text(0));                 
-     wEditCall->setText(item->text(1));                 
-     wEditAnlass->setText(item->text(2));               
-     wEditHdok->setText(item->text(3));                 
-     s = item->text(4);                                 
+     wEditSdok->setText(item->text(0));                  // S-Dok
+     wEditCall->setText(item->text(1));                  // Call
+     wEditAnlass->setText(item->text(2));                // Anlass
+     wEditHdok->setText(item->text(3));                  // DOK
+     s = item->text(4);                                  // Datum von
      QDate da = QDate::fromString (s,"dd-MM-yyyy");
      dateEditVon->setDate(da);
-     s = item->text(5);                                 
+     s = item->text(5);                                  // Datum bis
      da = QDate::fromString (s,"dd-MM-yyyy");
      dateEditBis->setDate(da);
-     wEditId->setText(item->text(6));                   
+     wEditId->setText(item->text(6));                    // Id
      tabWidget->setCurrentIndex(3);
      uItem = item;
 }
 
-
+// -------------------------------------------------------
+// Button_SDOK_update
 //--------------------------------------------------------
 void dok::sdokUpdateCb()
 {
@@ -384,171 +423,180 @@ void dok::sdokUpdateCb()
    qy += "',acall='"+wEditCall->text();
    qy += "',anlass='"+wEditAnlass->text();
    qy += "',hdok='"+wEditHdok->text();
-   qy += "',von='";                           
-   QDate d = dateEditVon->date();             
+   
+   qy += "',von='";                           // Von Tag
+   QDate d = dateEditVon->date();             // Datum
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                         // Tag
    if(t.count() == 1)
       s = "0";
    qy += s+t+"-";
-   t.setNum(d.month());                       
+   t.setNum(d.month());                       // Monat
    s = "";
    if(t.count() == 1)
       s = "0";
    qy += s+t;
-   qy += "-"+t.setNum(d.year());              
-   qy += "',bis='";                           
-   d = dateEditBis->date();                   
+   qy += "-"+t.setNum(d.year());              // Jahr
+   
+   qy += "',bis='";                           // Bis Tag
+   d = dateEditBis->date();                   // Datum
    s = "";
    t.setNum(d.day());
    if(t.count() == 1)
       s = "0";
-   qy += s+t+"-";                             
+   qy += s+t+"-";                             // Tag
    t.setNum(d.month());
    if(t.count() == 1)
         s = "0";
-   qy += s+t;                                 
-   qy += "-"+t.setNum(d.year());              
+   qy += s+t;                                 // Monat
+   qy += "-"+t.setNum(d.year());              // Jahr
    qy += "' WHERE id="+wEditId->text();
    query.exec(qy);
    uItem->setText(0,wEditSdok->text());
    uItem->setText(1,wEditCall->text());
    uItem->setText(2,wEditAnlass->text());
    uItem->setText(3,wEditHdok->text());
-
-   d = dateEditVon->date();                   
+// --
+   d = dateEditVon->date();                   // hole Datum Von
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                         // Tag
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
 //--
-   t.setNum(d.month());                       
+   t.setNum(d.month());                       // Monat
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
 
-   s += t.setNum(d.year());                   
-   uItem->setText(4,s);                       
+   s += t.setNum(d.year());                   // Jahr
+   uItem->setText(4,s);                       // setze Datum bis
 
-   d = dateEditBis->date();                   
+   // --
+   d = dateEditBis->date();                   // hole Datum Bis
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                         // Tag
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
 //--
-   t.setNum(d.month());                       
+   t.setNum(d.month());                       // Monat
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
 
-   s += t.setNum(d.year());                   
-   uItem->setText(5,s);                       
-   uItem->setText(6,s.setNum(n));             
+   s += t.setNum(d.year());                   // Jahr
+   uItem->setText(5,s);                       // setze Datum bis
+   
+   uItem->setText(6,s.setNum(n));             // Last Insert
    tabIdx = 3;
    tabWidget->setCurrentIndex(2);
 }
 
 
-
+// -----------------------------------------------------------
+// Button_SDOK_NEU
+// -----------------------------------------------------------
 void dok::sdokNeuCb()
 {
    if(wEditSdok->text().count() == 0)
      return;
    QSqlQuery query;
    qy = "INSERT INTO tsdok VALUES ('";
-   qy += wEditSdok->text();                   
-   qy += "','"+wEditCall->text();             
-   qy += "','"+wEditAnlass->text();           
-   qy += "','"+wEditHdok->text();             
+   qy += wEditSdok->text();                    // SDOK
+   qy += "','"+wEditCall->text();              // Call
+   qy += "','"+wEditAnlass->text();            // Anlass
+   qy += "','"+wEditHdok->text();              // DOK
    qy += "','";
-   QDate d = dateEditVon->date();             
+   QDate d = dateEditVon->date();              // Datum Von
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                          // Tag
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
-
-   t.setNum(d.month());                       
+// --
+   t.setNum(d.month());                        // Monat
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
-   qy += s+t.setNum(d.year());                
+   qy += s+t.setNum(d.year());                 // Jahr
    qy += "','";
-
-   d = dateEditBis->date();                   
+// --
+   d = dateEditBis->date();                   // Datum Bis
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                         // Tag
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
-
-   t.setNum(d.month());                       
+// --
+   t.setNum(d.month());                        // Monat
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
-   qy += s+t.setNum(d.year());                
-   qy += "',0)";                              
+   qy += s+t.setNum(d.year());                // Jahr
+   qy += "',0)";                               // ID
    query.exec(qy);
    n = query.lastInsertId().toInt();
    r = 0;
    QTreeWidgetItem *item = new QTreeWidgetItem(sdokListe);
-   item->setText(r++,wEditSdok->text());      
-   item->setText(r++,wEditCall->text());      
-   item->setText(r++,wEditAnlass->text());    
-   item->setText(r,wEditHdok->text());        
+   item->setText(r++,wEditSdok->text());      // SDOK
+   item->setText(r++,wEditCall->text());      // Call
+   item->setText(r++,wEditAnlass->text());    // Anlass
+   
+   item->setText(r,wEditHdok->text());        // DOK
    item->setTextAlignment(r++,Qt::AlignCenter);
-
-   d = dateEditVon->date();                   
+// --
+   d = dateEditVon->date();                   // hole Datum Von
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                          // Tag
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
-
-   t.setNum(d.month());                       
+// --
+   t.setNum(d.month());                       // Monat
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
-
-   s += t.setNum(d.year());                   
-   item->setText(r++,s);                      
-
-   d = dateEditBis->date();                   
+// --
+   s += t.setNum(d.year());                   // Jahr
+   item->setText(r++,s);                      // setze Datum bis
+// --
+   d = dateEditBis->date();                   // hole Datum Bis
    s = "";
-   t.setNum(d.day());                         
+   t.setNum(d.day());                         // Tag
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
 
-   t.setNum(d.month());                       
+   t.setNum(d.month());                       // Monat
    if(t.count() == 1)
       s += "0";
    s += t;
    s += "-";
 
-   s += t.setNum(d.year());                   
-   item->setText(r++,s);                      
-   item->setText(r++,s.setNum(n));            
+   s += t.setNum(d.year());                   // Jahr
+   item->setText(r++,s);                      // setze Datum bis
+   item->setText(r++,s.setNum(n));            // Last Insert
    tabIdx = 3;
    tabWidget->setCurrentIndex(2);
-   
+   // Count +1 setzen
 }
 
 
-
+// ---------------------------------------------------------------------
+// Button_SDOK_Delete
+// ---------------------------------------------------------------------
 void dok::sdokDeleteCb()
 {
     QSqlQuery query;
@@ -558,5 +606,5 @@ void dok::sdokDeleteCb()
     sdokListe->takeTopLevelItem( n );
     tabIdx = 3;
     tabWidget->setCurrentIndex(2);
-    
+     // count -1 setzen
 }

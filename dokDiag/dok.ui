@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>dok</class>
- <widget class="QMainWindow" name="dok" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="dok">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,26 +10,52 @@
     <height>562</height>
    </rect>
   </property>
-  <property name="font" >
+  <property name="font">
    <font>
     <pointsize>9</pointsize>
     <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>DOK - Verwaltung</string>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <layout class="QGridLayout" name="gridLayout" >
-    <item row="0" column="0" >
-     <widget class="QLabel" name="label" >
-      <property name="palette" >
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="2">
+     <spacer>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>37</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="4">
+     <spacer>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>161</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="palette">
        <palette>
         <active>
-         <colorrole role="WindowText" >
-          <brush brushstyle="SolidPattern" >
-           <color alpha="255" >
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
             <red>114</red>
             <green>127</green>
             <blue>212</blue>
@@ -37,9 +64,9 @@
          </colorrole>
         </active>
         <inactive>
-         <colorrole role="WindowText" >
-          <brush brushstyle="SolidPattern" >
-           <color alpha="255" >
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
             <red>114</red>
             <green>127</green>
             <blue>212</blue>
@@ -48,9 +75,9 @@
          </colorrole>
         </inactive>
         <disabled>
-         <colorrole role="WindowText" >
-          <brush brushstyle="SolidPattern" >
-           <color alpha="255" >
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
             <red>119</red>
             <green>119</green>
             <blue>119</blue>
@@ -60,85 +87,59 @@
         </disabled>
        </palette>
       </property>
-      <property name="font" >
+      <property name="font">
        <font>
         <pointsize>11</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
-      <property name="text" >
+      <property name="text">
        <string>   DOK - Verwaltung        </string>
       </property>
      </widget>
     </item>
-    <item row="0" column="1" >
-     <widget class="QLabel" name="DokCntLabel" >
-      <property name="text" >
+    <item row="0" column="1">
+     <widget class="QLabel" name="DokCntLabel">
+      <property name="text">
        <string>---</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="2" >
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0" >
-       <size>
-        <width>37</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="3" >
-     <widget class="QLabel" name="SdokCntLabel" >
-      <property name="text" >
+    <item row="0" column="3">
+     <widget class="QLabel" name="SdokCntLabel">
+      <property name="text">
        <string>-</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="4" >
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0" >
-       <size>
-        <width>161</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="5" >
-     <widget class="QPushButton" name="ButtonHilfe" >
-      <property name="font" >
+    <item row="0" column="5">
+     <widget class="QPushButton" name="ButtonHilfe">
+      <property name="font">
        <font>
         <weight>50</weight>
         <bold>false</bold>
        </font>
       </property>
-      <property name="focusPolicy" >
+      <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
-      <property name="text" >
+      <property name="text">
        <string>Hilfe</string>
       </property>
-      <property name="flat" >
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="6" >
-     <widget class="QPushButton" name="ButtonEnde" >
-      <property name="palette" >
+    <item row="2" column="0" colspan="6">
+     <widget class="QPushButton" name="ButtonEnde">
+      <property name="palette">
        <palette>
         <active>
-         <colorrole role="Button" >
-          <brush brushstyle="SolidPattern" >
-           <color alpha="255" >
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
             <red>175</red>
             <green>215</green>
             <blue>217</blue>
@@ -147,9 +148,9 @@
          </colorrole>
         </active>
         <inactive>
-         <colorrole role="Button" >
-          <brush brushstyle="SolidPattern" >
-           <color alpha="255" >
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
             <red>175</red>
             <green>215</green>
             <blue>217</blue>
@@ -158,9 +159,9 @@
          </colorrole>
         </inactive>
         <disabled>
-         <colorrole role="Button" >
-          <brush brushstyle="SolidPattern" >
-           <color alpha="255" >
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
             <red>175</red>
             <green>215</green>
             <blue>217</blue>
@@ -170,44 +171,44 @@
         </disabled>
        </palette>
       </property>
-      <property name="font" >
+      <property name="font">
        <font>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
-      <property name="text" >
+      <property name="text">
        <string>F10  - ENDE</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="6" >
-     <widget class="QTabWidget" name="tabWidget" >
-      <property name="font" >
+    <item row="1" column="0" colspan="6">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
        <font>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
-      <property name="focusPolicy" >
+      <property name="focusPolicy">
        <enum>Qt::NoFocus</enum>
       </property>
-      <property name="currentIndex" >
+      <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tab" >
-       <attribute name="title" >
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
         <string>DOK - Liste       </string>
        </attribute>
-       <layout class="QGridLayout" >
-        <item row="0" column="0" colspan="6" >
-         <widget class="QTreeWidget" name="dokListe" >
-          <property name="palette" >
+       <layout class="QGridLayout">
+        <item row="0" column="0" colspan="6">
+         <widget class="QTreeWidget" name="dokListe">
+          <property name="palette">
            <palette>
             <active>
-             <colorrole role="Base" >
-              <brush brushstyle="SolidPattern" >
-               <color alpha="255" >
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
                 <red>244</red>
                 <green>249</green>
                 <blue>235</blue>
@@ -216,9 +217,9 @@
              </colorrole>
             </active>
             <inactive>
-             <colorrole role="Base" >
-              <brush brushstyle="SolidPattern" >
-               <color alpha="255" >
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
                 <red>244</red>
                 <green>249</green>
                 <blue>235</blue>
@@ -227,9 +228,9 @@
              </colorrole>
             </inactive>
             <disabled>
-             <colorrole role="Base" >
-              <brush brushstyle="SolidPattern" >
-               <color alpha="255" >
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
                 <red>255</red>
                 <green>255</green>
                 <blue>255</blue>
@@ -239,55 +240,55 @@
             </disabled>
            </palette>
           </property>
-          <property name="font" >
+          <property name="font">
            <font>
             <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
-          <property name="focusPolicy" >
+          <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
-          <property name="rootIsDecorated" >
+          <property name="rootIsDecorated">
            <bool>false</bool>
           </property>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>DOK</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>OV - Name</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>DXCC</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>Distrikt</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>Bemerkungen</string>
            </property>
           </column>
          </widget>
         </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="label_17" >
-          <property name="text" >
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_17">
+          <property name="text">
            <string>Suchen </string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1" >
-         <widget class="QLineEdit" name="wlineEditDok" >
-          <property name="font" >
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="wlineEditDok">
+          <property name="font">
            <font>
             <weight>50</weight>
             <bold>false</bold>
@@ -295,69 +296,69 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="2" >
-         <widget class="QComboBox" name="BoxDOK" >
-          <property name="focusPolicy" >
+        <item row="1" column="2">
+         <widget class="QComboBox" name="BoxDOK">
+          <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>DL</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>OE</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>PA</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>HB</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>F</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>I</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>SP</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>OK</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>OM</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>EA</string>
            </property>
           </item>
          </widget>
         </item>
-        <item row="1" column="3" >
+        <item row="1" column="3">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -365,12 +366,12 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="4" >
+        <item row="1" column="4">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -378,12 +379,12 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="5" >
+        <item row="1" column="5">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>105</width>
             <height>22</height>
@@ -393,424 +394,19 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_1" >
-       <attribute name="title" >
-        <string> Dok  NEU / Update   </string>
-       </attribute>
-       <widget class="QLabel" name="label_2" >
-        <property name="geometry" >
-         <rect>
-          <x>100</x>
-          <y>88</y>
-          <width>52</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text" >
-         <string>DOK</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_3" >
-        <property name="geometry" >
-         <rect>
-          <x>37</x>
-          <y>132</y>
-          <width>116</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text" >
-         <string>OV - Name</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_4" >
-        <property name="geometry" >
-         <rect>
-          <x>71</x>
-          <y>168</y>
-          <width>81</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text" >
-         <string>Dxcc</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_5" >
-        <property name="geometry" >
-         <rect>
-          <x>67</x>
-          <y>204</y>
-          <width>86</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text" >
-         <string>Distrikt</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_6" >
-        <property name="geometry" >
-         <rect>
-          <x>22</x>
-          <y>244</y>
-          <width>131</width>
-          <height>26</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text" >
-         <string>Bemerkungen</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="wEditDok" >
-        <property name="geometry" >
-         <rect>
-          <x>180</x>
-          <y>88</y>
-          <width>73</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="wEditOVname" >
-        <property name="geometry" >
-         <rect>
-          <x>180</x>
-          <y>132</y>
-          <width>141</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="wEditDxcc" >
-        <property name="geometry" >
-         <rect>
-          <x>180</x>
-          <y>164</y>
-          <width>69</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="wEditDistrikt" >
-        <property name="geometry" >
-         <rect>
-          <x>180</x>
-          <y>200</y>
-          <width>141</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="wEditBemerkung" >
-        <property name="geometry" >
-         <rect>
-          <x>180</x>
-          <y>240</y>
-          <width>257</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>50</weight>
-          <bold>false</bold>
-         </font>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="ButtonNEU" >
-        <property name="geometry" >
-         <rect>
-          <x>248</x>
-          <y>300</y>
-          <width>89</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>220</green>
-              <blue>223</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>220</green>
-              <blue>223</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>220</green>
-              <blue>223</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text" >
-         <string>NEU</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="ButtonUpdate" >
-        <property name="geometry" >
-         <rect>
-          <x>345</x>
-          <y>300</y>
-          <width>93</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>220</red>
-              <green>225</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>220</red>
-              <green>225</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>220</red>
-              <green>225</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text" >
-         <string>Update</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_7" >
-        <property name="geometry" >
-         <rect>
-          <x>160</x>
-          <y>36</y>
-          <width>301</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font" >
-         <font>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text" >
-         <string>DOKs   anlegen oder ändern</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="ButtonDEL" >
-        <property name="geometry" >
-         <rect>
-          <x>144</x>
-          <y>300</y>
-          <width>97</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>215</red>
-              <green>215</green>
-              <blue>215</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>215</red>
-              <green>215</green>
-              <blue>215</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>215</red>
-              <green>215</green>
-              <blue>215</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="font" >
-         <font>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="focusPolicy" >
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text" >
-         <string>Löschen</string>
-        </property>
-       </widget>
-       <widget class="Line" name="line_2" >
-        <property name="geometry" >
-         <rect>
-          <x>160</x>
-          <y>60</y>
-          <width>265</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="Seite" >
-       <attribute name="title" >
+      <widget class="QWidget" name="Seite">
+       <attribute name="title">
         <string>SDOKs          </string>
        </attribute>
-       <layout class="QGridLayout" >
-        <item row="0" column="0" colspan="6" >
-         <widget class="QTreeWidget" name="sdokListe" >
-          <property name="palette" >
+       <layout class="QGridLayout">
+        <item row="0" column="0" colspan="6">
+         <widget class="QTreeWidget" name="sdokListe">
+          <property name="palette">
            <palette>
             <active>
-             <colorrole role="Base" >
-              <brush brushstyle="SolidPattern" >
-               <color alpha="255" >
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
                 <red>253</red>
                 <green>248</green>
                 <blue>255</blue>
@@ -819,9 +415,9 @@
              </colorrole>
             </active>
             <inactive>
-             <colorrole role="Base" >
-              <brush brushstyle="SolidPattern" >
-               <color alpha="255" >
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
                 <red>253</red>
                 <green>248</green>
                 <blue>255</blue>
@@ -830,9 +426,9 @@
              </colorrole>
             </inactive>
             <disabled>
-             <colorrole role="Base" >
-              <brush brushstyle="SolidPattern" >
-               <color alpha="255" >
+             <colorrole role="Base">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
                 <red>255</red>
                 <green>255</green>
                 <blue>255</blue>
@@ -842,65 +438,65 @@
             </disabled>
            </palette>
           </property>
-          <property name="font" >
+          <property name="font">
            <font>
             <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
-          <property name="focusPolicy" >
+          <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
-          <property name="rootIsDecorated" >
+          <property name="rootIsDecorated">
            <bool>false</bool>
           </property>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>S-DOK</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>Call</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>Anlass</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>DOK</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>Vom</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>Bis</string>
            </property>
           </column>
           <column>
-           <property name="text" >
+           <property name="text">
             <string>ID</string>
            </property>
           </column>
          </widget>
         </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="label_8" >
-          <property name="text" >
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_8">
+          <property name="text">
            <string>Suche</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1" >
-         <widget class="QLineEdit" name="wlineEditSdok" >
-          <property name="font" >
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="wlineEditSdok">
+          <property name="font">
            <font>
             <weight>50</weight>
             <bold>false</bold>
@@ -908,35 +504,35 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="2" >
-         <widget class="QComboBox" name="BoxSDOK" >
-          <property name="font" >
+        <item row="1" column="2">
+         <widget class="QComboBox" name="BoxSDOK">
+          <property name="font">
            <font>
             <weight>50</weight>
             <bold>false</bold>
            </font>
           </property>
-          <property name="focusPolicy" >
+          <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
           </property>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>SDOK</string>
            </property>
           </item>
           <item>
-           <property name="text" >
+           <property name="text">
             <string>DOK</string>
            </property>
           </item>
          </widget>
         </item>
-        <item row="1" column="3" >
+        <item row="1" column="3">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>57</width>
             <height>22</height>
@@ -944,12 +540,12 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="4" >
+        <item row="1" column="4">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -957,12 +553,12 @@
           </property>
          </spacer>
         </item>
-        <item row="1" column="5" >
+        <item row="1" column="5">
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -972,12 +568,417 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Seite_2" >
-       <attribute name="title" >
+      <widget class="QWidget" name="tab_1">
+       <attribute name="title">
+        <string> Dok  NEU / Update   </string>
+       </attribute>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>88</y>
+          <width>52</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>DOK</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>37</x>
+          <y>132</y>
+          <width>116</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>OV - Name</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>71</x>
+          <y>168</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Dxcc</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>67</x>
+          <y>204</y>
+          <width>86</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Distrikt</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>22</x>
+          <y>244</y>
+          <width>131</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Bemerkungen</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditDok">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>88</y>
+          <width>73</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditOVname">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>132</y>
+          <width>141</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditDxcc">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>164</y>
+          <width>69</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditDistrikt">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>200</y>
+          <width>141</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="wEditBemerkung">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>240</y>
+          <width>257</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ButtonNEU">
+        <property name="geometry">
+         <rect>
+          <x>248</x>
+          <y>300</y>
+          <width>89</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="palette">
+         <palette>
+          <active>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>238</red>
+              <green>220</green>
+              <blue>223</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>238</red>
+              <green>220</green>
+              <blue>223</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>238</red>
+              <green>220</green>
+              <blue>223</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>NEU</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ButtonUpdate">
+        <property name="geometry">
+         <rect>
+          <x>345</x>
+          <y>300</y>
+          <width>93</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="palette">
+         <palette>
+          <active>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>220</red>
+              <green>225</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>220</red>
+              <green>225</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>220</red>
+              <green>225</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_7">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>36</y>
+          <width>301</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>DOKs   anlegen oder ändern</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="ButtonDEL">
+        <property name="geometry">
+         <rect>
+          <x>144</x>
+          <y>300</y>
+          <width>97</width>
+          <height>36</height>
+         </rect>
+        </property>
+        <property name="palette">
+         <palette>
+          <active>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>215</red>
+              <green>215</green>
+              <blue>215</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>215</red>
+              <green>215</green>
+              <blue>215</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
+              <red>215</red>
+              <green>215</green>
+              <blue>215</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
+        </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="text">
+         <string>Löschen</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>60</y>
+          <width>265</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Seite_2">
+       <attribute name="title">
         <string> Sdok  NEU / Update        </string>
        </attribute>
-       <widget class="QLabel" name="label_9" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
          <rect>
           <x>58</x>
           <y>96</y>
@@ -985,15 +986,15 @@
           <height>26</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>S-DOK</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_10" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
          <rect>
           <x>48</x>
           <y>136</y>
@@ -1001,15 +1002,15 @@
           <height>31</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Club Call</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_11" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
          <rect>
           <x>58</x>
           <y>176</y>
@@ -1017,15 +1018,15 @@
           <height>31</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Anlass</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_12" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_12">
+        <property name="geometry">
          <rect>
           <x>77</x>
           <y>216</y>
@@ -1033,15 +1034,15 @@
           <height>21</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>DOK</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_13" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_13">
+        <property name="geometry">
          <rect>
           <x>13</x>
           <y>256</y>
@@ -1049,15 +1050,15 @@
           <height>26</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Zeitraum:   Vom</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_14" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
          <rect>
           <x>280</x>
           <y>260</y>
@@ -1065,15 +1066,15 @@
           <height>21</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>bis</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wEditSdok" >
-        <property name="geometry" >
+       <widget class="QLineEdit" name="wEditSdok">
+        <property name="geometry">
          <rect>
           <x>168</x>
           <y>92</y>
@@ -1082,8 +1083,8 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wEditCall" >
-        <property name="geometry" >
+       <widget class="QLineEdit" name="wEditCall">
+        <property name="geometry">
          <rect>
           <x>168</x>
           <y>132</y>
@@ -1091,15 +1092,15 @@
           <height>33</height>
          </rect>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wEditAnlass" >
-        <property name="geometry" >
+       <widget class="QLineEdit" name="wEditAnlass">
+        <property name="geometry">
          <rect>
           <x>168</x>
           <y>172</y>
@@ -1107,15 +1108,15 @@
           <height>33</height>
          </rect>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wEditHdok" >
-        <property name="geometry" >
+       <widget class="QLineEdit" name="wEditHdok">
+        <property name="geometry">
          <rect>
           <x>168</x>
           <y>208</y>
@@ -1123,15 +1124,15 @@
           <height>33</height>
          </rect>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
        </widget>
-       <widget class="QDateEdit" name="dateEditVon" >
-        <property name="geometry" >
+       <widget class="QDateEdit" name="dateEditVon">
+        <property name="geometry">
          <rect>
           <x>168</x>
           <y>252</y>
@@ -1139,24 +1140,24 @@
           <height>36</height>
          </rect>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="displayFormat" >
+        <property name="displayFormat">
          <string>dd.MM.yyyy</string>
         </property>
-        <property name="calendarPopup" >
+        <property name="calendarPopup">
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QDateEdit" name="dateEditBis" >
-        <property name="geometry" >
+       <widget class="QDateEdit" name="dateEditBis">
+        <property name="geometry">
          <rect>
           <x>316</x>
           <y>252</y>
@@ -1164,24 +1165,24 @@
           <height>36</height>
          </rect>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="displayFormat" >
+        <property name="displayFormat">
          <string>dd.MM.yyyy</string>
         </property>
-        <property name="calendarPopup" >
+        <property name="calendarPopup">
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="label_15" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
          <rect>
           <x>140</x>
           <y>36</y>
@@ -1189,19 +1190,19 @@
           <height>26</height>
          </rect>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <pointsize>10</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>S-DOKs   anlegen oder ändern </string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_16" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
          <rect>
           <x>296</x>
           <y>96</y>
@@ -1209,18 +1210,18 @@
           <height>26</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>ID</string>
         </property>
-        <property name="alignment" >
+        <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLineEdit" name="wEditId" >
-        <property name="enabled" >
+       <widget class="QLineEdit" name="wEditId">
+        <property name="enabled">
          <bool>true</bool>
         </property>
-        <property name="geometry" >
+        <property name="geometry">
          <rect>
           <x>328</x>
           <y>96</y>
@@ -1228,12 +1229,12 @@
           <height>33</height>
          </rect>
         </property>
-        <property name="palette" >
+        <property name="palette">
          <palette>
           <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Base">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>242</red>
               <green>242</green>
               <blue>242</blue>
@@ -1242,9 +1243,9 @@
            </colorrole>
           </active>
           <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Base">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>242</red>
               <green>242</green>
               <blue>242</blue>
@@ -1253,9 +1254,9 @@
            </colorrole>
           </inactive>
           <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Base">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>255</red>
               <green>255</green>
               <blue>255</blue>
@@ -1265,21 +1266,21 @@
           </disabled>
          </palette>
         </property>
-        <property name="font" >
+        <property name="font">
          <font>
           <weight>50</weight>
           <bold>false</bold>
          </font>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string/>
         </property>
        </widget>
-       <widget class="Line" name="line" >
-        <property name="geometry" >
+       <widget class="Line" name="line">
+        <property name="geometry">
          <rect>
           <x>128</x>
           <y>68</y>
@@ -1287,12 +1288,12 @@
           <height>16</height>
          </rect>
         </property>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QPushButton" name="ButtonSdokDel" >
-        <property name="geometry" >
+       <widget class="QPushButton" name="ButtonSdokDel">
+        <property name="geometry">
          <rect>
           <x>121</x>
           <y>308</y>
@@ -1300,12 +1301,12 @@
           <height>41</height>
          </rect>
         </property>
-        <property name="palette" >
+        <property name="palette">
          <palette>
           <active>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>215</red>
               <green>215</green>
               <blue>215</blue>
@@ -1314,9 +1315,9 @@
            </colorrole>
           </active>
           <inactive>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>215</red>
               <green>215</green>
               <blue>215</blue>
@@ -1325,9 +1326,9 @@
            </colorrole>
           </inactive>
           <disabled>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>215</red>
               <green>215</green>
               <blue>215</blue>
@@ -1337,15 +1338,15 @@
           </disabled>
          </palette>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Löschen</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="ButtonSdokNeu" >
-        <property name="geometry" >
+       <widget class="QPushButton" name="ButtonSdokNeu">
+        <property name="geometry">
          <rect>
           <x>240</x>
           <y>308</y>
@@ -1353,12 +1354,12 @@
           <height>41</height>
          </rect>
         </property>
-        <property name="palette" >
+        <property name="palette">
          <palette>
           <active>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>238</red>
               <green>230</green>
               <blue>223</blue>
@@ -1367,9 +1368,9 @@
            </colorrole>
           </active>
           <inactive>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>238</red>
               <green>230</green>
               <blue>223</blue>
@@ -1378,9 +1379,9 @@
            </colorrole>
           </inactive>
           <disabled>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>238</red>
               <green>230</green>
               <blue>223</blue>
@@ -1390,15 +1391,15 @@
           </disabled>
          </palette>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>NEU</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="ButtonSdokUpdate" >
-        <property name="geometry" >
+       <widget class="QPushButton" name="ButtonSdokUpdate">
+        <property name="geometry">
          <rect>
           <x>352</x>
           <y>308</y>
@@ -1406,12 +1407,12 @@
           <height>41</height>
          </rect>
         </property>
-        <property name="palette" >
+        <property name="palette">
          <palette>
           <active>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>220</red>
               <green>225</green>
               <blue>238</blue>
@@ -1420,9 +1421,9 @@
            </colorrole>
           </active>
           <inactive>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>220</red>
               <green>225</green>
               <blue>238</blue>
@@ -1431,9 +1432,9 @@
            </colorrole>
           </inactive>
           <disabled>
-           <colorrole role="Button" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
+           <colorrole role="Button">
+            <brush brushstyle="SolidPattern">
+             <color alpha="255">
               <red>220</red>
               <green>225</green>
               <blue>238</blue>
@@ -1443,10 +1444,10 @@
           </disabled>
          </palette>
         </property>
-        <property name="focusPolicy" >
+        <property name="focusPolicy">
          <enum>Qt::NoFocus</enum>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Update</string>
         </property>
        </widget>
@@ -1454,20 +1455,14 @@
      </widget>
     </item>
    </layout>
-   <zorder>label</zorder>
-   <zorder>DokCntLabel</zorder>
-   <zorder>SdokCntLabel</zorder>
-   <zorder>ButtonHilfe</zorder>
-   <zorder>ButtonEnde</zorder>
-   <zorder>tabWidget</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar" >
-   <property name="geometry" >
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>623</width>
-     <height>34</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

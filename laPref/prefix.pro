@@ -16,24 +16,18 @@ unix {
   OBJECTS_DIR = .obj
 }
 
-win32{
-  DEFINES-=UNICODE
-  TARGET=prefdb
-}
-
 # -- Input --
-FORMS += prefix.ui\
+FORMS = prefix.ui
 
-HEADERS += prefDiag.h\
+HEADERS = prefDiag.h
 
 SOURCES += main.cpp\
-           ../qtlogDiag/dirmngr.cpp\
            prefDiag.cpp
 
 RECOURCES = ../qtlogRessourcen.qrc
 
 unix::TARGET = ../bin/prefdb
 
-DEPENDPATH +=
+DEPENDPATH =
 
-TRANSLATIONS += qtlogPrefix_en.ts
+TRANSLATIONS = qtlogLaPrefix_en.ts

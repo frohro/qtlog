@@ -691,7 +691,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Daten aus  www.qrz.com Abfrage übernehmen</string>
+         <string>Daten von  www.qrz.com Abfrage übernehmen</string>
         </property>
        </widget>
        <widget class="QComboBox" name="BoxName">
@@ -1073,6 +1073,12 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Frequenz</string>
         </property>
@@ -1184,7 +1190,7 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>TextLabel_Info</string>
         </property>
        </widget>
        <widget class="QLabel" name="labelDistanz">
@@ -1241,16 +1247,16 @@
          </font>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>TextLabel_Dist</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_22">
         <property name="geometry">
          <rect>
-          <x>70</x>
+          <x>205</x>
           <y>270</y>
-          <width>116</width>
-          <height>18</height>
+          <width>261</width>
+          <height>16</height>
          </rect>
         </property>
         <property name="font">
@@ -1261,10 +1267,10 @@
          </font>
         </property>
         <property name="text">
-         <string>Kopiere nach</string>
+         <string>Kopiere nach QSO logging</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="label_21">

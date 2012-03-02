@@ -10,17 +10,21 @@
 
 #include "addQso.h"
 #include "serve.h"
+
+
 Serve::Serve()
 {
   i = 0;
   n = 0;
 }
+
 Serve::~Serve()
 {
 }
+
 /*
-
-
+// Refnamen_Tabelle aus DB lesen - Hash_Tabellen aufbauen
+// ---------------------------------------------------------
 void translate::installHashTable()
 {
  QString d, u;
@@ -41,8 +45,8 @@ void translate::installHashTable()
 }
 */
 /*
-
-
+//  - return USR_Feldnamen
+// -----------------------------------------------------------
 QString translate::getUsrField(QString dbfield)
 {
      QHash<QString, QString>::const_iterator in = toUsr.find(dbfield);
@@ -63,33 +67,36 @@ int translate::getFieldBr(QString usrfield)
 }
 */
 
-
+// BAND übersetzung
+// ----------------------------------
 void Serve::installHashTableBand()
 {
  QString b, mb;
     QSqlQuery query; 
-    qy = "SELECT band,mband FROM wband WHERE work !=0"; 
+    qy = "SELECT band,mband FROM wband WHERE work !=0"; // Arbeits_bäner laden
     query.exec(qy);
     i = query.size();
     while(query.next()) {
         i = 0;
-        b = query.value(i++).toString();     
-       mb = query.value(i++).toString();     
-       toMband.insert(b,mb);                 
-       toSband.insert(mb,b);                 
+        b = query.value(i++).toString();     // sysBand
+       mb = query.value(i++).toString();     // myBand
+       toMband.insert(b,mb);                 // sysBand -> myBand
+       toSband.insert(mb,b);                 // myBand  -> sysBand
     }
 }
 
-
+// return: MyBand
+// ----------------------------------------------------------
 QString Serve::getMyband(QString sysband)
 {
     QHash<QString, QString>::const_iterator i = toMband.find(sysband);
     if(i == toMband.end())
        return "?";
-    return i.value();                        
+    return i.value();                        // return myBand
 }
 
-
+// return: sysBand
+// ----------------------------------------------------------
 QString Serve::getSysband(QString myband)
 {
     QHash<QString, QString>::const_iterator i = toSband.find(myband);

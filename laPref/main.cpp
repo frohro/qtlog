@@ -11,11 +11,27 @@
 #include <QApplication>
 #include <QSettings>
 #include "prefDiag.h"
+
+
 int main(int argc, char *argv[])
 {
+  int Lang;
+  QString home = QDir::homePath(); 
+  
   QTranslator translator;
-  if(translator.load("../laPref/qtlogPrefix_en")) qDebug()<<"Got the translation.\n";
+  //if(translator.load("../laPref/qtlogPrefix_en")) qDebug()<<"Got the translation.\n";
+ 
   QApplication a(argc, argv);
+  QLocale locale;
+  Lang = locale.country();
+  Lang = 100;                 // TEST
+  
+  if(Lang != 82) {
+       home+="/log/laPref/qtlogLaPrefix_en";
+       translator.load(home);  
+       a.installTranslator(&translator);
+  }
+  
   a.installTranslator(&translator);
   prefDiag pDiag;
   pDiag.show();

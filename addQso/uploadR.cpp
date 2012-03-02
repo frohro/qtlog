@@ -11,14 +11,13 @@
 #include <qmessagebox.h>
 #include "uploadR.h"
 
-
+// -------------------------------------------
 uploadR::uploadR(QWidget * parent) : QDialog(parent),
 settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
 {
     setupUi(this);
     connect(ButtonESC, SIGNAL(pressed()), this, SLOT(goExit()));
     connect(checkBoxRealtime, SIGNAL(clicked()), this, SLOT(qslviaChanged()));
-    
     
     int n = settings.value("FontSize").toString().toInt();
     QFont font;
@@ -37,12 +36,12 @@ settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
       checkBoxRealtime->setText(" Upload gesterrt");
       upLd = 0;
     } 
-}
-
+}// --------------------
 uploadR::~uploadR()
 {
 }
 
+// --------------------
 void uploadR::qslviaChanged()
 {
     if(checkBoxRealtime->isChecked() == TRUE) {
@@ -55,8 +54,7 @@ void uploadR::qslviaChanged()
       checkBoxRealtime->setText(" Upload gesterrt");
       upLd = 0;
     }
-}
-
+}// -------------------
 void uploadR::goExit()
 {
    accept();

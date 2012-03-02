@@ -18,30 +18,32 @@ double fsqr(double );
 
 Dest::Dest()
 {
-      homeBr   = 0.0;                     
-      homeLg   = 0.0;                     
+      homeBr   = 0.0;                     // home 
+      homeLg   = 0.0;                     // home 
 }
 
 Dest::~Dest(){
 }
 
-
+// Entfernung und Richtung aus Remote_Locator berechnen und zurueckgeben
+// ---------------------------------------------------------------------
 QString Dest::calculateToLL(QString str)
 {
   char temp[255];
   float latRem, longRem;
   strcpy(temp,str.toAscii());
   if( ! validateLocator(temp)) {
-     return "UNBEKANNT";                   
+     return "UNBEKANNT";                    // im Dialog anzeigen
   }
-  else {                                    
+  else {                                    // kalkuliere remote lat/long
     calcLatLong(temp, latRem,longRem);
     EntfRichtung(homeBr, homeLg, latRem, longRem);
     return  EntfRicht.sprintf("%d Km / %d Grad",Distanz,Richtung);
   }
 }
 
-
+// Ueberpruefe den Remote_Locator auf korr. Eingabe
+// ------------------------------------------------
 bool Dest::validateLocator(const char *st)
 {
    if((st[0]>='A') && (st[0]<='R') && (st[1]>='A') &&( st[1]<='R')) {
@@ -58,7 +60,8 @@ bool Dest::validateLocator(const char *st)
   return FALSE;
 }
 
-
+// Kalkuliere die Breite und Laenge in Grad.dezimal aus dem Locator
+// ----------------------------------------------------------------
 void Dest::calcLatLong(char *st, float &lat, float &lon)
 {
    if(st[4] != 0) {
@@ -72,9 +75,11 @@ void Dest::calcLatLong(char *st, float &lat, float &lon)
 }
 
 
-
-float Dest::GradDezimal( QString str)   
-{                                       
+// -----------------------------------------------------------------------------------------
+// IN: grad.mm.ss  -  return: grad.dezimal
+// ---------------------------------------------------
+float Dest::GradDezimal( QString str)   // str = "53.20.46"
+{                                       // str = "53"
  float grad, min, sec;
  QString s,f;
     s = str;
@@ -87,7 +92,8 @@ float Dest::GradDezimal( QString str)
    return grad +(min/60) +(sec/3600);
 }
 
-
+// HOME geog.coordinaten  Breite / Laenge  aus Locator berechnen und setzen
+// ------------------------------------------------------------------------
 void Dest::setHomeCoordinatenFromLoc(QString loc)
 {
   char temp[255];
@@ -95,18 +101,20 @@ void Dest::setHomeCoordinatenFromLoc(QString loc)
     strcpy(temp,loc.toAscii());
     validateLocator(temp);
     calcLatLong(temp, latHom,longHom);
-    homeBr = latHom;    
+    homeBr = latHom;    // jetzt geogrph. Coordinaten aus Locator als HOME setzen
     homeLg = longHom;
 }
 
-
+// HOME geog.coordinaten  Breite / Laenge  gem. config setzen
+// ----------------------------------------------------------
 void Dest::setHomeCoordinaten(QString Br, QString Lg)
 {
    homeBr = GradDezimal( Br );
    homeLg = GradDezimal( Lg );
 }
 
-
+// HOME geog.coordinaten  Breite / Laenge  gem. config setzen
+// ----------------------------------------------------------
 int Dest::getRichtung()
 {
    if(Richtung <= 180)
@@ -115,7 +123,8 @@ int Dest::getRichtung()
        return Richtung -180;
 }
 
-
+// Entfernug und Richtung aus Remote Br/Lg berechnen und als string zurückgeben
+// ============================================================================
 QString Dest::getDisRicht(QString Br, QString Lg)
 {
     //remBr = GradDezimal( Br );
@@ -128,12 +137,14 @@ QString Dest::getDisRicht(QString Br, QString Lg)
 }
 
 
-
+// ----------------------------------------------------------------------------
+// Grosskreis / Entfernung und Richtung ( Grundlagen -Sat.Bahnberechnung DC9ZP )
+// geograf. Koordinaten in Grad.dezimal( z.B - B1: 53.nnnn)
 //
-
-
-
-
+// Home.Koordin.  : B1 - L1   Ziel.Koordin: B2 - L2
+// nautische Form : Laenge WEST und Breite SUED  : mit negativem Vorzeichen
+//                  Laenge OST  und Breite NORD  : ohne Vorzeichen ( posetiv )
+// Genauigkeit    : ca. 50m in Meereshoehe
 //----------------------------------------------------------------------------
 void Dest::EntfRichtung(double B1,double L1,double B2,double L2)
 {
@@ -157,17 +168,18 @@ void Dest::EntfRichtung(double B1,double L1,double B2,double L2)
      //Entfernung 
      distanz = s2*(1+fl*s3*fsqr(Sinus(br1))*fsqr(Cosinus(br2))-fl*s4 *
                fsqr(Cosinus(br1))*fsqr(Sinus(br2)));
-     Distanz = abs( (int)(distanz + 0.5) );         
+     Distanz = abs( (int)(distanz + 0.5) );         // keine Nachkommastellen
      //Richtung
      diff = L1-L2;
      zw = Acs(Cosinus(B1)*Cosinus(diff)*Cosinus(B2)+Sinus(B1)*Sinus(B2));
      az = Acs((Sinus(B2)-Sinus(B1)*Cosinus(zw))/(Cosinus(B1)*Sinus(zw)));
      if(Sinus(diff) < 0) richtung = az;
       else richtung = 360-az;
-     Richtung = abs( (int)(richtung + 0.5) );       
+     Richtung = abs( (int)(richtung + 0.5) );       // keine Nachkommastellen
      EntfRicht.sprintf("%d Km / %d Grad",Distanz,Richtung);
 }
 
+// -----------------
 float Sinus(double x)
 {
  float de;
@@ -175,6 +187,7 @@ float Sinus(double x)
  return(sin(x/de));
 }
 
+// -----------------
 float Cosinus(double x)
 {
  float de;
@@ -182,12 +195,14 @@ float Cosinus(double x)
   return(cos(x/de));
 }
 
+// ------------------
 float Acs(double x)
 {
  float dgr = 180/PI;
   return( (-atan( x/sqrt(-x * x+1)) *dgr) +90.0 );
 }
 
+// ------------------
 double fsqr(double x)
 {
   return (x * x);

@@ -8,40 +8,33 @@ LANGUAGE = C++
 
 # Debug -  das bin_file wird ~12 x größer !
 # CONFIG += qt debug
+
 CONFIG += qt
 QT += sql
 
-LIBS = -L/usr/lib
+LIBS += -L/usr/lib
+
 unix {
   MOC_DIR = .moc
-  OBJECTS_DIR = .obj
+  OBJECTS_DIR += .obj
 }
-
-win32{
-  DEFINES-=UNICODE
-  TARGET=ladb
-}
-
 
 # -- Input --
-FORMS += ladialog.ui\
+FORMS = ladialog.ui\
 
-HEADERS += laDiag.h\
-           convert.h
+HEADERS = laDiag.h\
 
-SOURCES += main.cpp\
-           laDiag.cpp\
+SOURCES += laDiag.cpp\
            laDiagDb.cpp\
-           convert.cpp\
-           ../qtlogDiag/dirmngr.cpp\
-           readLafiele.cpp
+           readLafiele.cpp\
+           main.cpp
 
 RESOURCES = ../qtlogRessourcen.qrc
 
 unix::TARGET = ../bin/ladb
 
-DEPENDPATH +=
+DEPENDPATH =
 
-TRANSLATIONS += qtlogLaDialog_en.ts
-
+TRANSLATIONS = qtlogLaDialog_en.ts
+CODECFORTR = ISO-8859-5
 

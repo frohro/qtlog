@@ -10,77 +10,52 @@
 
 #include "laDiag.h"
 
+
+// ----------------------------------
 void laDiag::getLaTable(QString q)
 {
   int i, r,z;
+  
   QSqlQuery query;
   query.exec(q);
-  row = query.size();                            
-  col = query.record().count();                  
-  laTabelle->setRowCount(row);                   
-  laTabelle->setColumnWidth(0,200);
-  laTabelle->setColumnWidth(1,50);
-  laTabelle->setColumnWidth(2,50);
-  laTabelle->setColumnWidth(3,50);
-  laTabelle->setColumnWidth(4,50);
-  laTabelle->setColumnWidth(5,50);
-  laTabelle->setColumnWidth(6,60);
-  laTabelle->setColumnWidth(7,60);
-  laTabelle->setColumnWidth(8,60);
-  laTabelle->setColumnWidth(9,60);
-  laTabelle->setColumnWidth(10,60);
-  laTabelle->setColumnWidth(11,200);
+  
+  row = query.size();                // 369 rows      
+  col = query.record().count();      //  	12 Spalten
+   
+  laTabelle->setRowCount(row);       // TabellenLänge setzen - col ist schon gesetzt
+  // la
+  laTabelle->setColumnWidth(0,220);  // name
+  laTabelle->setColumnWidth(1,60);   // lcn
+  laTabelle->setColumnWidth(2,55);   // ituz
+  laTabelle->setColumnWidth(3,55);   // cqz
+  laTabelle->setColumnWidth(4,55);   // timeZ
+  laTabelle->setColumnWidth(5,60);   // br
+  laTabelle->setColumnWidth(6,60);   // lg
+  laTabelle->setColumnWidth(7,60);   // dxcc
+  laTabelle->setColumnWidth(8,60);   // wae
+  laTabelle->setColumnWidth(9,60);   // wxp
+  laTabelle->setColumnWidth(10,60);  // adif_nr
+  laTabelle->setColumnWidth(11,200); // Bemerkungen
+  
   row = 0;
   while(query.next()) {
     z = 0;
     r = 0;
-    col = 0;
     i = 0;
-    y = query.value(i++).toString();
-    y += "";
-    QTableWidgetItem *rowItem = new QTableWidgetItem(tr("%1").arg((r++)*(z++)));  
-    rowItem->setText(y);
-    laTabelle->setVerticalHeaderItem(row,rowItem);
-//--
-    QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg((row)*(col)));  
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                  
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                  
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                    
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col++,newItem);
-    newItem = new QTableWidgetItem((tr("%1").arg((row)*(col))));                   
-    newItem->setText(query.value(i++).toString());
-    laTabelle->setItem(row,col,newItem);
-    row++;
-  }
+    QTableWidgetItem *rItem = new QTableWidgetItem(tr("%1").arg((r++)*(z++)));  // la
+    rItem->setText(query.value(i++).toString());
+    laTabelle->setVerticalHeaderItem(row,rItem);
+    r = 0;
+    while( r != col -1) {
+       QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg((row)*(r))); 
+       newItem->setText(query.value(i++).toString());       // text eintragen
+       laTabelle->setItem(row,r++,newItem);                 // an row,col übergeben
+     }
+     row++;
+    }
+  
   s = s.setNum(row) + tr(" Eintraege");
   labelcnt->setText(s);
   WlineEditPref->setFocus();
+  
 }

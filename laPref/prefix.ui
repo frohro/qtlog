@@ -29,7 +29,7 @@
       </font>
      </property>
      <property name="text">
-      <string>   Ansicht  SubPrefix - Tabelle</string>
+      <string> SubPrefix Tabelle - Dcxx Länder</string>
      </property>
     </widget>
    </item>
@@ -91,12 +91,12 @@
      </column>
      <column>
       <property name="text">
-       <string>La.Prefix</string>
+       <string>Ctry.Prefix</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Land</string>
+       <string>Country</string>
       </property>
      </column>
     </widget>
@@ -128,7 +128,7 @@
       </font>
      </property>
      <property name="text">
-      <string>  La.Prefix</string>
+      <string>  Country .Prefix</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -160,56 +160,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="6" column="0" colspan="2">
-    <widget class="QPushButton" name="ButtonDel">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="palette">
-      <palette>
-       <active>
-        <colorrole role="Button">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>198</red>
-           <green>230</green>
-           <blue>198</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </active>
-       <inactive>
-        <colorrole role="Button">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>198</red>
-           <green>230</green>
-           <blue>198</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </inactive>
-       <disabled>
-        <colorrole role="Button">
-         <brush brushstyle="SolidPattern">
-          <color alpha="255">
-           <red>198</red>
-           <green>230</green>
-           <blue>198</blue>
-          </color>
-         </brush>
-        </colorrole>
-       </disabled>
-      </palette>
-     </property>
-     <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
    </item>
    <item row="6" column="2" colspan="4">
     <widget class="QPushButton" name="ButtonExit">
@@ -261,6 +211,19 @@
      </property>
      <property name="text">
       <string> F10  -  Ende</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QPushButton" name="ButtonDel">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>

@@ -249,7 +249,7 @@ void rigctl::goStop()
 // ----------------------------------------------------
 bool rigctl::showSuccess(QString freq)
 {
-    int status = QMessageBox::question( this,              // frage ok alles ok
+    int status = QMessageBox::question( this,              // frage alles ok
                  tr("HamLib"),
                  tr("\nRx - %1 Herz\n\n"
                     "Ist die Frequenz Anzeige richtig ?\n\n"

@@ -10,9 +10,11 @@
 
 #ifndef LADIAG_H
 #define LADIAG_H
+
 #include <QtSql>
+
 #include "ui_ladialog.h"
-#include "convert.h"
+
 class QLabel;
 class laDiag : public QMainWindow,
 	       private Ui::laDiag
@@ -21,20 +23,27 @@ class laDiag : public QMainWindow,
   public:
     laDiag(QWidget *parent = 0);
     ~laDiag();
+    
      void keyPressEvent( QKeyEvent * event );
      QSettings settings;
+     
      QString qy;
      QString y, s;
-     QSqlDatabase db;             
-     conVert conv;
+     QSqlDatabase db;    
+     int i;
+     int Lang;
+     
      int row;
      int col;
+     
   protected:
     
     void writeSettings();
     void readSettings();
     void getLaTable(QString); 
+    
   protected slots:
+    
     void updateLaItem( QTableWidgetItem *item );
     void getPraefixList(QString);
     void subPrefixdb();
@@ -42,19 +51,10 @@ class laDiag : public QMainWindow,
     
     void readFileCtyWtDat();
     
-    //void saveAdifDataAc();
-    //void saveGeoDataAc();
-    //void saveWaeDataAc();
-    
-    //void setAdifDataAc();
-    //void setGeoDataAc();
-    //void setWaeDataAc();
-    
-    
-    void setupAction();
     void goExit();
     void readlaTextFile();
-    void combiBoxChangedCb(int);
+    void comboBoxChangedCb(int);
+    
   private:
     int dbflg;
 };

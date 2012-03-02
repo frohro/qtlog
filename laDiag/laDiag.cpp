@@ -8,47 +8,36 @@
    V 1.5 : 01.12.2007
 ********************************************************************** */
 
+
+#include <QApplication>
 #include <QtGui>
 #include <QtSql>
-#include "laDiag.h"
-#include "../qtlogDiag/dirmngr.h"
 
+#include "laDiag.h"
+
+// --------------------------------------------------
 laDiag::laDiag(QWidget * parent) : QMainWindow(parent),
 settings(QSettings::IniFormat, QSettings::UserScope,"QtLog", "qtlog")
 {
-  setupUi(this);
-  setupAction();
-}
-void laDiag::setupAction()
-{
+   setupUi(this);
+
    int n = settings.value("FontSize").toString().toInt();
    QFont font;
    font.setPointSize(n); 			
    setFont(font);
+   
   //-- File ---
-   connect(actionENDE, SIGNAL(triggered(bool)), this, SLOT(goExit()));
+   //connect(actionENDE, SIGNAL(triggered(bool)), this, SLOT(goExit()));
    
-   //connect(action_dxcc_Liste_laden, SIGNAL(triggered(bool)), this, SLOT(readlaTextFile()));
-   
-   connect(actionNeue_cty_dat, SIGNAL(triggered(bool)), this, SLOT(readFileCtyWtDat()));
-   /*
-   connect(actionSave_adifData, SIGNAL(triggered(bool)), this, SLOT(saveAdifDataAc()));
-   connect(actionSet_adifData, SIGNAL(triggered(bool)), this, SLOT(setAdifDataAc()));
-   
-   connect(actionSave_geoData, SIGNAL(triggered(bool)), this, SLOT(saveGeoDataAc()));
-   connect(actionSet_geoData, SIGNAL(triggered(bool)), this, SLOT(setGeoDataAc()));
-   
-   connect(actionSave_waeData, SIGNAL(triggered(bool)), this, SLOT(saveWaeDataAc()));
-   connect(actionSet_waeData, SIGNAL(triggered(bool)), this, SLOT(setWaeDataAc()));
-   */
+   connect(actionInstall_Neue_Ctydat, SIGNAL(triggered(bool)), this, SLOT(readFileCtyWtDat()));
    
    connect(actionSubPrefixdb, SIGNAL(triggered(bool)), this, SLOT(subPrefixdb()));
-   connect(actionHilfeLaenderListe, SIGNAL(triggered(bool)), this, SLOT(getHilfeDxListCb()));
-   connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(combiBoxChangedCb(int)));
+   connect(actionDoc_DX_CtyListe, SIGNAL(triggered(bool)), this, SLOT(getHilfeDxListCb()));
    
-  
+   connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(comboBoxChangedCb(int)));
    connect(ButtonENDE, SIGNAL(clicked()), this, SLOT(goExit()));
    connect(WlineEditPref, SIGNAL(textEdited(QString)), this, SLOT(getPraefixList(QString)));
+   
    readSettings();
 
    //db = QSqlDatabase::addDatabase(settings.value("qsqlDatabase").toString());
@@ -60,23 +49,29 @@ void laDiag::setupAction()
    if(!db.open()) {
        qDebug() << db.lastError();                         
    }
+   
    qy = "SELECT * FROM tla";
    getLaTable(qy);                                        
    
    connect (laTabelle, SIGNAL(itemChanged(QTableWidgetItem *)), this,SLOT(updateLaItem(QTableWidgetItem *)));
+
    dbflg = 0;
 }
 
+// -----------------------------------------------------------------
 laDiag::~laDiag()
 {
   writeSettings();
 }
+
+// -----------------
 void laDiag::goExit()
 {
   db.close();
   qApp->quit();
 }
 
+// -------------------------------------------
 void laDiag::keyPressEvent( QKeyEvent * event )
 {
    switch ( event->key() ) {
@@ -90,39 +85,44 @@ void laDiag::keyPressEvent( QKeyEvent * event )
    }
 }
 
+// ------------------------------------------
 void laDiag::writeSettings()
 {
   settings.setValue("laDiag/Size",size());
   settings.setValue("laDiag/Properties",saveState());
 }
 
+// ------------------------------------------
 void laDiag::readSettings()
 {
   resize(settings.value("laDiag/Size",sizeHint()).toSize());
   restoreState(settings.value("laDiag/Properties").toByteArray());
 }
 
+// -----------------------------------------
 void laDiag::subPrefixdb()
 {
-   StartProcess("prefdb &");
+   i = system("prefdb &");
 }
 
-
+// Hilfe
+// ------------------------------------------
 void laDiag::getHilfeDxListCb()
 {
    settings.setValue("Val","DX-LaenderListe");
-   StartProcess("hilfedb &");
+   i = system("hilfedb &");
 }
 
-void laDiag::combiBoxChangedCb(int id)
+// -----------------------------------------
+void laDiag::comboBoxChangedCb(int id)
 {
-    int i;
     i = id;
     WlineEditPref->setFocus();
 }
 
-
-
+// ================================================================
+// Prefix_Liste laden
+// --------------------------------------
 void laDiag::getPraefixList(QString str)
 {
      dbflg = 1;
@@ -160,28 +160,31 @@ void laDiag::getPraefixList(QString str)
 
 
 
-
+// ********************************************************************************************************
+// LaTabelle: Daten in den Spalten 10 oder 11 wurden editiert und mit 'cr' quittiert - jetzt in der DB updaten
+// SIGNAL ( itemChanged(QTableWidgetItem *));
+// -----------------------------------------------------------------------------------------------------------
 void laDiag::updateLaItem( QTableWidgetItem *item )
 {
   int row, col;
   QString s;
   
-    if(item != laTabelle->currentItem())                
+    if(item != laTabelle->currentItem())                // fremde items nicht bearbeiten
         return;
     
     QSqlField field("feld",QVariant::String);
-    if(item) {                                          
-      col = laTabelle->column ( item );                 
-      row = laTabelle->row( item );                     
-      QTableWidgetItem * v = laTabelle->verticalHeaderItem ( row ); 
+    if(item) {                                          // gibt es ein Item ?  ja: ok
+      col = laTabelle->column ( item );                 // spalte
+      row = laTabelle->row( item );                     // zeile
+      QTableWidgetItem * v = laTabelle->verticalHeaderItem ( row );  // arbeits_item
    
       if((col == 8) || (col == 10) || (col == 11)) {
 	if(col == 8)
 	  s = "lwae";
 	if(col == 10)
-	  s = "adif";                                   
+	  s = "adif";                                   // ADIF_No verändert
 	if(col == 11) 
-	  s = "notiz";                                  
+	  s = "notiz";                                  // Notiz verändert
 	
 	qy = "UPDATE tla SET "+s+"=";
 	field.setValue(item->data(Qt::EditRole).toString());
@@ -192,351 +195,4 @@ void laDiag::updateLaItem( QTableWidgetItem *item )
     }
     WlineEditPref->setFocus();
 }
-/*
 
-
-
-
-void laDiag::saveAdifDataAc()
-{
-  QString path, p, line;
-  int n;
-  
-      path =  QDir::homePath();                     
-      path += "/log/iniFile/";                              
-      p = path+"adifCountryCodes.csv";                      
-
-      QFile file(p);
-      if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-          qDebug() << "Dein Linux ist kaputt";
-         return;
-      }
-    
-      QTextStream out(&file);
-      line = "# Primary Prefix -> Adif_Nummern\n";
-      out << line;
-    
-      QSqlQuery query; 
-      qy = "SELECT la,lname,ldxcc,adif,notiz FROM tla";
-      query.exec(qy); 
-      n = query.size();                         
-      col = query.record().count();             
-      line = "";
-      
-      while(query.next() ) {                    
-        n = 0;
-	p = query.value(n++).toString();        
-	p = p.leftJustified(10,' ');
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(44,' ');
-	p += ":";
-	line += p;
- 
-        p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	p += ":";
-	line += p;
-	
-        p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	p += ":";
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p += ";";
-	line += p;
-	
-	out << line+"\n";
-	line = "";
-      }
-      file.close();
-}
-*/
-/*
-
-
-void laDiag::saveWaeDataAc()
-{
-  int n;
-  QString path, p, line;
-    
-      path =  QDir::homePath();                     
-      path += "/log/iniFile/";                      
-      p = path+"waedata.csv";                       
-
-      QFile file(p);
-      if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-          qDebug() << "Dein Linux ist kaputt";
-         return;
-      }
-    
-      QTextStream out(&file);
-      line = "# Primary Prefix -> WAE\n";
-      out << line;
-      
-      dbflg = 1;
-      QSqlQuery query;
-      qy = "SELECT ldxcc,lwae FROM tla WHERE lwae != ''";
-      query.exec(qy); 
-      line = "";
-      while(query.next() ) {                    
-        n = 0;
-	p = query.value(n++).toString();        
-	p = p.leftJustified(10,' ');
-	p += ":";
-	line += p;
-      
-      	p = query.value(n++).toString();        
-	line += p;
-	
-	out << line+"\n";
-	line = "";
-      }
-      file.close();
-}
-*/
-/*
-
-
-
-
-void laDiag::saveGeoDataAc()
-{
-  QString path, p, line;
-  int n;
-  
-      path =  QDir::homePath();                     
-      path += "/log/iniFile/";                     
-      p = path+"geodata.csv";                      
-
-      QFile file(p);
-      if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-          qDebug() << "Dein Linux ist kaputt";
-         return;
-      }
-    
-      QTextStream out(&file);
-      line = "# geographische Koordinaten\n";
-      out << line;
-    
-      QSqlQuery query; 
-      qy = "SELECT la,lname,lcn,ituz,cqz,timez,br,lg,notiz FROM tla";
-      query.exec(qy); 
-      n = query.size();                         
-      col = query.record().count();             
-      line = "";
-      
-      while(query.next() ) {                    
-        n = 0;
-	p = query.value(n++).toString();        
-	p = p.leftJustified(10,' ');
-	p += ":";
-	line += p;
-	
-        p = query.value(n++).toString();        
-	p = p.leftJustified(44,' ');
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	p += ":";
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	p += ":";
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p = p.leftJustified(8,' ');
-	p += ":";
-	line += p;
-	
-	p = query.value(n++).toString();        
-	p += ";";
-	line += p;
-	
-	out << line+"\n";
-	line = "";
-      }
-      file.close();
-}
-*/
-/*
-
-
-
-
-void laDiag::setAdifDataAc()
-{
-  QString path, p, dxcc, adif, zeile;
-  int i;
-  
-      path =  QDir::homePath();                     
-      path += "/log/iniFile/";                              
-      p = path+"adifCountryCodes.csv";                      
-      
-
-      QFile datei(p);
-      if (!datei.open(QIODevice::ReadOnly)) {
-          qDebug() << "Dein Linux ist kaputt";
-         return;
-      }
-      
-      QSqlQuery query;
-      i = 0;
-      QTextStream inStream(&datei);           
-      while(1) {
-         zeile = inStream.readLine(0);
-         if(zeile[0] == QChar('#'))           
-          break;
-      }
-      
-      do {
-	  p = "";
-	  zeile = inStream.readLine(0);
-	  i = zeile.indexOf(":");
-	  i++;
-	  while(zeile[i] != QChar(':')) {
-	    p += zeile[i++];
-	  }
-	  dxcc = p.simplified();
-	  i++;
-	  p = "";
-	  while(zeile[i] != QChar(':')) {
-	    p += zeile[i++];
-	  }
-	  adif = p.simplified();
-	  qy = "UPDATE tla SET adif="+adif+" WHERE ldxcc='"+dxcc+"'";
-	  query.exec(qy); 
-      } while(inStream.atEnd() != true);
-      datei.close();
-      qy = "SELECT * FROM tla";
-      getLaTable(qy);                               
-}
-*/
-/*
-
-void laDiag::setWaeDataAc()
-{
-  QString path, p, dxcc, wae, zeile;
-  int i;
-  
-      path =  QDir::homePath();                     
-      path += "/log/iniFile/";                              
-      p = path+"waedata.csv";                               
-
-      QFile datei(p);
-      if (!datei.open(QIODevice::ReadOnly)) {
-          qDebug() << "Dein Linux ist kaputt";
-         return;
-      }
-      
-      QSqlQuery query;
-      i = 0;
-      QTextStream inStream(&datei);           
-      while(1) {
-         zeile = inStream.readLine(0);
-         if(zeile[0] == QChar('#'))          
-           break;
-      }
-      
-      do {
-	  p = "";
-	  zeile = inStream.readLine(0);
-	  i = 0;
-	  while(zeile[i] != QChar(':')) {
-	    p += zeile[i++];
-	  }
-	  dxcc = p.simplified();
-	  
-	  i++;
-	  zeile = zeile.remove(0,i);
-	  wae = zeile.simplified();
-	  qy = "UPDATE tla SET lwae='"+wae+"' WHERE ldxcc='"+dxcc+"'";
-	  query.exec(qy); 
-      } while(inStream.atEnd() != true);
-      datei.close();
-      
-      qy = "SELECT * FROM tla";
-      getLaTable(qy);                               
-}
-*/
-/*
-
-
-
-void laDiag::setGeoDataAc()
-{
-  QString path, p, la, br, lg, zeile;
-  int i;
-  
-      path =  QDir::homePath();                     
-      path += "/log/iniFile/";                     
-      p = path+"geodata.csv";                      
-
-      QFile datei(p);
-      if (!datei.open(QIODevice::ReadOnly)) {
-          qDebug() << "Dein Linux ist kaputt";
-         return;
-      }
-      
-      QSqlQuery query;
-      i = 0;
-      QTextStream inStream(&datei);           
-      while(1) {
-         zeile = inStream.readLine(0);
-         if(zeile[0] == QChar('#'))           
-           break;
-      }
-      
-      do {
-	  i = 0;
-	  p = "";
-	  zeile = inStream.readLine(0);
-	  while(zeile[i] != QChar(':')) {        
-	    p += zeile[i++];
-	  }
-	  la = p.simplified();
-	  i++;
-	  zeile = zeile.remove(0,i);
-	  
-	  i = zeile.indexOf(":");
-	  i++;
-	  p = "";
-	  while(zeile[i] != QChar(':')) {        
-	    p += zeile[i++];
-	  }
-	  br = p.simplified();
-	  i++;
-	  zeile = zeile.remove(0,i);
-	  
-	  i = 0;
-	  p = "";
-	  while(zeile[i] != QChar(':')) {       
-	    p += zeile[i++];
-	  }
-	  lg = p.simplified();
-	  
-	  qy = "UPDATE tla SET br='"+br+"',lg='"+lg+"' WHERE la='"+la+"'";
-	  query.exec(qy); 
-      } while(inStream.atEnd() != true);
-      datei.close();
-      qy = "SELECT * FROM tla";
-      getLaTable(qy);                               
-}
-*/

@@ -19,11 +19,6 @@ unix {
   OBJECTS_DIR = .obj
 }
 
-win32{
-  DEFINES-=UNICODE
-  TARGET=addqsodb
-}
-
 # -- Input --
 FORMS += addqso.ui \
          rigctl.ui \
@@ -33,14 +28,13 @@ HEADERS += addQso.h \
            destination.h \
            serve.h \
            rigctl.h \
-           ../addCqso/defs.h \
            uploadR.h
 
 SOURCES += main.cpp \
            addQso.cpp \
            addQsoCb.cpp \
            destination.cpp \
-           ../qtlogDiag/dirmngr.cpp\
+          # ../qtlogDiag/dirmngr.cpp\
            serve.cpp \
            rigctl.cpp \
            uploadR.cpp
@@ -51,3 +45,5 @@ unix::TARGET = ../bin/addqsodb
 
 DEPENDPATH +=
 
+TRANSLATIONS = qtlogaddQso_en.ts
+CODECFORTR = ISO-8859-5

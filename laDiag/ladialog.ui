@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>950</width>
-    <height>585</height>
+    <width>992</width>
+    <height>640</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>992</width>
+    <height>640</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -32,7 +38,7 @@
          </font>
         </property>
         <property name="text">
-         <string>  Prefixliste    DXCC - Länder</string>
+         <string> DXCC   -  Präfixliste</string>
         </property>
        </widget>
       </item>
@@ -43,8 +49,11 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0" colspan="6">
+      <item row="1" column="0" colspan="10">
        <widget class="QTableWidget" name="laTabelle">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="showGrid">
          <bool>true</bool>
         </property>
@@ -55,17 +64,17 @@
         </column>
         <column>
          <property name="text">
-          <string>Cont</string>
+          <string>Continent</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>ITUz</string>
+          <string>ITUzone</string>
          </property>
         </column>
         <column>
          <property name="text">
-          <string>CQz</string>
+          <string>CQzone</string>
          </property>
         </column>
         <column>
@@ -85,7 +94,7 @@
         </column>
         <column>
          <property name="text">
-          <string>Dxcc</string>
+          <string>DXCC</string>
          </property>
         </column>
         <column>
@@ -100,7 +109,7 @@
         </column>
         <column>
          <property name="text">
-          <string>ADIF.nr</string>
+          <string>ADIF</string>
          </property>
         </column>
         <column>
@@ -129,20 +138,7 @@
       <item row="2" column="1" rowspan="2">
        <widget class="QLineEdit" name="WlineEditPref"/>
       </item>
-      <item row="2" column="3" rowspan="2" colspan="2">
-       <spacer>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>13</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="2" column="5" rowspan="2">
+      <item row="2" column="9" rowspan="2">
        <widget class="QPushButton" name="ButtonENDE">
         <property name="palette">
          <palette>
@@ -192,7 +188,33 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="2" column="8">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="7">
+       <spacer>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="5">
        <widget class="QComboBox" name="comboBox">
         <item>
          <property name="text">
@@ -221,19 +243,19 @@
         </item>
         <item>
          <property name="text">
-          <string>Continente</string>
+          <string>Kontinente</string>
          </property>
         </item>
        </widget>
       </item>
-      <item row="3" column="4">
+      <item row="2" column="6">
        <spacer>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>40</width>
+          <width>13</width>
           <height>20</height>
          </size>
         </property>
@@ -248,29 +270,28 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>950</width>
+     <width>992</width>
      <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuListen_laden">
     <property name="title">
-     <string>Laender Prefix                </string>
+     <string>Laender Prefix                         </string>
     </property>
     <addaction name="actionSubPrefixdb"/>
    </widget>
    <widget class="QMenu" name="menuHilfe">
     <property name="title">
-     <string>Hilfe                  </string>
+     <string>Hilfe                            </string>
     </property>
-    <addaction name="actionHilfeLaenderListe"/>
+    <addaction name="actionDoc_DX_CtyListe"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File               </string>
+     <string>File                                </string>
     </property>
-    <addaction name="actionENDE"/>
     <addaction name="separator"/>
-    <addaction name="actionNeue_cty_dat"/>
+    <addaction name="actionInstall_Neue_Ctydat"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuListen_laden"/>
@@ -287,71 +308,21 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionENDE"/>
    <addaction name="separator"/>
   </widget>
-  <action name="actionENDE">
-   <property name="icon">
-    <iconset resource="../qtlogRessourcen.qrc">
-     <normaloff>:/new/prefix1/icon/cancel.png</normaloff>:/new/prefix1/icon/cancel.png</iconset>
-   </property>
-   <property name="text">
-    <string>ENDE</string>
-   </property>
-  </action>
-  <action name="actionLa_Prefix_Liste_updaten">
-   <property name="text">
-    <string>La.Prefix-Liste updaten</string>
-   </property>
-  </action>
   <action name="actionSubPrefixdb">
    <property name="text">
-    <string>DX-SubPrefixListe</string>
+    <string>DX-SubPrefix Liste</string>
    </property>
   </action>
-  <action name="action_dxcc_Liste_laden">
+  <action name="actionDoc_DX_CtyListe">
    <property name="text">
-    <string>Neue Dxcc-Liste installieren</string>
+    <string>Doc LänderListe</string>
    </property>
   </action>
-  <action name="actionHilfeLaenderListe">
+  <action name="actionInstall_Neue_Ctydat">
    <property name="text">
-    <string>DX -Laenderliste</string>
-   </property>
-  </action>
-  <action name="actionNeue_cty_dat">
-   <property name="text">
-    <string>Neue cty-tw.dat installieren</string>
-   </property>
-  </action>
-  <action name="actionSave_adifData">
-   <property name="text">
-    <string>Adif-Liste erzeugen</string>
-   </property>
-  </action>
-  <action name="actionSet_adifData">
-   <property name="text">
-    <string>Adif-Liste laden</string>
-   </property>
-  </action>
-  <action name="actionSave_geoData">
-   <property name="text">
-    <string>Geo-Liste erzeugen</string>
-   </property>
-  </action>
-  <action name="actionSet_geoData">
-   <property name="text">
-    <string>Geo-Liste laden</string>
-   </property>
-  </action>
-  <action name="actionSave_waeData">
-   <property name="text">
-    <string>Wae-Liste erzeugen</string>
-   </property>
-  </action>
-  <action name="actionSet_waeData">
-   <property name="text">
-    <string>Wae-Liste laden</string>
+    <string>Install Neue Ctydat</string>
    </property>
   </action>
  </widget>

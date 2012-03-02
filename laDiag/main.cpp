@@ -10,16 +10,32 @@
 
 #include <QApplication>
 #include <QSettings>
+#include <QTranslator>
+
 #include "laDiag.h"
-#include "../qtlogDiag/dirmngr.h"
-DirMngr dirMngr;
+
+
+// -----------------------------
 int main(int argc, char *argv[])
 {
-  dirMngr.SetProgramDir(argv[0]);
-  QTranslator translator;
-  if(translator.load("../laDiag/qtlogLaDialog_en")) qDebug()<<"Got the translation.\n";
+  int Lang;
+  QString home = QDir::homePath(); 
+  
   QApplication a(argc, argv);
-  a.installTranslator(&translator);
+  
+  QTranslator translator;
+  QLocale locale;
+  //if(translator.load("../laDiag/qtlogLaDialog_en")) qDebug()<<"Got the translation.\n";
+  Lang = locale.country();
+  Lang = 100;                 // TEST
+  
+  if(Lang != 82) {
+       home+="/log/laDiag/qtlogLaDialog_en";
+       translator.load(home);  
+       a.installTranslator(&translator);
+  }
+  
+  //a.installTranslator(&translator);
   laDiag lDiag;
   lDiag.show();
   return a.exec();

@@ -4,13 +4,13 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="reportLayout.cpp" line="213"/>
+        <location filename="reportLayout.cpp" line="217"/>
         <source>&lt;qt&gt;Das Feld &lt;b&gt;AWD&lt;/b&gt; wurde nicht eingebunden. Mit AWD werden Award-Kenner z.B DOK usw. angezeigt oder abgefragt. Normal stehen AWD-Kenner in Spalte 10, es koennen auch andere Spalten sein.&lt;/qt&gt;Ohne &lt;b&gt;Award-Feld&lt;/b&gt; weitermachen ?</source>
         <translatorcomment>Google</translatorcomment>
         <translation>The field &lt;qt&gt; &lt;b&gt; AWD &lt;/ b&gt; was not involved. With AWD Award enthusiasts as DOC, and so on, or retrieved. Normal AWD are experts in column 10, it can also be other columns. &lt;/ Qt&gt; Without &lt;b&gt; Award-field &lt;/ b&gt; to continue?</translation>
     </message>
     <message>
-        <location filename="reportLayout.cpp" line="218"/>
+        <location filename="reportLayout.cpp" line="222"/>
         <source>Vermisse Award-Einbindung</source>
         <translatorcomment>Google</translatorcomment>
         <translation>Award-miss involvement</translation>
@@ -55,13 +55,13 @@
     </message>
     <message>
         <location filename="qtlog.ui" line="255"/>
-        <location filename="Qtlog.cpp" line="948"/>
+        <location filename="Qtlog.cpp" line="980"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
     <message>
         <location filename="qtlog.ui" line="260"/>
-        <location filename="Qtlog.cpp" line="951"/>
+        <location filename="Qtlog.cpp" line="983"/>
         <source>Kenner</source>
         <translation>Expert</translation>
     </message>
@@ -82,7 +82,7 @@
     </message>
     <message>
         <location filename="qtlog.ui" line="433"/>
-        <location filename="Qtlog.cpp" line="348"/>
+        <location filename="Qtlog.cpp" line="378"/>
         <source>Ohne Kalender</source>
         <translation>Without calendar</translation>
     </message>
@@ -128,7 +128,7 @@
     </message>
     <message>
         <location filename="qtlog.ui" line="534"/>
-        <location filename="Qtlog.cpp" line="361"/>
+        <location filename="Qtlog.cpp" line="391"/>
         <source>Abw.Sort</source>
         <translation>Sort Dev</translation>
     </message>
@@ -138,411 +138,392 @@
         <translation>  Search</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="570"/>
-        <location filename="qtlog.ui" line="1000"/>
         <source>Call</source>
-        <translation>Call</translation>
+        <translation type="obsolete">Call</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="575"/>
-        <location filename="qtlog.ui" line="995"/>
         <source>Band</source>
-        <translation>Band</translation>
+        <translation type="obsolete">Band</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="580"/>
         <source>Mode</source>
-        <translation>Mode</translation>
+        <translation type="obsolete">Mode</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="585"/>
         <source>Dxcc</source>
-        <translation>DXcc</translation>
+        <translation type="obsolete">DXcc</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="590"/>
         <source>WAE</source>
-        <translation>WAE</translation>
+        <translation type="obsolete">WAE</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="595"/>
         <source>Wpx</source>
-        <translation>WPX</translation>
+        <translation type="obsolete">WPX</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="600"/>
         <source>Locator</source>
-        <translation>Locator</translation>
+        <translation type="obsolete">Locator</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="605"/>
         <source>ContId</source>
-        <translation>ContId</translation>
+        <translation type="obsolete">ContId</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="610"/>
         <source>QslMgr</source>
-        <translation>QslMgr</translation>
+        <translation type="obsolete">QslMgr</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="615"/>
-        <location filename="qtlog.ui" line="1507"/>
+        <location filename="qtlog.ui" line="1432"/>
         <source>Rig</source>
         <translation>Rig</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="620"/>
         <source>Qth</source>
-        <translation>QTH</translation>
+        <translation type="obsolete">QTH</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="684"/>
+        <location filename="qtlog.ui" line="629"/>
         <source>  Zeige AwdTypen</source>
         <translation>Show AWD Type</translation>
     </message>
     <message utf8="true">
-        <location filename="qtlog.ui" line="759"/>
+        <location filename="qtlog.ui" line="704"/>
         <source>Lösche</source>
         <translation>Delete</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="771"/>
+        <location filename="qtlog.ui" line="716"/>
         <source>Select QSO Zeile</source>
         <translation>Select QSO line</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="787"/>
+        <location filename="qtlog.ui" line="732"/>
         <source>Remove QSO</source>
         <translation>Remove QSO</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="810"/>
+        <location filename="qtlog.ui" line="755"/>
         <source>.</source>
         <translation>.</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="816"/>
+        <location filename="qtlog.ui" line="761"/>
         <source>Vom</source>
         <translation>From</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="876"/>
-        <location filename="qtlog.ui" line="939"/>
+        <location filename="qtlog.ui" line="821"/>
+        <location filename="qtlog.ui" line="884"/>
         <source>yyyy.MM.dd</source>
         <translation>yyyy.MM.dd</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="886"/>
+        <location filename="qtlog.ui" line="831"/>
         <source>Bis</source>
         <translation>To</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="958"/>
+        <location filename="qtlog.ui" line="903"/>
         <source>Sortierung</source>
         <translation>Sorting</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="970"/>
+        <location filename="qtlog.ui" line="915"/>
         <source>   Nach</source>
         <translation>   After</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="990"/>
         <source>Datum</source>
-        <translation>Datum</translation>
+        <translation type="obsolete">Datum</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1005"/>
-        <source>DXcc</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="qtlog.ui" line="1022"/>
+        <location filename="qtlog.ui" line="947"/>
         <source>Report </source>
         <translation>Report </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1035"/>
+        <location filename="qtlog.ui" line="960"/>
         <source>EU</source>
         <translation>EU</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1040"/>
+        <location filename="qtlog.ui" line="965"/>
         <source>DX</source>
         <translation>DX</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1045"/>
+        <location filename="qtlog.ui" line="970"/>
         <source>QSL</source>
         <translation>QSL</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1050"/>
+        <location filename="qtlog.ui" line="975"/>
         <source>Contest</source>
         <translation>Contest</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1055"/>
+        <location filename="qtlog.ui" line="980"/>
         <source>Var</source>
         <translation>Var</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1069"/>
+        <location filename="qtlog.ui" line="994"/>
         <source> Layout</source>
         <translation> Layout</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1130"/>
+        <location filename="qtlog.ui" line="1055"/>
         <source>QtLog</source>
         <translation>QtLog</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1179"/>
+        <location filename="qtlog.ui" line="1104"/>
         <source>versiom</source>
         <translation>version</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1231"/>
+        <location filename="qtlog.ui" line="1156"/>
         <source>Rel</source>
         <translation>Rel</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1262"/>
+        <location filename="qtlog.ui" line="1187"/>
         <source>File                 </source>
         <translation>File                 </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1269"/>
+        <location filename="qtlog.ui" line="1194"/>
         <source>Notizen        </source>
         <translation>Notes        </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1275"/>
+        <location filename="qtlog.ui" line="1200"/>
         <source>Hilfe        </source>
         <translation>Help        </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1285"/>
+        <location filename="qtlog.ui" line="1210"/>
         <source>Configuriere      </source>
         <translation>Configuration      </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1299"/>
+        <location filename="qtlog.ui" line="1224"/>
         <source>LogbookVerwaltung    </source>
         <translation>Logbook management</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1318"/>
+        <location filename="qtlog.ui" line="1243"/>
         <source>Tabellen         </source>
         <translation>Tables</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1336"/>
+        <location filename="qtlog.ui" line="1261"/>
         <source>Betriebsarten</source>
         <translation>   Datasets</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1344"/>
+        <location filename="qtlog.ui" line="1269"/>
         <source>Award Status      </source>
         <translation>Award Status      </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1359"/>
+        <location filename="qtlog.ui" line="1284"/>
         <source>Logging                </source>
         <translation>Logging                </translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1387"/>
+        <location filename="qtlog.ui" line="1312"/>
         <source>&amp;QSO Logging</source>
         <translation>&amp;QSO Logging</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1402"/>
+        <location filename="qtlog.ui" line="1327"/>
         <source>Logbook &amp;tauschen</source>
         <translation>Logbook &amp;exchange</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1411"/>
+        <location filename="qtlog.ui" line="1336"/>
         <source>Datensicherung</source>
         <translation>Backup</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1426"/>
+        <location filename="qtlog.ui" line="1351"/>
         <source>ReportLayout</source>
         <translation>Report Layout</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1435"/>
+        <location filename="qtlog.ui" line="1360"/>
         <source>DB- Administration</source>
         <translation>DB- Administration</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1444"/>
+        <location filename="qtlog.ui" line="1369"/>
         <source>Dxcc - Laender</source>
         <translation>DXCC Countries</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1453"/>
+        <location filename="qtlog.ui" line="1378"/>
         <source>Standort</source>
         <translation>Location</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1462"/>
+        <location filename="qtlog.ui" line="1387"/>
         <source>Club</source>
         <translation>Club</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1471"/>
+        <location filename="qtlog.ui" line="1396"/>
         <source>Datenbank</source>
         <translation>Database</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1480"/>
+        <location filename="qtlog.ui" line="1405"/>
         <source>Sub-Prefixliste</source>
         <translation>Sub prefix list</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1489"/>
+        <location filename="qtlog.ui" line="1414"/>
         <source>Band | Mod | Pwr</source>
         <translation>Band | Mode | Pwr</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1498"/>
+        <location filename="qtlog.ui" line="1423"/>
         <source>Verbindungen | AWD</source>
         <translation>Connections | AWD</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1516"/>
+        <location filename="qtlog.ui" line="1441"/>
         <source>ADIF Import</source>
         <translation>ADIF Import</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1525"/>
+        <location filename="qtlog.ui" line="1450"/>
         <source>Logbook</source>
         <translation>Logbook</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1534"/>
+        <location filename="qtlog.ui" line="1459"/>
         <source>QSL Bearbeitung</source>
         <translation>Process QSL</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1543"/>
+        <location filename="qtlog.ui" line="1468"/>
         <source>QSL Drucken</source>
         <translation>Print QSL</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1552"/>
+        <location filename="qtlog.ui" line="1477"/>
         <source>QtLog Version</source>
         <translation>QtLog Version</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1561"/>
+        <location filename="qtlog.ui" line="1486"/>
         <source>Qso Verwaltung</source>
         <translation>QSL Management</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1570"/>
+        <location filename="qtlog.ui" line="1495"/>
         <source>ADIF Export</source>
         <translation>ADIF Export</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1579"/>
+        <location filename="qtlog.ui" line="1504"/>
         <source>Notizblatt</source>
         <translation>Note sheet</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1588"/>
+        <location filename="qtlog.ui" line="1513"/>
         <source>RU-DistrictAwdList</source>
         <translation>RU-DistrictAwdList</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1597"/>
+        <location filename="qtlog.ui" line="1522"/>
         <source>QRZ - callbook</source>
         <translation>QRZ - callbook</translation>
     </message>
     <message utf8="true">
-        <location filename="qtlog.ui" line="1606"/>
+        <location filename="qtlog.ui" line="1531"/>
         <source>Mode   - Aktivität</source>
         <translation>Mode   - Activity</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1615"/>
+        <location filename="qtlog.ui" line="1540"/>
         <source>DX-Status  -CW</source>
         <translation>DX-Status  -CW</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1624"/>
+        <location filename="qtlog.ui" line="1549"/>
         <source>DX-Status  -SSB</source>
         <translation>DX-Status  -SSB</translation>
     </message>
     <message utf8="true">
-        <location filename="qtlog.ui" line="1633"/>
+        <location filename="qtlog.ui" line="1558"/>
         <source>Band   - Aktivität</source>
         <translation>Band   - Activity</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1642"/>
+        <location filename="qtlog.ui" line="1567"/>
         <source>DLD   -Status</source>
         <translation>DLD   -Status</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1651"/>
+        <location filename="qtlog.ui" line="1576"/>
         <source>IOTA   -Status</source>
         <translation>IOTA   -Status</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1660"/>
+        <location filename="qtlog.ui" line="1585"/>
         <source>DOK  Verwaltung</source>
         <translation>DOC administration</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1669"/>
+        <location filename="qtlog.ui" line="1594"/>
         <source>IOTA Verwaltung</source>
         <translation>IOTA administration</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1674"/>
+        <location filename="qtlog.ui" line="1599"/>
         <source>ENDE</source>
         <translation>End</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1683"/>
+        <location filename="qtlog.ui" line="1608"/>
         <source>LogDaten Export</source>
         <translation>Export Log Data</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1692"/>
+        <location filename="qtlog.ui" line="1617"/>
         <source>Contest Logging</source>
         <translation>Contest Logging</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1701"/>
+        <location filename="qtlog.ui" line="1626"/>
         <source>Internet freigeben</source>
         <translation>Internet sharing</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1710"/>
+        <location filename="qtlog.ui" line="1635"/>
         <source>Rig Control/Hamlib</source>
         <translation>Rig Control/Hamlib</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1719"/>
+        <location filename="qtlog.ui" line="1644"/>
         <source>RigControl-Hamlib</source>
         <translation>RigControl-Hamlib</translation>
     </message>
     <message>
-        <location filename="qtlog.ui" line="1728"/>
+        <location filename="qtlog.ui" line="1653"/>
         <source>Fldigi Logging</source>
         <translation>Fldigi Logging</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="173"/>
+        <location filename="Qtlog.cpp" line="200"/>
         <source>Fehler</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="173"/>
+        <location filename="Qtlog.cpp" line="200"/>
         <source>
 Das Logbook &apos;%1&apos;ist nicht im Logordner.
 Pruefe den Logbook-Namen im Config.</source>
@@ -550,57 +531,57 @@ Pruefe den Logbook-Namen im Config.</source>
 check the log book name</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="234"/>
-        <location filename="Qtlog.cpp" line="492"/>
+        <location filename="Qtlog.cpp" line="264"/>
+        <location filename="Qtlog.cpp" line="523"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="234"/>
-        <location filename="Qtlog.cpp" line="492"/>
+        <location filename="Qtlog.cpp" line="264"/>
+        <location filename="Qtlog.cpp" line="523"/>
         <source>Das Stationsrufzeichen ist nicht gesetzt !</source>
         <translation>The station call sign is not set!</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="343"/>
+        <location filename="Qtlog.cpp" line="373"/>
         <source>Laufendes Jahr</source>
         <translation>Current year</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="363"/>
+        <location filename="Qtlog.cpp" line="393"/>
         <source>Aufw.Sort</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="753"/>
+        <location filename="Qtlog.cpp" line="785"/>
         <source>ReportTable</source>
         <translation>ReportTable</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="753"/>
+        <location filename="Qtlog.cpp" line="785"/>
         <source>
 Kein QSO selectiert !</source>
         <translation>
 No QSO selected</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="772"/>
+        <location filename="Qtlog.cpp" line="804"/>
         <source>Qso entfernen ?</source>
         <translation>Remove QSO?</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="773"/>
+        <location filename="Qtlog.cpp" line="805"/>
         <source>
 Das QSO mit  &apos;</source>
         <translation>Qso with  &apos;</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="773"/>
+        <location filename="Qtlog.cpp" line="805"/>
         <source> &apos;  - Id: </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="773"/>
+        <location filename="Qtlog.cpp" line="805"/>
         <source>
 entfernen ?</source>
         <translation>  remove  ?</translation>
@@ -612,34 +593,34 @@ entfernen ?</source>
         <translation type="obsolete">The QSO with &apos;% 1&apos; - ID:% 2 ? remove</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="881"/>
-        <location filename="QtlogCb.cpp" line="46"/>
+        <location filename="Qtlog.cpp" line="913"/>
+        <location filename="QtlogCb.cpp" line="47"/>
         <source>Band Fehler</source>
         <translation>Band Error</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="881"/>
+        <location filename="Qtlog.cpp" line="913"/>
         <source>
 Der Bandname %1 ist unbekannt</source>
         <translation>Band name  %1  unknow</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="962"/>
-        <location filename="Qtlog.cpp" line="965"/>
-        <location filename="Qtlog.cpp" line="990"/>
-        <location filename="QtlogCb.cpp" line="193"/>
-        <location filename="QtlogCb.cpp" line="215"/>
-        <location filename="QtlogCb.cpp" line="220"/>
+        <location filename="Qtlog.cpp" line="994"/>
+        <location filename="Qtlog.cpp" line="997"/>
+        <location filename="Qtlog.cpp" line="1022"/>
+        <location filename="QtlogCb.cpp" line="194"/>
+        <location filename="QtlogCb.cpp" line="216"/>
+        <location filename="QtlogCb.cpp" line="221"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="998"/>
+        <location filename="Qtlog.cpp" line="1030"/>
         <source>AWD Fehler</source>
         <translation>AWD Error</translation>
     </message>
     <message>
-        <location filename="Qtlog.cpp" line="998"/>
+        <location filename="Qtlog.cpp" line="1030"/>
         <source>
 Der AwdType &apos; %1 &apos; ist unbekannt.
 Bitte anlegen.!</source>
@@ -647,49 +628,49 @@ Bitte anlegen.!</source>
 please cerate</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="46"/>
+        <location filename="QtlogCb.cpp" line="47"/>
         <source>
 Bandnamen immer kompl. eingeben</source>
         <translation>
 Band name ever enter complete</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="125"/>
-        <location filename="QtlogCb.cpp" line="153"/>
+        <location filename="QtlogCb.cpp" line="126"/>
+        <location filename="QtlogCb.cpp" line="154"/>
         <source>   INFO    </source>
         <translation>   INFO    </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="125"/>
+        <location filename="QtlogCb.cpp" line="126"/>
         <source>
 AWD-Auswertung ist im Layout nicht selektiert</source>
         <translation>
 AWD-evaluation is not selected in the layout.</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="153"/>
+        <location filename="QtlogCb.cpp" line="154"/>
         <source>
 AWD-Auswertung ist nicht selektiert</source>
         <translation>
 AWD-evaluation is not selected</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="230"/>
+        <location filename="QtlogCb.cpp" line="231"/>
         <source>Fertig</source>
         <translation>Ready</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="231"/>
+        <location filename="QtlogCb.cpp" line="232"/>
         <source>Anzeige : %1 QSO&apos;s - %2 Spalten</source>
         <translation>display:  %1 QSOs  -  %2 Column</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="261"/>
+        <location filename="QtlogCb.cpp" line="262"/>
         <source>QtLog System Info </source>
         <translation>QtLog System Info </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="262"/>
+        <location filename="QtlogCb.cpp" line="263"/>
         <source>
 Das Datenbank runtime_Flag steht auf: 0 
 QtLog wurde noch nicht Initialisiert !!
@@ -709,12 +690,12 @@ In this case, a bulky damage has occurred. Look in &quot;.config / Qtlog qtlog.i
 If no deviations found so by emailing me with the &apos;.qtlog / qlogfile&apos; to diek@dl1hbd.de.</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="285"/>
+        <location filename="QtlogCb.cpp" line="286"/>
         <source>Meldung an User:</source>
         <translation>Message to user:</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="286"/>
+        <location filename="QtlogCb.cpp" line="287"/>
         <source>
 Fehlermeldung vom MySQL-Server !
 Die Zugangsberechtigung ist beschaedigt
@@ -726,43 +707,43 @@ Operation is not possible.
 CheckMe:</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="287"/>
+        <location filename="QtlogCb.cpp" line="288"/>
         <source>UserName = </source>
         <translation>UserName = </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="288"/>
+        <location filename="QtlogCb.cpp" line="289"/>
         <source>
 Passwort = </source>
         <translation>
 Password = </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="289"/>
+        <location filename="QtlogCb.cpp" line="290"/>
         <source>
 dbname = </source>
         <translation>
 dbname = </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="293"/>
+        <location filename="QtlogCb.cpp" line="294"/>
         <source>Server-Datenbank INFO</source>
         <translation>Server database INFO</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="309"/>
+        <location filename="QtlogCb.cpp" line="310"/>
         <source>Rel.Nr : </source>
         <translation>Rel.Nr : </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="310"/>
+        <location filename="QtlogCb.cpp" line="311"/>
         <source>
 qtlog - Versions Info - </source>
         <translation>
 qtlog - Version  Info - </translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="311"/>
+        <location filename="QtlogCb.cpp" line="312"/>
         <source>
 Die DB_Release_Nr ist ungueltig.
 
@@ -774,7 +755,7 @@ Get information on www.dl1hbd.de, or send a request.
 Operation is not possible!</translation>
     </message>
     <message>
-        <location filename="QtlogCb.cpp" line="314"/>
+        <location filename="QtlogCb.cpp" line="315"/>
         <source>
 Datenbank - Info
 </source>
@@ -1842,55 +1823,74 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;! DOCTYPE HTML PUBLIC &quot;- / / W3C / / DTD HTML 4.0 / / EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt; &lt;html&gt; &lt;head&gt; name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt; &lt;style type=&quot;text/css&quot;&gt; p, li {white-space: pre-wrap;} &lt;/ Style&gt; &lt;/ head&gt; &lt;body style=&quot; font-family:&apos;Sans Serif&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt; &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt; &lt;span style = &quot;font-weight: 600&quot;&gt; info and meaning of the fields: &lt;/ span&gt; &lt;/ p&gt; &lt;P style = &quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;-qt-block-indent: 0; text-indent: 0px; font-size: 9pt; &quot;&gt; column names and the names are desTabellenheaders separated by commas. Between field names and &lt;span style=&quot; text-decoration: underline;&quot;&gt; range &lt;/ span&gt; must be no comma. Are &lt;/ p&gt; &lt;P style = &quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;-qt-block-indent: 0; text-indent: 0px; font-size: 9pt; &quot;&gt; The options are all named in the report layout are listed. &lt;/ p&gt; &lt;P style = &quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;-qt-block-indent: 0; text-indent: 0px; font-size: 9pt; &quot;&gt; &lt;span style=&quot; font-weight:600;&quot;&gt; range &lt;/ span&gt; This initiated the period. The date begins with &lt;span style=&quot; font-weight:600;&quot;&gt; &lt;&lt; / span&gt; and ends with &lt;span style=&quot; font-weight:600;&quot;&gt;&gt; &lt;/ span&gt; &lt;/ p&gt; &lt;P style = &quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;-qt-block-indent: 0; text-indent: 0px; font-size: 9pt; &quot;&gt; Example: &lt;span style=&quot; font-weight:600;&quot;&gt; range &lt;/ span&gt; style=&quot; font-weight:600;&quot;&gt; &lt;2008-01-01&gt; to &lt;2008-12 - 31&gt; &lt;/ span&gt; &lt;/ p&gt; &lt;P style = &quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;-qt-block-indent: 0; text-indent: 0px; font-size: 9pt; &quot;&gt; &lt;span style=&quot; font-weight:600;&quot;&gt; AWD &lt;/ span&gt; Is a synonym for all award types. DLD e.g. for DOC. The AWD is added according to the type setting in the report dialog. &lt;/ P&gt; &lt;P style = &quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right:</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="135"/>
-        <location filename="query.cpp" line="423"/>
-        <location filename="query.cpp" line="429"/>
+        <location filename="query.cpp" line="137"/>
+        <location filename="query.cpp" line="425"/>
+        <location filename="query.cpp" line="431"/>
         <source> Info</source>
         <translation> Info</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="136"/>
+        <location filename="query.cpp" line="138"/>
         <source>Es ist praktischer  ein vorhandenes query zu modefizieren und unter einem neuen Namen zu speichern.</source>
         <translation>It is convenient to modify an existing query and save it under a new name.</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="423"/>
+        <location filename="query.cpp" line="425"/>
         <source>Kein Query konfiguriert</source>
         <translation>No query configured</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="429"/>
+        <location filename="query.cpp" line="431"/>
         <source>Query Name fehlt</source>
         <translation>Query name is missing</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="464"/>
-        <location filename="query.cpp" line="504"/>
-        <location filename="query.cpp" line="538"/>
-        <location filename="query.cpp" line="545"/>
+        <location filename="query.cpp" line="466"/>
+        <location filename="query.cpp" line="509"/>
+        <location filename="query.cpp" line="543"/>
+        <location filename="query.cpp" line="550"/>
         <source>Parameter Check</source>
         <translation>Check parameters</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="465"/>
+        <location filename="query.cpp" line="467"/>
         <source>Dateiname fehlt.
 Abfrage Ergebnis im Report-Dialog anzeigen ?</source>
         <translation>File name is missing. 
 View query results in the report dialog?</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="485"/>
-        <location filename="query.cpp" line="523"/>
+        <location filename="query.cpp" line="482"/>
+        <source>  Datensaetze - erzeugt
+Datei:  </source>
+        <translation>records generated
+file</translation>
+    </message>
+    <message>
+        <location filename="query.cpp" line="486"/>
+        <location filename="query.cpp" line="527"/>
+        <source>Zurueck zum ReportDialog</source>
+        <translation>back to the dialogue</translation>
+    </message>
+    <message>
+        <location filename="query.cpp" line="490"/>
+        <location filename="query.cpp" line="528"/>
         <source>Ergebnis Check</source>
         <translation>Result of check</translation>
     </message>
     <message>
         <location filename="query.cpp" line="523"/>
-        <source>%1</source>
-        <translation type="unfinished">%1</translation>
+        <source>   Datensaetze erzeugt
+Datei:  </source>
+        <translation>records generated
+file</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="505"/>
+        <source>%1</source>
+        <translation type="obsolete">%1</translation>
+    </message>
+    <message>
+        <location filename="query.cpp" line="510"/>
         <source>      Dateiname fehlt.
 
 Abfrage Ergebnis im ReportDialog anzeigen ?</source>
@@ -1899,57 +1899,56 @@ Abfrage Ergebnis im ReportDialog anzeigen ?</source>
 View query results in the report dialog?</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="485"/>
         <source>Errgebnis: %1 </source>
-        <translation type="unfinished">Result %1</translation>
+        <translation type="obsolete">Result %1</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="539"/>
+        <location filename="query.cpp" line="544"/>
         <source>Die Queryzeile enthaelt einen Fehler</source>
         <translation>The query line contains an error</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="546"/>
+        <location filename="query.cpp" line="551"/>
         <source>Es gibt einen Fehler bei der Trennerangabe</source>
         <translation>There is an error in the statement separator</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="565"/>
-        <location filename="query.cpp" line="575"/>
-        <location filename="query.cpp" line="584"/>
-        <location filename="query.cpp" line="642"/>
-        <location filename="query.cpp" line="699"/>
+        <location filename="query.cpp" line="570"/>
+        <location filename="query.cpp" line="580"/>
+        <location filename="query.cpp" line="589"/>
+        <location filename="query.cpp" line="647"/>
+        <location filename="query.cpp" line="704"/>
         <source>Syntax Fehler</source>
         <translation>Syntax Error</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="565"/>
+        <location filename="query.cpp" line="570"/>
         <source>Im Datum Format fehlen &apos;&lt;&apos; oder &apos;&gt;&apos;</source>
         <translation>The date format is missing &apos;&lt;&apos; or &apos;&gt;&apos;</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="575"/>
+        <location filename="query.cpp" line="580"/>
         <source>Im Datum Format fehlen  &apos;-&apos;</source>
         <translation>The date format is missing &apos;-&apos;</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="584"/>
+        <location filename="query.cpp" line="589"/>
         <source>&apos; range &apos;  FEHLT !</source>
         <translation>&apos;Range&apos; MISSING!</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="607"/>
+        <location filename="query.cpp" line="612"/>
         <source>Hier fehlt ein Komma ! </source>
         <translation>Here a comma is missing!</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="608"/>
+        <location filename="query.cpp" line="613"/>
         <source>Syntax Error</source>
         <translation>Syntax Error</translation>
     </message>
     <message>
-        <location filename="query.cpp" line="641"/>
-        <location filename="query.cpp" line="698"/>
+        <location filename="query.cpp" line="646"/>
+        <location filename="query.cpp" line="703"/>
         <source>Feldnamen Error : </source>
         <translation>Field Name Error: </translation>
     </message>

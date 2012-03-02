@@ -485,7 +485,7 @@ void query::buttonMkTextCb()
        s += lineEditOutfile->text()+".csv  \n\n";
        s += tr("Zurueck zum ReportDialog");
        
-       qDebug() << "str:" << s;
+       //qDebug() << "str:" << s;
        
        int status = QMessageBox::information(this,tr("Ergebnis Check"),s,
                     QMessageBox::Yes,QMessageBox::No); 
@@ -520,12 +520,12 @@ void query::buttonMkAdifCb()
        QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
        mkAdif();                              
        QApplication::restoreOverrideCursor();
-       s = "\n"+t.setNum(cnt)+"   Datensaetze erzeugt\nDatei:  ";
+       s = "\n"+t.setNum(cnt)+tr("   Datensaetze erzeugt\nDatei:  ");
        s +=  QDir::homePath();                     
        s += "/";
        s += lineEditOutfile->text()+".adi  \n\n";
-       s += "Zurueck zum ReportDialog";
-       int status = QMessageBox::information(this,tr("Ergebnis Check"),tr("%1").arg(s),
+       s += tr("Zurueck zum ReportDialog");
+       int status = QMessageBox::information(this,tr("Ergebnis Check"),s,
                     QMessageBox::Yes,QMessageBox::No); 
        if(status == QMessageBox::Yes)
          goExit();

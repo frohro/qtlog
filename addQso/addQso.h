@@ -14,9 +14,11 @@
 #include <QHash>
 #include <QHashIterator>
 #include <QTcpSocket>
+
 #include "ui_addqso.h"
 #include "serve.h"
 #include "destination.h"
+
 class QLabel;
 class QUdpSocket;
 class QTcpSocket;
@@ -27,6 +29,7 @@ class addQso : public QMainWindow,
    public:
      addQso(QWidget *parent = 0);
      ~addQso();
+     
     QSettings settings;
     QSqlDatabase db;             
     QByteArray datagram;
@@ -97,7 +100,9 @@ class addQso : public QMainWindow,
     void prepareVia(QString,QString);
     void setAwdOmList();
     void getAdwKennerList();
+    
   protected:
+    
     QHash <QString, QString> awdhash;
     QHash <QString, QString> toMyband;
     QHash <QString, QString> toSysband;
@@ -139,7 +144,6 @@ class addQso : public QMainWindow,
            return "";
         return i.value();
     }
-    
     
      QHash<QString, QString> ModeToMod;      
      QString getMode(QString mode) {
@@ -203,7 +207,9 @@ class addQso : public QMainWindow,
     void buttonDeleteCb();
     void notizCheckCR();
     void whileCRgoTab0();
+    
   private slots:
+    
     void processPendingDatagram();
     void processWriteDatagram(int, QString, int);
     

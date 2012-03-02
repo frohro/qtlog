@@ -11,12 +11,27 @@
 #include <QApplication>
 #include <QSettings>
 #include "dok.h"
+
 int main(int argc, char *argv[])
 {
+  int Lang;
+  QString home = QDir::homePath(); 
+  
   QTranslator translator;
-  if(translator.load("../dokDiag/qtlogDok_en")) qDebug()<<"Got the translation.\n";
+  //if(translator.load("../dokDiag/qtlogDok_en")) qDebug()<<"Got the translation.\n";
+  QLocale locale;
+  Lang = locale.country();
+  Lang = 100;                 // TEST
+ 
   QApplication a(argc, argv);
-  a.installTranslator(&translator);
+  
+   if(Lang != 82) {
+       home+="/log/dokDiag/qtlogDok_en";
+       qDebug() << home;
+       translator.load(home);  
+       a.installTranslator(&translator);
+  }
+
   dok dokD;
   dokD.show();
   return a.exec();

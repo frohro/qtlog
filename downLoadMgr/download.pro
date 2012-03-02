@@ -24,9 +24,8 @@ DEPENDPATH += .
 HEADERS += downloadMgr.h
 
 SOURCES += downloadMgr.cpp \
-           ../qtlogDiag/dirmngr.cpp \
            main.cpp
         
 TARGET = ../bin/downloadmgrdb
 
-TRANSLATIONS += qtlogDownload_en.ts
+TRANSLATIONS += qtlogDownload_en.ts 

@@ -12,34 +12,39 @@
 #define PREFDIAG_H
 #include <QtSql>
 #include "ui_prefix.h"
+
 class QLabel;
 class prefDiag : public QWidget,
 	       private Ui::prefDiag
 {
   Q_OBJECT
+  
   public:
     prefDiag(QWidget *parent = 0);
     ~prefDiag();
+    
     QSettings settings;
     void keyPressEvent( QKeyEvent * event );
+    
     QString a;
     QString qy;
-    QSqlDatabase db;             
+    QSqlDatabase db;    
+    
     int row;
     int col;
     int i;
     void showPrefs( QString );
+    
   protected:
+    
   protected slots:
-    void setupAction();
+    
     void goExit();
-    void addPref();
-    void delPref();
+
     void getSubPrefs(QString);
     void getPrefs(QString);
     void getHilfeDxPrefCb();
     
-    void updatePrefItem(QTableWidgetItem *);
   private:
 };
 #endif 

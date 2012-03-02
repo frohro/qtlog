@@ -10,20 +10,31 @@
 
 #include <QApplication>
 #include <QSettings>
+#include <QTranslator>
 #include "dxspot.h"
-#include "../qtlogDiag/dirmngr.h"
-DirMngr dirMngr;
+
 
 int main(int argc, char *argv[])
 {
-   dirMngr.SetProgramDir(argv[0]);
+  int Lang;
+  QString home = QDir::homePath(); 
+  
    QTranslator translator;
-   if(translator.load("../dxSpot/qtlogDXSpot_en")) qDebug()<<"Got the translation.\n";
+   QLocale locale;
+   
    QApplication dxsp(argc, argv);
-   dxsp.installTranslator(&translator);
+   //if(translator.load("../dxSpot/qtlogDXSpot_en")) qDebug()<<"Got the translation.\n";
+   Lang = locale.country();
+   Lang = 100;                 // TEST
+   
+   if(Lang != 82) {
+       home+="/log/dxSpot/qtlogDXSpot_en";
+       translator.load(home);  
+       dxsp.installTranslator(&translator);
+   }
+  
    dxspot dxspotDiag;
    dxspotDiag.show();
    //QTimer::singleShot(0, &manager, SLOT(execute()));
-   
-  return dxsp.exec();
+   return dxsp.exec();
 }

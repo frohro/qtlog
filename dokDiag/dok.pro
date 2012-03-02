@@ -18,20 +18,12 @@ unix {
   OBJECTS_DIR = .obj
 }
 
-win32{
-  DEFINES-=UNICODE
-  TARGET=dokdb
-}
-
-
-
 # -- Input --
 FORMS +=   dok.ui
 
 HEADERS += dok.h
 
 SOURCES += main.cpp \
-           ../qtlogDiag/dirmngr.cpp\
            dok.cpp
 
 RESOURCES = ../qtlogRessourcen.qrc
